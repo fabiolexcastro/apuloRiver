@@ -37,7 +37,11 @@ down <- function(var, mdl, ab1, ab2){
   ab1 <- 'r1i1p1f1'
   ab2 <- 'gn'
   
-  
+  # Start 
+  cat('To process: ', var, ' ', mdl, '\n')
+  root <- 'https://nex-gddp-cmip6.s3-us-west-2.amazonaws.com/NEX-GDDP-CMIP6'
+  urlw <- glue('{root}/{mdl}/historical/{ab1}/{var}/{var}_day_{mdl}_historical_{ab1}_{ab2}_{1950:2014}.nc')
+
   
 }
 

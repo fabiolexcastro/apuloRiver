@@ -18,3 +18,8 @@ dpto <- terra::vect('shp/Base/dptos.gpkg')
 plot(bsin)
 plot(dpto)
 
+cund <- dpto[dpto$DPTO_CNMBR == 'CUNDINAMARCA',]
+
+# A simple plot
+plot(cund)
+plot(bsin, add = T, col = 'red')

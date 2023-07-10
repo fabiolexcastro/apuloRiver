@@ -37,6 +37,8 @@ down <- function(var, mdl, ab1, ab2){
   ab1 <- 'r1i1p1f1'
   ab2 <- 'gn'
   
+  
+  
 }
 
 

@@ -40,8 +40,23 @@ down <- function(var, mdl, ab1, ab2){
   # Start 
   cat('To process: ', var, ' ', mdl, '\n')
   root <- 'https://nex-gddp-cmip6.s3-us-west-2.amazonaws.com/NEX-GDDP-CMIP6'
-  urlw <- glue('{root}/{mdl}/historical/{ab1}/{var}/{var}_day_{mdl}_historical_{ab1}_{ab2}_{1950:2014}.nc')
-
+  urlw <- glue('{root}/{mdl}/historical/{ab1}/{var}/{var}_day_{mdl}_historical_{ab1}_{ab2}_{1974:2014}.nc')
+  urlw <- as.character(urlw)
+  dirs <- glue('tif/nasa/cmip6/historical/{mdl}/{var}/{basename(urlw)}')
+  dirs <- as.character(dirs)
+  dir  <- unique(dirname(dirs))
+  dir_create(dir)
+  
+  map(.x = 1:length(urlw), .f = function(i){
+    
+    cat('To process: ', i, '\n')
+    url <- urlw[i]
+    out <- dirs[i]
+    download.file(url = url, destfile = out, mode = 'wb')
+    cat('Done!\n')
+    
+  })
+  
   
 }
 

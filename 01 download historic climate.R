@@ -63,6 +63,17 @@ down <- function(var, mdl, ab1, ab2){
   fles <- as.character(dir_ls(dir, regexp = '.nc$'))
   head(fles)
   
+  map(.x = 1:length(fles), .f = function(i){
+    
+    cat("To extract by mask: ", basename(fles[i]), '\n')
+    rst <- rast(fles[i])
+    plot(rst)
+    
+    
+  })
+  
+  
+  
   
   
   

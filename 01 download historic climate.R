@@ -72,6 +72,8 @@ down <- function(var, mdl, ab1, ab2){
     rst <- terra::mask(rst, cund)
     terra::writeRaster(x = rst, filename = glue('{dirname(fles[i])}/cund_{basename(fles[i])}'), overwrite = TRUE)
     
+    file.remove(fles[i])
+    rm(rst); gc()
     
   })
   

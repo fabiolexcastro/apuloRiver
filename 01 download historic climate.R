@@ -68,7 +68,10 @@ down <- function(var, mdl, ab1, ab2){
     cat("To extract by mask: ", basename(fles[i]), '\n')
     rst <- rast(fles[i])
     rst <- rotate(rst)
+    rst <- terra::crop(rst, cund)
+    rst <- terra::mask(rst, cund)
     plot(rst[[1]])
+    
     
   })
   

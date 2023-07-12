@@ -70,7 +70,7 @@ down <- function(var, mdl, ab1, ab2){
     rst <- rotate(rst)
     rst <- terra::crop(rst, cund)
     rst <- terra::mask(rst, cund)
-    plot(rst[[1]])
+    terra::writeRaster(x = rst, filename = glue('{dirname(fles[i])}/cund_{basename(fles[i])}'), overwrite = TRUE)
     
     
   })

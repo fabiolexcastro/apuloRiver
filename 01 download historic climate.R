@@ -32,10 +32,10 @@ mdls <- c('ACCESS-CM2', 'ACCESS-ESM1-5', 'BCC-CSM2-MR', 'CanESM5', 'CESM2-WACCM'
 down <- function(var, mdl, ab1, ab2){
 
   # Proof
-  var <- 'tasmin'
-  mdl <- 'ACCESS-CM2'
-  ab1 <- 'r1i1p1f1'
-  ab2 <- 'gn'
+  # var <- 'tasmin'
+  # mdl <- 'ACCESS-CM2'
+  # ab1 <- 'r1i1p1f1'
+  # ab2 <- 'gn'
   
   # Start 
   cat('To process: ', var, ' ', mdl, '\n')
@@ -77,18 +77,10 @@ down <- function(var, mdl, ab1, ab2){
     
   })
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
 }
 
+# To apply the function ---------------------------------------------------
 
-
-
+## Source to select these models: https://www.carbonbrief.org/cmip6-the-next-generation-of-climate-models-explained/
+mdls <- c('UKESM1-0-LL', 'EC-Earth3', 'MRI-ESM2-0', 'BCC-CSM2-MR', 'INM-CM4-8')
 

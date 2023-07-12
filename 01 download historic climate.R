@@ -57,6 +57,18 @@ down <- function(var, mdl, ab1, ab2){
     
   })
   
+  rm(i)
+  
+  # To extract by mask (Cundinamarca)
+  fles <- as.character(dir_ls(dir, regexp = '.nc$'))
+  head(fles)
+  
+  
+  
+  
+  
+  
+  
   
 }
 

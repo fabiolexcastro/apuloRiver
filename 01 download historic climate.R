@@ -32,7 +32,7 @@ mdls <- c('ACCESS-CM2', 'ACCESS-ESM1-5', 'BCC-CSM2-MR', 'CanESM5', 'CESM2-WACCM'
 down <- function(var, mdl, ab1, ab2){
 
   # Proof
-  # var <- 'tasmin'
+  # var <- 'pr'
   # mdl <- 'ACCESS-CM2'
   # ab1 <- 'r1i1p1f1'
   # ab2 <- 'gn'
@@ -83,4 +83,13 @@ down <- function(var, mdl, ab1, ab2){
 
 ## Source to select these models: https://www.carbonbrief.org/cmip6-the-next-generation-of-climate-models-explained/
 mdls <- c('ACCESS-CM2', 'UKESM1-0-LL', 'EC-Earth3', 'MRI-ESM2-0', 'INM-CM4-8')
+
+
+# UKESM1-0-LL
+map(.x = 1:length(vars), .f = function(v){
+  down(var = vars[v], mdl = 'UKESM1-0-LL', ab1 = 'r1i1p1f2', ab2 = 'gn')
+})
+
+
+
 

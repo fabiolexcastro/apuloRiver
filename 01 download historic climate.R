@@ -90,6 +90,11 @@ map(.x = 1:length(vars), .f = function(v){
   down(var = vars[v], mdl = 'UKESM1-0-LL', ab1 = 'r1i1p1f2', ab2 = 'gn')
 })
 
+# EC-Earth3
+map(.x = 1:length(vars), .f = function(v){
+  down(var = vars[v], mdl = 'UKESM1-0-LL', ab1 = 'r1i1p1f1', ab2 = 'gr')
+})
 
+##
 
 

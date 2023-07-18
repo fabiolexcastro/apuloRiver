@@ -31,3 +31,9 @@ sr.07 <- rast('tif/srtm/fill/srtm_z07_fill.tif')
 sr.07 <- sr.07[[1]]
 sr.07[sr.07 < 0] <- 0
 plot(sr.07)
+sr.07 <- crop(sr.07, cund)
+sr.07 <- mask(sr.07, cund)
+
+terra::writeRaster(x = sr.07, filename = 'tif/srtm/raw/srtm_z07.tif', overwrite = TRUE)
+
+

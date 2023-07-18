@@ -23,8 +23,7 @@ sr.07 <- sr.07 * 1
 sr.07 <- crop(sr.07, cund)
 sr.07 <- mask(sr.07, cund)
 
-
-
-
+dir.create('tif/srtm/raw', recursive = T)
+terra::writeRaster(x = sr.07, filename = 'tif/srtm/raw/srtm_z07.tif')
 
 

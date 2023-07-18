@@ -17,6 +17,12 @@ dpto <- terra::vect('shp/Base/dptos.gpkg')
 cund <- dpto[dpto$DPTO_CNMBR == 'CUNDINAMARCA',]
 
 # Download SRTM - Elevatr library -----------------------------------------
+sr.07 <- elevatr::get_elev_raster(locations = st_as_sf(cund), z = 7)
+sr.07 <- rast(sr.07)
+sr.07 <- sr.07 * 1
+sr.07 <- crop(sr.07, cund)
+sr.07 <- mask(sr.07, cund)
+
 
 
 

@@ -26,4 +26,6 @@ sr.07 <- mask(sr.07, cund)
 dir.create('tif/srtm/raw', recursive = T)
 terra::writeRaster(x = sr.07, filename = 'tif/srtm/raw/srtm_z07.tif')
 
-
+# Read the fill SRTM ------------------------------------------------------
+sr.07 <- rast('tif/srtm/fill/srtm_z07.tif')
+plot(sr.07)

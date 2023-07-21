@@ -82,9 +82,10 @@ map(.x = 1:length(dirs), .f = function(d){
       reduce(., c)
     
     fl <- as.character(fl)
-    fl
     ou <- gsub('cund_', 'down-cund_', fl)
-    ou
+    terra::writeRaster(x = dwn, filename = ou, overwrite = T)
+    
+    
     
     
     

@@ -47,7 +47,16 @@ dirs <- dir_ls(path, type = 'directory')
 mdls <- basename(dirs)
 
 # Temperature 
+d <- 1 # Correr y borrar
 
+map(.x = 1:length(dirs), .f = function(d){
+  
+  dir <- dirs[d]
+  fls <- dir_ls(dir, regexp = '.nc$')
+  fls
+  
+  
+})
 
 
 

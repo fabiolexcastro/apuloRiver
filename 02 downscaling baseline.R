@@ -54,7 +54,9 @@ map(.x = 1:length(dirs), .f = function(d){
   dir <- dirs[d]
   dir <- dir_ls(dir, type = 'directory')
   dir <- grep('tas', dir, value = T)
-  
+  dir <- as.character(dir)
+  fls <- map(dir, dir_ls, regexp = '.nc$')
+  fls
   
 })
 

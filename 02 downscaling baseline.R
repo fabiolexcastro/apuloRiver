@@ -41,7 +41,6 @@ srtm <- rast('tif/srtm/fill/srtm_z07_fill.tif')
 plot(srtm)
 
 # List the files  ---------------------------------------------------------
-
 path <- 'tif/nasa/cmip6/historical'
 dirs <- dir_ls(path, type = 'directory')
 mdls <- basename(dirs)
@@ -69,6 +68,7 @@ map(.x = 1:length(dirs), .f = function(d){
     
     dwn <- map(.x = 1:nlyr(rs), .f = function(w){
       
+      print(w)
       r <- rs[[w]]
       r <- terra::crop(r, cund)
       r <- terra::mask(r, cund)

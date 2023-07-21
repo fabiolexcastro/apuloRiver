@@ -56,7 +56,16 @@ map(.x = 1:length(dirs), .f = function(d){
   dir <- grep('tas', dir, value = T)
   dir <- as.character(dir)
   fls <- map(dir, dir_ls, regexp = '.nc$')
-  fls
+  fls <- unlist(fls)
+  fls <- grep('cund', fls, value = T)
+  
+  f <- 1 # Correr y borrar
+  
+  rst <- map(.x = 1:length(fls), .f = function(f){
+    
+    fl <- fls[f]
+    
+  })
   
 })
 

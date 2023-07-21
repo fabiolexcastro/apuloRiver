@@ -64,6 +64,9 @@ map(.x = 1:length(dirs), .f = function(d){
   rst <- map(.x = 1:length(fls), .f = function(f){
     
     fl <- fls[f]
+    fl <- as.character(fl)
+    rs <- rast(fl)
+    
     
   })
   

@@ -38,4 +38,7 @@ terra::writeRaster(x = sr.07, filename = 'tif/srtm/raw/srtm_z07.tif', overwrite 
 
 # Read the results --------------------------------------------------------
 srtm <- rast('tif/srtm/fill/srtm_z07_fill.tif')
+plot(srtm)
+
+
 

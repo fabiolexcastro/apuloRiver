@@ -66,6 +66,18 @@ map(.x = 1:length(dirs), .f = function(d){
     fl <- fls[f]
     fl <- as.character(fl)
     rs <- rast(fl)
+    print(nlyr(rs))
+    w <- 1 # correr y borrar
+    
+    dwn <- map(.x = 1:nlyr(rs), .f = function(w){
+      
+      r <- rs[[w]]
+      r <- terra::crop(r, cund)
+      r <- terra::mask(r, cund)
+      plot(r)
+      
+    })
+    
     
     
   })

@@ -5,7 +5,7 @@
 
 # Load libraries ----------------------------------------------------------
 library(pacman)
-pacman::p_load(elevatr, terra, fs, sf, tidyverse, glue, gtools, RColorBrewer)
+pacman::p_load(elevatr, spatialEco, terra, fs, sf, tidyverse, glue, gtools, RColorBrewer)
 
 g <- gc(reset = TRUE)
 rm(list = ls())
@@ -73,7 +73,10 @@ map(.x = 1:length(dirs), .f = function(d){
       r <- terra::crop(r, cund)
       r <- terra::mask(r, cund)
       r <- spatialEco::raster.downscale(srtm, r)$downscale
-      plot(r)
+      r <- r - 273.15
+      r <- terra::crop(r, bsin)
+      r <- terra::mask(r, bsin)
+      
       
     })
     

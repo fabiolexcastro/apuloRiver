@@ -83,6 +83,8 @@ map(.x = 1:length(dirs), .f = function(d){
     
     fl <- as.character(fl)
     fl
+    ou <- gsub('cund_', 'down-cund_', fl)
+    ou
     
     
     

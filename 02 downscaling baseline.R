@@ -40,5 +40,17 @@ terra::writeRaster(x = sr.07, filename = 'tif/srtm/raw/srtm_z07.tif', overwrite 
 srtm <- rast('tif/srtm/fill/srtm_z07_fill.tif')
 plot(srtm)
 
+# List the files  ---------------------------------------------------------
+
+path <- 'tif/nasa/cmip6/historical'
+dirs <- dir_ls(path, type = 'directory')
+mdls <- basename(dirs)
+
+# Temperature 
+
+
+
+
+
 
 

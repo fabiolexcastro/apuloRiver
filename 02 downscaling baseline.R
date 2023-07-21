@@ -81,6 +81,9 @@ map(.x = 1:length(dirs), .f = function(d){
     }) %>% 
       reduce(., c)
     
+    fl <- as.character(fl)
+    fl
+    
     
     
   })

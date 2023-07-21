@@ -76,9 +76,10 @@ map(.x = 1:length(dirs), .f = function(d){
       r <- r - 273.15
       r <- terra::crop(r, bsin)
       r <- terra::mask(r, bsin)
+      return(r)
       
-      
-    })
+    }) %>% 
+      reduce(., c)
     
     
     

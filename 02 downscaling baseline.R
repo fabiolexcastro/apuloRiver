@@ -52,8 +52,8 @@ d <- 1 # Correr y borrar
 map(.x = 1:length(dirs), .f = function(d){
   
   dir <- dirs[d]
-  fls <- dir_ls(dir, regexp = '.nc$')
-  fls
+  dir <- dir_ls(dir, type = 'directory')
+  dir <- grep('tas', dir, value = T)
   
   
 })

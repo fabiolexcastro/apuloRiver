@@ -36,4 +36,6 @@ sr.07 <- mask(sr.07, cund)
 
 terra::writeRaster(x = sr.07, filename = 'tif/srtm/raw/srtm_z07.tif', overwrite = TRUE)
 
+# Read the results --------------------------------------------------------
+srtm <- rast('tif/srtm/fill/srtm_z07_fill.tif')
 

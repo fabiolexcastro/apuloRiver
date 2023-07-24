@@ -26,8 +26,12 @@ frst <- mask(frst, cund)
 
 dir.create('tif/forest', recursive = T)
 
+frst <- frst[[1]]
+terra::writeRaster(x = frst, filename = 'tif/forest/hansen-stck_raw.tif', overwrite = T)
 
-
+# Read the results - forest raster ----------------------------------------
+frst <- terra::rast('tif/forest/hansen-stck_raw.tif')
+plot(frst)
 
 
 

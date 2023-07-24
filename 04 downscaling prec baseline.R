@@ -18,6 +18,8 @@ dpto <- terra::vect('shp/Base/dptos.gpkg')
 cund <- dpto[dpto$DPTO_CNMBR == 'CUNDINAMARCA',]
 
 frst <- terra::rast('tif/forest/hansen-stck_raw.tif')
+mask <- terra::rast('tif/srtm/fill/srtm_z07_fill.tif')
+frst <- terra::resample(frst, mask, method = 'bilinear')
 
 # List the files
 path <- 'tif/nasa/cmip6/historical'

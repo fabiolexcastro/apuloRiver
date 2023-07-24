@@ -19,12 +19,12 @@ cund <- dpto[dpto$DPTO_CNMBR == 'CUNDINAMARCA',]
 tles <- calc_gfc_tiles(aoi = st_as_sf(cund))
 dir.create('tmpr')
 frst <- gfcanalysis::download_tiles(tiles = tles, output_folder = 'tmpr')
+frst <- gfcanalysis::extract_gfc(aoi = tles, data_folder = 'tmpr')
+frst <- rast(frst)
+frst <- crop(frst, cund)
+frst <- mask(frst, cund)
 
-
-
-
-
-
+dir.create('tif/forest', recursive = T)
 
 
 

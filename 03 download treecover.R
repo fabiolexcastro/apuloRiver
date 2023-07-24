@@ -1,5 +1,5 @@
 
-## Downscaling historic climate
+## Downscaling treecover data
 ## Jul 14 th 2023
 
 # Load libraries ----------------------------------------------------------

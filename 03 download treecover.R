@@ -4,7 +4,7 @@
 
 # Load libraries ----------------------------------------------------------
 library(pacman)
-pacman::p_load(elevatr, spatialEco, terra, fs, sf, tidyverse, glue, gtools, RColorBrewer)
+pacman::p_load(elevatr, gfcanalysis, spatialEco, terra, fs, sf, tidyverse, glue, gtools, RColorBrewer)
 
 g <- gc(reset = TRUE)
 rm(list = ls())
@@ -14,3 +14,24 @@ options(scipen = 999, warn = -1)
 bsin <- terra::vect('shp/Cuenca/Cuenca_Río_Apulo.shp')
 dpto <- terra::vect('shp/Base/dptos.gpkg')
 cund <- dpto[dpto$DPTO_CNMBR == 'CUNDINAMARCA',]
+
+# Download Hansen deforestation -------------------------------------------
+tles <- calc_gfc_tiles(aoi = st_as_sf(cund))
+dir.create('tmpr')
+frst <- gfcanalysis::download_tiles(tiles = tles, output_folder = 'tmpr')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

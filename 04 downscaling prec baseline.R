@@ -55,7 +55,7 @@ down <- function(dir){
       r <- rst[[j]]
       v <- as.data.frame(r, xy = T) %>% pull(3) %>% unique()
       
-      if(length(v) == 1 | max(v) < 1){
+      if(length(v) == 1 | max(v) < 1.5){
         cat('Values = 1\n')
         d <- terra::resample(r, frst, method = 'bilinear')
       } else {
@@ -63,10 +63,15 @@ down <- function(dir){
         d <- raster.downscale(x = frst, y = r)
         d <- d$downscale
       }
+      d <- terra::crop(d, bsin)
+      d <- terra::mask(d, bsin)
       return(d)
       
     }) %>% 
       reduce(., c)
+    
+    
+    
     
   })
   

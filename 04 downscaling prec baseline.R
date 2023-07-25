@@ -54,12 +54,14 @@ down <- function(dir){
       cat(j, '\t')
       r <- rst[[j]]
       v <- as.data.frame(r, xy = T) %>% pull(3) %>% unique()
-    
-      if(length(v) == 1){
-        cat('Values = 0\n')
+      
+      if(length(v) == 1 | max(v) < 1){
+        cat('Values = 1\n')
         d <- terra::resample(r, frst, method = 'bilinear')
       } else {
-        d <- raster.downscale(x = frst, y = r)$downscales
+        cat('Values > 1\n')
+        d <- raster.downscale(x = frst, y = r)
+        d <- d$downscale
       }
       return(d)
       

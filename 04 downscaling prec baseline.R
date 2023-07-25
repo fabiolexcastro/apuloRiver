@@ -41,8 +41,6 @@ down <- function(dir){
   
   map(.x = 1:length(fls), .f = function(i){
     
-    i <- 1 # Correr y borrar 
-    
     cat('To process: ', basename(fls[i]), '\n')
     fle <- fls[i]
     fle <- as.character(fle)
@@ -55,12 +53,12 @@ down <- function(dir){
       r <- rst[[j]]
       v <- as.data.frame(r, xy = T) %>% pull(3) %>% unique()
       
-      if(length(v) == 1 | max(v) < 1.5){
+      if(length(v) == 1 | max(v) < 1.8){
         cat('Values = 1\n')
         d <- terra::resample(r, frst, method = 'bilinear')
       } else {
         cat('Values > 1\n')
-        d <- raster.downscale(x = frst, y = r)
+        d <- raster.downscale(x = frst, y = r, p = 0.9, se = F)
         d <- d$downscale
       }
       d <- terra::crop(d, bsin)
@@ -70,8 +68,12 @@ down <- function(dir){
     }) %>% 
       reduce(., c)
     
-    
-    
+    yea <- fle %>% basename() %>% str_split(., '_') %>% map_chr(8) %>% parse_number()
+    dts <- seq(as.Date(glue('{yea}-01-01'), format = '%Y-%m-%d'), as.Date(glue('{yea}-12-31'), format = '%Y-%m-%d'), by = 'day')
+    terra::time(rsl) <- dts
+    out <- gsub('cund_', 'down-cund_', fle)
+    terra::writeRaster(x = rsl, filename = out, overwrite = TRUE)
+    cat('Done!\n')
     
   })
   

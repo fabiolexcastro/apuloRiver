@@ -36,7 +36,8 @@ down <- function(dir){
     grep('pr', ., value = T) %>% 
     as.character() %>% 
     dir_ls(.) %>% 
-    grep('.nc$', ., value = T)
+    grep('.nc$', ., value = T) %>% 
+    as.character()
   
   map(.x = 1:length(fls), .f = function(i){
     
@@ -52,7 +53,14 @@ down <- function(dir){
       
       cat(j, '\t')
       r <- rst[[j]]
-      d <- raster.downscale(x = frst, y = r)$downscale
+      v <- as.data.frame(r, xy = T) %>% pull(3) %>% unique()
+    
+      if(length(v) == 1){
+        cat('Values = 0\n')
+        d <- terra::resample(r, frst, method = 'bilinear')
+      } else {
+        d <- raster.downscale(x = frst, y = r)$downscales
+      }
       return(d)
       
     }) %>% 

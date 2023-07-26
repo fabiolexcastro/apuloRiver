@@ -86,7 +86,8 @@ down <- function(dir){
       cat('Warning')
       rsl <- reduce(rsl, c)
       rst.mss <- rst[[mss]]
-      map(1:length(dts.mss), function(i) writeRaster(rst.mss[[i]], glue('tmpr/to-saga/prec-{dts.mss[i]}.tif')), overwrite = TRUE)
+      map(1:length(dts.mss), function(i) writeRaster(rst.mss[[i]], glue('tmpr/to-saga/prec-{dts.mss[i]}.tif'), overwrite = TRUE))
+      
       
 
             

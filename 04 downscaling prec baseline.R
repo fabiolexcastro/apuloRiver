@@ -29,7 +29,7 @@ mdls <- basename(dirs)
 # Function to use ---------------------------------------------------------
 down <- function(dir){
   
-  dir <- dirs[1] # Correr y borrar 
+  # dir <- dirs[1] # Correr y borrar 
   
   cat('To process: ', basename(dir), '\n')
   fls <- dir_ls(dir) %>% 
@@ -53,7 +53,7 @@ down <- function(dir){
       r <- rst[[j]]
       v <- as.data.frame(r, xy = T) %>% pull(3) %>% unique()
       
-      if(length(v) == 1 | max(v) < 1.8){
+      if(length(v) == 1 | max(v) < 2.0){
         cat('Values = 1\n')
         d <- terra::resample(r, frst, method = 'bilinear')
       } else {
@@ -74,6 +74,7 @@ down <- function(dir){
     out <- gsub('cund_', 'down-cund_', fle)
     terra::writeRaster(x = rsl, filename = out, overwrite = TRUE)
     cat('Done!\n')
+    rm(rsl, yea, dts); gc(reset = TRUE)
     
   })
   

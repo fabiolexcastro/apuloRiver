@@ -79,6 +79,17 @@ down <- function(dir){
     dts <- seq(as.Date(glue('{yea}-01-01'), format = '%Y-%m-%d'), as.Date(glue('{yea}-12-31'), format = '%Y-%m-%d'), by = 'day')
     dts.mss <- dts[mss]
     
+    if(length(dts.mss) == 0){
+      cat('No problem\n')
+      rsl <- reduce(rsl, c)
+    } else {
+      cat('Warning')
+      rsl <- reduce(rsl, c)
+      rst.mss <- rst[[mss]]
+      dir_create('tmpr/to-saga') # Correr y borrar
+      
+      
+    }
     
     # terra::time(rsl) <- dts
     out <- gsub('cund_', 'down-cund_', fle)

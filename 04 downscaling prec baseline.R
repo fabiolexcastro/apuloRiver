@@ -49,28 +49,35 @@ down <- function(dir){
     
     rsl <- map(.x = 1:nlyr(rst), .f = function(j){
       
-      cat(j, '\t')
-      r <- rst[[j]]
-      v <- as.data.frame(r, xy = T) %>% pull(3) %>% unique()
+      try(expr = {
+        
+        cat(j, '\t')
+        r <- rst[[j]]
+        v <- as.data.frame(r, xy = T) %>% pull(3) %>% unique()
+        
+        if(length(v) == 1 | max(v) < 2.0){
+          cat('Values = 1\n')
+          d <- terra::resample(r, frst, method = 'bilinear')
+        } else {
+          cat('Values > 1\n')
+          d <- raster.downscale(x = frst, y = r, p = 0.9, se = F)
+          d <- d$downscale
+        }
+        d <- terra::crop(d, bsin)
+        d <- terra::mask(d, bsin)
+        return(d)
+        
+      })
       
-      if(length(v) == 1 | max(v) < 2.0){
-        cat('Values = 1\n')
-        d <- terra::resample(r, frst, method = 'bilinear')
-      } else {
-        cat('Values > 1\n')
-        d <- raster.downscale(x = frst, y = r, p = 0.9, se = F)
-        d <- d$downscale
-      }
-      d <- terra::crop(d, bsin)
-      d <- terra::mask(d, bsin)
-      return(d)
-      
-    }) %>% 
-      reduce(., c)
+    }) 
     
+    mss <- which(map_chr(rsl, class) == 'try-error')
     yea <- fle %>% basename() %>% str_split(., '_') %>% map_chr(8) %>% parse_number()
     dts <- seq(as.Date(glue('{yea}-01-01'), format = '%Y-%m-%d'), as.Date(glue('{yea}-12-31'), format = '%Y-%m-%d'), by = 'day')
-    terra::time(rsl) <- dts
+    dts.mss <- dts[mss]
+    
+    
+    # terra::time(rsl) <- dts
     out <- gsub('cund_', 'down-cund_', fle)
     terra::writeRaster(x = rsl, filename = out, overwrite = TRUE)
     cat('Done!\n')
@@ -80,3 +87,12 @@ down <- function(dir){
   
   
 }
+
+
+# To apply the function ---------------------------------------------------
+
+# Just one model
+
+
+# All the model
+map(dirs[2:length(dirs)], down)

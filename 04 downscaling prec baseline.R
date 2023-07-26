@@ -6,11 +6,14 @@
 
 # Load libraries ----------------------------------------------------------
 library(pacman)
-pacman::p_load(elevatr, spatialEco, terra, fs, sf, tidyverse, glue, gtools, RColorBrewer)
+pacman::p_load(elevatr, spatialEco, terra, RSAGA, fs, sf, tidyverse, glue, gtools, RColorBrewer)
 
 g <- gc(reset = TRUE)
 rm(list = ls())
 options(scipen = 999, warn = -1)
+
+# R saga environment
+envr <- rsaga.env(path = 'C:/Program Files/SAGA')
 
 # Load data ---------------------------------------------------------------
 bsin <- terra::vect('shp/Cuenca/Cuenca_Río_Apulo.shp')

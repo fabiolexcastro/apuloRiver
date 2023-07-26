@@ -14,6 +14,7 @@ options(scipen = 999, warn = -1)
 
 # R saga environment
 envr <- rsaga.env(path = 'C:/Program Files/SAGA')
+envr <- rsaga.env(path = 'C:/SAGA/saga-8.0.0_x64')
 
 # Load data ---------------------------------------------------------------
 bsin <- terra::vect('shp/Cuenca/Cuenca_Río_Apulo.shp')
@@ -88,8 +89,19 @@ down <- function(dir){
       rst.mss <- rst[[mss]]
       map(1:length(dts.mss), function(i) writeRaster(rst.mss[[i]], glue('tmpr/to-saga/prec-{dts.mss[i]}.tif'), overwrite = TRUE))
       
+      inp <- as.character(glue('tmpr/to-saga/prec-{dts.mss}.tif'))
+      out <- glue('tmpr/to-saga/prec-{dts.mss}-down.tif')
       
-
+      map(.x = 1:length(inp), .f = function(g){
+        cat(g, ' ')
+        trr <- rsaga.geoprocessor(
+          lib = 'statistics_regression',
+          module = 'GWR for Grid Downscaling',
+          param = list(PREDICTORS = 'tif/forest/hansen-stck_raw.tif',
+                       REGRESSION = out[g],
+                       DEPENDENT = inp[g]),
+          env = envr)
+      })
             
     }
     

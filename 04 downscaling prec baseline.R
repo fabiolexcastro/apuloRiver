@@ -112,7 +112,7 @@ down <- function(dir){
       rst.all <- c(rsl, rst.out)      
       
       plot(rsl[[1]])
-      plot(rst.out[[]])
+      plot(rst.out[[1]])
       
     }
     

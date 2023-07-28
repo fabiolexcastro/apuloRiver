@@ -102,6 +102,10 @@ down <- function(dir){
                        DEPENDENT = inp[g]),
           env = envr)
       })
+      
+      map(inp, file.remove)
+      
+      rst.out <- rast(out)
             
     }
     

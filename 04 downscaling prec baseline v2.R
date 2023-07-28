@@ -60,9 +60,10 @@ down <- function(dir){
       
       trr <- rsaga.geoprocessor(lib = 'statistics_regression', module = 'GWR for Grid Downscaling',
         param = list(PREDICTORS = 'tif/forest/hansen-stck_raw.tif',
-                     REGRESSION = out[j],
-                     DEPENDENT = inp[j]), env = envr)
+                     REGRESSION = fout,
+                     DEPENDENT = finp), env = envr)
       
+      plot(rast(fout))
       cat('Done!\n')
            
     }) 

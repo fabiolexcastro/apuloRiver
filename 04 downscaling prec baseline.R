@@ -111,6 +111,8 @@ down <- function(dir){
       names(rst.out)
       rst.all <- c(rsl, rst.out)      
       
+      plot(rsl[[1]])
+      plot(rst.out[[]])
       
     }
     

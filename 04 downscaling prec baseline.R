@@ -109,7 +109,9 @@ down <- function(dir){
       names(rst.out) <- dts[mss]
       names(rsl)
       names(rst.out)
-            
+      rst.all <- c(rsl, rst.out)      
+      
+      
     }
     
     # terra::time(rsl) <- dts

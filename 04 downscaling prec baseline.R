@@ -104,8 +104,9 @@ down <- function(dir){
       })
       
       map(inp, file.remove)
-      
       rst.out <- rast(out)
+      names(rsl) <- dts[-mss]
+      names(rsl)
             
     }
     

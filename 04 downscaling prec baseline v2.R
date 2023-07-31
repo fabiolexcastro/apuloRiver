@@ -76,7 +76,7 @@ down <- function(dir){
 
 
 # Check the results  ------------------------------------------------------
-dirs <- dir_ls('tmpr/to-saga', regexp = '.tif')
+dirs <- dir_ls('tmpr/to-saga')
 year <- basename(dirs)
 mdel <- 'ACCESS-CM2'
 

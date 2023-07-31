@@ -73,3 +73,12 @@ down <- function(dir){
   
   
 }
+
+
+# Check the results  ------------------------------------------------------
+
+chck <- dir_ls('tmpr/to-saga/1974', regexp = '.tif$')
+rstr <- rast(chck[1])
+
+
+

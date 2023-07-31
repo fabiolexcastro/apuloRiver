@@ -83,7 +83,7 @@ mdel <- 'ACCESS-CM2'
 to.copy <- function(dir){
   
   cat('To process: ', basename(dir), '\n')
-  fls <- dir_ls(dir, regexp = '.tif')
+  fls <- dir_ls(dir, regexp = '.tif$')
   fls <- as.character(fls)
   fls <- grep('down', fls, value = T)
   fls <- mixedsort(fls)
@@ -96,9 +96,9 @@ to.copy <- function(dir){
       terra::crop(., bsin) %>% 
       terra::mask(., bsin)
   })
-  
-  
+  rst <- reduce(rst, c)
   dts <- seq(as.Date(paste0(year, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(year, '-12-31'), format = '%Y-%m-%d'), by = 'day')
+  names(rst) <- dts
   
   
   

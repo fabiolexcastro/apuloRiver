@@ -99,8 +99,11 @@ to.copy <- function(dir){
   rst <- reduce(rst, c)
   dts <- seq(as.Date(paste0(year, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(year, '-12-31'), format = '%Y-%m-%d'), by = 'day')
   names(rst) <- dts
+  yea <- unique(year(dts))
   
-  
+  dout <- glue('tif/nasa/cmip6/historical/{mdel}/pr')
+  terra::writeRaster(x = rst, filename = glue('{dout}/pr_down_{yea}.tif'), overwrite = TRUE)
+  cat('Done!\n')
   
 
   

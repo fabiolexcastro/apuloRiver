@@ -92,9 +92,9 @@ to.copy <- function(dir){
   rst <- map(fls, function(i){
     cat(i, '\t')
     i %>% 
-      terra::rast %>% 
-      crop(., bsin) %>% 
-      mask(., bsin)
+      terra::rast() %>% 
+      terra::crop(., bsin) %>% 
+      terra::mask(., bsin)
   })
   
   

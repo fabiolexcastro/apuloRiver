@@ -94,11 +94,6 @@ to.copy <- function(dir){
   
 }
 
-chck <- dir_ls('tmpr/to-saga/1974', regexp = '.tif$')
-chck <- grep('down', chck, value = T)
-rstr <- rast(chck[1])
-plot(rstr)
-
 
 
 

@@ -78,6 +78,7 @@ down <- function(dir){
 # Check the results  ------------------------------------------------------
 dirs <- dir_ls('tmpr/to-saga', regexp = '.tif')
 year <- basename(dirs)
+mdel <- 'ACCESS-CM2'
 
 to.copy <- function(dir){
   
@@ -90,7 +91,7 @@ to.copy <- function(dir){
   
   
   
-  
+
   
 }
 

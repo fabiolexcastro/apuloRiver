@@ -82,10 +82,13 @@ mdel <- 'ACCESS-CM2'
 
 to.copy <- function(dir){
   
-  cat('To process: ', baseneame(dir), '\n')
+  cat('To process: ', basename(dir), '\n')
   fls <- dir_ls(dir, regexp = '.tif')
   fls <- as.character(fls)
   fls <- grep('down', fls, value = T)
+  fls <- mixedsort(fls)
+  head(fls); tail(fls)
+  
   
   dts <- seq(as.Date(paste0(year, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(year, '-12-31'), format = '%Y-%m-%d'), by = 'day')
   

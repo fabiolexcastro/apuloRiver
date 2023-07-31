@@ -87,7 +87,15 @@ to.copy <- function(dir){
   fls <- as.character(fls)
   fls <- grep('down', fls, value = T)
   fls <- mixedsort(fls)
-  head(fls); tail(fls)
+  
+  cat('Read as a raster file\n')
+  rst <- map(fls, function(i){
+    cat(i, '\t')
+    i %>% 
+      terra::rast %>% 
+      crop(., bsin) %>% 
+      mask(., bsin)
+  })
   
   
   dts <- seq(as.Date(paste0(year, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(year, '-12-31'), format = '%Y-%m-%d'), by = 'day')

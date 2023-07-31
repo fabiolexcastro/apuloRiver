@@ -76,13 +76,30 @@ down <- function(dir){
 
 
 # Check the results  ------------------------------------------------------
+dirs <- dir_ls('tmpr/to-saga', regexp = '.tif')
+year <- basename(dirs)
+
+to.copy <- function(dir){
+  
+  cat('To process: ', baseneame(dir), '\n')
+  fls <- dir_ls(dir, regexp = '.tif')
+  fls <- as.character(fls)
+  fls <- grep('down', fls, value = T)
+  
+  dts <- seq(as.Date(paste0(year, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(year, '-12-31'), format = '%Y-%m-%d'), by = 'day')
+  
+  
+  
+  
+  
+}
 
 chck <- dir_ls('tmpr/to-saga/1974', regexp = '.tif$')
 chck <- grep('down', chck, value = T)
 rstr <- rast(chck[1])
 plot(rstr)
 
-chck <- dir_ls('')
+
 
 
 

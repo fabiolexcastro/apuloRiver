@@ -18,16 +18,15 @@ path.ftre <- './tif/nasa/cmip6/'
 vars <- c('tasmax', 'tasmin')
 
 dirs.bsln <- dir_ls(path.bsln, type = 'directory')
-dirs.ftre <- dir_ls(path.ftre, type = 'directory', regexp = 'ssp')
 ssps <- c('ssp245', 'ssp585')
 
 # Function to use ---------------------------------------------------------
 
-down.ftre <- function(dir, mdl){
+down.ftre <- function(dir){
   
-  dir <- dirs.ftre[1] # Correr y borrar
-  mdl <- 'ACCESS-CM2'
+  dir <- dirs.bsln[1] # Correr y borrar
   
+  mdl <- basename(dir)
   cat('To process: ', dir, '\n')
   fls <- dir_ls(dir) %>% 
     as.character()

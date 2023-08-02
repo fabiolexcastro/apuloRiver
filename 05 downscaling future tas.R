@@ -17,8 +17,8 @@ path.bsln <- './tif/nasa/cmip6/historical'
 path.ftre <- './tif/nasa/cmip6/'
 vars <- c('tasmax', 'tasmin')
 
-dirs.bsln <- dir_ls(path, type = 'directory')
-dirs.ftre <- dir_ls(path, type = 'directory')
+dirs.bsln <- dir_ls(path.bsln, type = 'directory')
+dirs.ftre <- dir_ls(path.ftre, type = 'directory')
 ssps <- c('ssp245', 'ssp585')
 
 # Function to use ---------------------------------------------------------

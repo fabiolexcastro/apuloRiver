@@ -28,7 +28,7 @@ down.ftre <- function(dir){
   
   mdl <- basename(dir)
   cat('To process: ', dir, '\n')
-  fls <- dir_ls(dir) %>% 
+  fls.hst <- dir_ls(dir) %>% 
     as.character() %>% 
     grep('tas', ., value = T) %>% 
     map(.x = ., dir_ls, regexp = '.nc$') %>% 

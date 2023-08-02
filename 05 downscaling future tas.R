@@ -34,7 +34,8 @@ down.ftre <- function(dir){
     map(.x = ., dir_ls, regexp = '.nc$') %>% 
     map(.x = ., as.character) 
   
-  
+  fls.ftr <- dir_ls(path.ftre)
+  f
   
 }
 

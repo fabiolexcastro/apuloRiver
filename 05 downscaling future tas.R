@@ -14,7 +14,7 @@ options(scipen = 999, warn = -1)
 # Load data ---------------------------------------------------------------
 
 path.bsln <- './tif/nasa/cmip6/historical'
-path.ftre <- './tif/nasa/cmip6/ssp245'
+path.ftre <- './data/tif/nasa/cmip6/ssp245'
 vars <- c('tasmax', 'tasmin')
 
 dirs.bsln <- dir_ls(path.bsln, type = 'directory')

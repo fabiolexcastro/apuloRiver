@@ -14,7 +14,7 @@ options(scipen = 999, warn = -1)
 # Load data ---------------------------------------------------------------
 
 path.bsln <- './tif/nasa/cmip6/historical'
-path.ftre <- './tif/nasa/cmip6/'
+path.ftre <- './tif/nasa/cmip6/ssp245'
 vars <- c('tasmax', 'tasmin')
 
 dirs.bsln <- dir_ls(path.bsln, type = 'directory')
@@ -24,7 +24,8 @@ ssps <- c('ssp245', 'ssp585')
 
 down.ftre <- function(dir){
   
-  dir <- dirs.bsln[1] # Correr y borrar
+  dir <- dirs.bsln[2] # Correr y borrar
+  
   
   mdl <- basename(dir)
   cat('To process: ', dir, '\n')
@@ -34,8 +35,9 @@ down.ftre <- function(dir){
     map(.x = ., dir_ls, regexp = '.nc$') %>% 
     map(.x = ., as.character) 
   
-  fls.ftr <- dir_ls(path.ftre)
-  f
+  fls.ftr <- dir_ls(path.ftre) %>% 
+    grep(mdl, ., value = T)
+  
   
 }
 

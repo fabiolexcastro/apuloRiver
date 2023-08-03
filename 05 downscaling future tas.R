@@ -55,7 +55,8 @@ down.ftre <- function(dir){
     as.character() %>% 
     grep('tas', ., value = T) %>% 
     map(., dir_ls, regexp = '.nc$') %>% 
-    unlist()
+    unlist() %>% 
+    as.character()
   
   
   

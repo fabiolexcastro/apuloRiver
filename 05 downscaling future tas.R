@@ -42,7 +42,9 @@ down.ftre <- function(dir){
   fls.hst.raw <- dir_ls(dirs.bsln.raw) %>% 
     grep(mdl, ., value = T) %>% 
     dir_ls(., type = 'directory') %>% 
-    grep('tas', ., value = T)
+    grep('tas', ., value = T) %>% 
+    map(.x = ., dir_ls, regexp = '.nc$') %>% 
+    map(.x = ., as.character)
   
   # Future dataset 
   fls.ftr <- dir_ls(path.ftre) %>% 

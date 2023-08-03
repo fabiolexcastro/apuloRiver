@@ -53,7 +53,9 @@ down.ftre <- function(dir){
     grep(mdl, ., value = T) %>% 
     dir_ls(.) %>% 
     as.character() %>% 
-    grep('tas', ., value = T)
+    grep('tas', ., value = T) %>% 
+    map(., dir_ls) %>% 
+    unlist()
   
   
   

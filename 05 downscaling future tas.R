@@ -52,7 +52,8 @@ down.ftre <- function(dir){
   fls.ftr <- dir_ls(path.ftre) %>% 
     grep(mdl, ., value = T) %>% 
     dir_ls(.) %>% 
-    as.character()
+    as.character() %>% 
+    grep('tas', ., value = T)
   
   
   

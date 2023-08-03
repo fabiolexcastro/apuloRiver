@@ -67,7 +67,13 @@ down.ftre <- function(dir){
     gsub('.nc$', '', .) %>% 
     unique()
 
-  yrs.hst.raw <- basename(fls.hst.raw)
+  yrs.hst.raw <- basename(fls.hst.raw) %>% 
+    str_split(., pattern = '_') %>% 
+    map_chr(., 8) %>% 
+    gsub('.nc$', '', .) %>% 
+    unique()
+
+  yrs.ftr <- basename(fls.ftr)
   
   
   

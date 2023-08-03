@@ -57,7 +57,11 @@ down.ftre <- function(dir){
     map(., dir_ls, regexp = '.nc$') %>% 
     unlist() %>% 
     as.character()
-  
+
+  # To tidy the years
+  yrs.hst <- basename(fls.hst) %>% 
+    str_split(., pattern = '_') 
+  yrs.hst
   
   
 }

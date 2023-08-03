@@ -45,7 +45,7 @@ down.ftre <- function(dir){
     grep('tas', ., value = T) %>% 
     map(.x = ., dir_ls, regexp = '.nc$') %>% 
     unlist() %>%
-    map(.x = ., as.character) %>% 
+    as.character() %>%
     grep('/cund_tas', ., value = T)
   
   # Future dataset 

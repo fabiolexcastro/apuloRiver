@@ -50,7 +50,9 @@ down.ftre <- function(dir){
   
   # Future dataset 
   fls.ftr <- dir_ls(path.ftre) %>% 
-    grep(mdl, ., value = T)
+    grep(mdl, ., value = T) %>% 
+    dir_ls(.) %>% 
+    as.character()
   
   
   

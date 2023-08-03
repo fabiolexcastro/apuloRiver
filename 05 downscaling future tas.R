@@ -20,23 +20,32 @@ vars <- c('tasmax', 'tasmin')
 dirs.bsln <- dir_ls(path.bsln, type = 'directory')
 ssps <- c('ssp245', 'ssp585')
 
+dirs.bsln.raw <- './tif/nasa/cmip6/historical/'
+
 # Function to use ---------------------------------------------------------
 
 down.ftre <- function(dir){
   
   dir <- dirs.bsln[2] # Correr y borrar
-  
-  
+
   mdl <- basename(dir)
   cat('To process: ', dir, '\n')
+  
+  # Historic dataset (downscaling)
   fls.hst <- dir_ls(dir) %>% 
     as.character() %>% 
     grep('tas', ., value = T) %>% 
     map(.x = ., dir_ls, regexp = '.nc$') %>% 
     map(.x = ., as.character) 
+
+  # Historic dataset (original)
+  dir_ls(dirs.bsln.raw)
+
   
+  # Future dataset 
   fls.ftr <- dir_ls(path.ftre) %>% 
     grep(mdl, ., value = T)
+  
   
   
 }

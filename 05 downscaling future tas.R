@@ -36,7 +36,9 @@ down.ftre <- function(dir){
     as.character() %>% 
     grep('tas', ., value = T) %>% 
     map(.x = ., dir_ls, regexp = '.nc$') %>% 
-    map(.x = ., as.character) 
+    map(.x = ., as.character) %>% 
+    unlist() %>% 
+    as.character()
 
   # Historic dataset (original)
   fls.hst.raw <- dir_ls(dirs.bsln.raw) %>% 

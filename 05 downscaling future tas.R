@@ -22,6 +22,10 @@ ssps <- c('ssp245', 'ssp585')
 
 dirs.bsln.raw <- './tif/nasa/cmip6/historical/'
 
+# Basin shapefile 
+bsin <- terra::vect('../shp/Cuenca/Cuenca_Río_Apulo.shp')
+plot(bsin)
+
 # Function to use ---------------------------------------------------------
 
 down.ftre <- function(dir){

@@ -117,6 +117,11 @@ down.ftre <- function(dir){
       dts.bs <- seq(as.Date(paste0(yr.bs, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yr.bs, '-12-31'), format = '%Y-%m-%d'), by = 'day')
       dts.ft <- seq(as.Date(paste0(yr.ft, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yr.ft, '-12-31'), format = '%Y-%m-%d'), by = 'day')
       
+      time(rs.bs) <- dts.bs
+      time(rs.bs.rw) <- dts.bs
+      time(rs.ft) <- dts.ft
+      
+      
       map(.x = 1:12, .f = function(m){
         
         

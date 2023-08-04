@@ -92,7 +92,11 @@ down.ftre <- function(dir){
     d <- 1 # Correr y borrar 
     
     cat('To process: ', d, '\n')
-    prd <- prd[d,]
+    pr <- prd[d,]
+    yr.bs <- as.numeric(pr[,1])
+    yr.ft <- as.numeric(pr[,2])
+    
+    
     
     
   })

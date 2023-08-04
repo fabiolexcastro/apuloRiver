@@ -124,6 +124,18 @@ down.ftre <- function(dir){
       
       map(.x = 1:12, .f = function(m){
         
+        m <- 1 # Correr y borrar
+        mn <- ifelse(m < 10, glue('0{m}'), as.character(m))
+        
+        # To filtering the monts
+        r.bs <- rs.bs[[grep(glue('-{mn}-'), time(rs.bs), value = FALSE)]]
+        r.bs.r <- rs.bs.rw[[grep(glue('-{mn}-'), time(rs.bs.rw), value = FALSE)]]
+        r.ft <- rs.ft[[grep(glue('-{mn}-'), time(rs.ft), value = FALSE)]]
+        
+        plot(r.bs[[1]])
+        plot(r.bs.r[[1]])
+        plot(r.ft[[1]])
+        
         
         
       })

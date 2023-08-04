@@ -23,7 +23,7 @@ ssps <- c('ssp245', 'ssp585')
 dirs.bsln.raw <- './tif/nasa/cmip6/historical/'
 
 # Basin shapefile 
-bsin <- terra::vect('../shp/Cuenca/Cuenca_Río_Apulo.shp')
+bsin <- terra::vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
 plot(bsin)
 
 # Function to use ---------------------------------------------------------
@@ -114,7 +114,9 @@ down.ftre <- function(dir){
       rs.bs.rw <- fl.bs.rw %>% grep(vr, ., value = T) %>% terra::rast()
       rs.ft <- fl.ft %>% grep(vr, ., value = T) %>% terra::rast()
       
-      
+      rs.bs <- terra::crop(rs.bs, bsin)
+      rs.bs.ra <- terra::crop(rs.bs.rw, bsin)
+      rs.ft <- terra::crop(rs.ft, bsin)
       
       
     })

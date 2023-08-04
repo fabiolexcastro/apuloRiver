@@ -82,7 +82,7 @@ down.ftre <- function(dir){
   length(yrs.hst)
   length(yrs.ftr)
   
-  prd <- tibble(hist = yrs.hst.raw, hist_raw = yrs.hst, ftre = c(2015:(2015+41)))
+  prd <- tibble(hist = c(yrs.hst.raw, yrs.hst.raw), hist_raw = c(yrs.hst, yrs.hst), ftre = c(2015:(2015+40), 2055:2095))
   head(prd, 2)
   
   

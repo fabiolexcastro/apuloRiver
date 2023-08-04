@@ -94,11 +94,11 @@ down.ftre <- function(dir){
     cat('To process: ', d, '\n')
     pr <- prd[d,]
     yr.bs <- as.numeric(pr[,1])
-    yr.ft <- as.numeric(pr[,2])
+    yr.ft <- as.numeric(pr[,3])
     
-    grep(yr.bs, fls.hst, value = T)
-    grep(yr.bs, fls.hst.raw, value = T)
-    grep(yr.ft, fls.ftr, value = T)
+    fl.bs <- grep(yr.bs, fls.hst, value = T) %>% grep('down', ., value = T) 
+    fl.bs.rw <- grep(yr.bs, fls.hst.raw, value = T) 
+    fl.ft <- grep(yr.ft, fls.ftr, value = T)
     
     
     

@@ -115,7 +115,7 @@ down.ftre <- function(dir){
       rs.ft <- fl.ft %>% grep(vr, ., value = T) %>% terra::rast()
       
       dts.bs <- seq(as.Date(paste0(yr.bs, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yr.bs, '-12-31'), format = '%Y-%m-%d'), by = 'day')
-      
+      dts.ft <- seq(as.Date(paste0(yr.ft, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yr.ft, '-12-31'), format = '%Y-%m-%d'), by = 'day')
       
       map(.x = 1:12, .f = function(m){
         

@@ -79,8 +79,16 @@ down.ftre <- function(dir){
     gsub('.nc$', '', .) %>% 
     unique()
   
+  length(yrs.hst)
+  length(yrs.ftr)
+  
   prd <- tibble(hist = yrs.hst.raw, hist_raw = yrs.hst, ftre = NA)
   head(prd, 2)
+  
+  # To read as a raster file into a map function
+  
+  
+  
   
 }
 

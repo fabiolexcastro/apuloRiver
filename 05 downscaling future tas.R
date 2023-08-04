@@ -100,7 +100,20 @@ down.ftre <- function(dir){
     fl.bs.rw <- grep(yr.bs, fls.hst.raw, value = T) 
     fl.ft <- grep(yr.ft, fls.ftr, value = T)
     
+    vrs <- c('tasmin', 'tasmax')
     
+    map(.x = 1:legnth(vrs), .f = function(v){
+      
+      v <- 1 # Correr y borrar
+      vr <- vrs[v]
+      rs.bs <- fl.bs %>% grep(vr, ., value = T) %>% terra::rast()
+      rs.bs.rw <- fl.bs.rw %>% grep(vr, ., value = T) %>% terra::rast()
+      rs.ft <- fl.ft %>% grep(vr, ., value = T) %>% terra::rast()
+      
+      
+      
+      
+    })
     
     
     

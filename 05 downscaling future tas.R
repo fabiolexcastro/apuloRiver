@@ -82,8 +82,10 @@ down.ftre <- function(dir){
   length(yrs.hst)
   length(yrs.ftr)
   
-  prd <- tibble(hist = yrs.hst.raw, hist_raw = yrs.hst, ftre = NA)
+  prd <- tibble(hist = yrs.hst.raw, hist_raw = yrs.hst, ftre = c(2015:(2015+41)))
   head(prd, 2)
+  
+  
   
   # To read as a raster file into a map function
   

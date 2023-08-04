@@ -87,6 +87,16 @@ down.ftre <- function(dir){
                 ftre = c(2015:(2015+40), 2055:2095, 2096:2100))
 
   # To read as a raster file into a map function
+  map(.x = 1:nrow(prd), .f = function(d){
+    
+    d <- 1 # Correr y borrar 
+    
+    cat('To process: ', d, '\n')
+    prd <- prd[d,]
+    
+    
+  })
+  
   
   
   

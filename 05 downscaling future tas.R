@@ -114,9 +114,15 @@ down.ftre <- function(dir){
       rs.bs.rw <- fl.bs.rw %>% grep(vr, ., value = T) %>% terra::rast()
       rs.ft <- fl.ft %>% grep(vr, ., value = T) %>% terra::rast()
       
-      rs.bs <- terra::crop(rs.bs, bsin)
-      rs.bs.ra <- terra::crop(rs.bs.rw, bsin)
-      rs.ft <- terra::crop(rs.ft, bsin)
+      dts.bs <- seq(as.Date(paste0(yr.bs, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yr.bs, '-12-31'), format = '%Y-%m-%d'), by = 'day')
+      
+      
+      map(.x = 1:12, .f = function(m){
+        
+        
+        
+      })
+      
       
       
     })

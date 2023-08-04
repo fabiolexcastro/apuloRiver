@@ -96,6 +96,11 @@ down.ftre <- function(dir){
     yr.bs <- as.numeric(pr[,1])
     yr.ft <- as.numeric(pr[,2])
     
+    grep(yr.bs, fls.hst, value = T)
+    grep(yr.bs, fls.hst.raw, value = T)
+    grep(yr.ft, fls.ftr, value = T)
+    
+    
     
     
     

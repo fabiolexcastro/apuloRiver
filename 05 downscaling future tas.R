@@ -153,10 +153,13 @@ down.ftre <- function(dir){
         
         library(fields)
         tps <- fields::Tps(x = crds[,c('x', 'y')], Y = crds[,'mean']) 
-        ref <- r.bs.r[[1]] * 0 + 1
+        ref <- r.bs[[1]] * 0 + 1
         plot(ref)
         int <- terra::interpolate(object = rast(ref), model = tps, fun = predict)
         int <- terra::mask(int, mask = ref)
+        int <- terra::crop(int, bsin)
+        int <- terra::mask(int, bsin)
+        
         plot(int)
 
         

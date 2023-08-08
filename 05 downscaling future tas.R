@@ -146,7 +146,12 @@ down.ftre <- function(dir){
         plot(c(r.bs.r, r.ft))
 
         r.df <- r.ft - r.bs.r
-        plot(r.df)
+        r.tb <- terra::as.data.frame(r.df, xy = T)
+        r.tb <- as_tibble(r.tb)
+        
+        library(fields)
+
+
         
       })
       

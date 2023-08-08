@@ -155,8 +155,9 @@ down.ftre <- function(dir){
         tps <- fields::Tps(x = crds[,c('x', 'y')], Y = crds[,'mean']) 
         ref <- r.bs.r[[1]] * 0 + 1
         plot(ref)
-
-        
+        int <- terra::interpolate(object = rast(ref), model = tps, fun = predict)
+        int <- terra::mask(int, mask = ref)
+        plot(int)
 
         
       })

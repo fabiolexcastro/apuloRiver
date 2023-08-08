@@ -121,8 +121,7 @@ down.ftre <- function(dir){
       time(rs.bs.rw) <- dts.bs
       time(rs.ft) <- dts.ft
       
-      
-      map(.x = 1:12, .f = function(m){
+      anml <- map(.x = 1:12, .f = function(m){
         
         m <- 1 # Correr y borrar
         mn <- ifelse(m < 10, glue('0{m}'), as.character(m))
@@ -159,10 +158,9 @@ down.ftre <- function(dir){
         int <- terra::mask(int, mask = ref)
         int <- terra::crop(int, bsin)
         int <- terra::mask(int, bsin)
-        
-        plot(int)
+        cat('Done: ', m, '\n')
+        return(int)
 
-        
       })
       
       

@@ -149,9 +149,14 @@ down.ftre <- function(dir){
         thr <- as.numeric(terra::global(x = anom, fun = stats::quantile, probs = 0.98, na.rm = T))
         anom[anom >= thr] <- thr
         crds <- terra::as.data.frame(anom, xy = T)
+        names(crds)[3] <- 'mean'
         
         library(fields)
+        tps <- fields::Tps(x = crds[,c('x', 'y')], Y = crds[,'mean']) 
+        ref <- r.bs.r[[1]] * 0 + 1
+        plot(ref)
 
+        
 
         
       })

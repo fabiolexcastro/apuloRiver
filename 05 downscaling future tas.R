@@ -164,10 +164,16 @@ down.ftre <- function(dir){
       })
 
       anml <- reduce(anml, c)
-      names(anml) <- c('anomalies_{1:12}')
+      names(anml) <- glue('anomalies_{1:12}')
+      rm(m)
+
+      names(r.bs)
       
-      
-      
+      map(.x = 1:12, .f = function(m){
+
+
+        
+      })
     })
     
     

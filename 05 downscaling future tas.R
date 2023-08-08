@@ -162,6 +162,9 @@ down.ftre <- function(dir){
         return(int)
 
       })
+
+      anml <- reduce(anml, c)
+      names(anml) <- c('anomalies_{1:12}')
       
       
       

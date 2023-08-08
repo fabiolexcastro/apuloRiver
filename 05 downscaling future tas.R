@@ -148,10 +148,7 @@ down.ftre <- function(dir){
         anom <- r.ft - r.bs.r
         thr <- as.numeric(terra::global(x = anom, fun = stats::quantile, probs = 0.98, na.rm = T))
         anom[anom >= thr] <- thr
-        
-
-        r.tb <- terra::as.data.frame(r.df, xy = T)
-        r.tb <- as_tibble(r.tb)
+        crds <- terra::as.data.frame(anom, xy = T)
         
         library(fields)
 

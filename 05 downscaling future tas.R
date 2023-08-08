@@ -144,6 +144,9 @@ down.ftre <- function(dir){
         r.ft <- r.ft - 273.15
 
         plot(c(r.bs.r, r.ft))
+
+        r.df <- r.ft - r.bs.r
+        plot(r.df)
         
       })
       

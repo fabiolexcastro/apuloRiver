@@ -172,8 +172,9 @@ down.ftre <- function(dir){
           m <- 1 # Correr y borrar
           m <- ifelse(m < 10, paste0('0', m), as.character(m))
           rs.bs.m <- rs.bs[[grep(paste0('-', m, '-'), time(rs.bs), value = FALSE)]]
-          rs.bs.m
-        
+          fn <- rs.bs.m + anom[[as.numeric(m)]]
+          fn   
+          plot(fn)
         
       })
     })

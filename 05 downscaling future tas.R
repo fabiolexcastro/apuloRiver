@@ -145,7 +145,11 @@ down.ftre <- function(dir){
 
         plot(c(r.bs.r, r.ft))
 
-        r.df <- r.ft - r.bs.r
+        anom <- r.ft - r.bs.r
+        thr <- as.numeric(terra::global(x = anom, fun = stats::quantile, probs = 0.98, na.rm = T))
+        anom[anom >= thr] <- thr
+        
+
         r.tb <- terra::as.data.frame(r.df, xy = T)
         r.tb <- as_tibble(r.tb)
         

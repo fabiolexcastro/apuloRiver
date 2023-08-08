@@ -136,7 +136,11 @@ down.ftre <- function(dir){
         plot(r.bs.r[[1]])
         plot(r.ft[[1]])
         
-        
+        r.bs.r <- sum(r.bs.r)
+        r.bs <- sum(r.bs)
+        r.ft <- sum(r.ft)
+
+        plot(c(r.bs.r, r.ft))
         
       })
       

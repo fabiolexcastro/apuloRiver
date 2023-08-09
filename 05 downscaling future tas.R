@@ -30,7 +30,7 @@ plot(bsin)
 
 down.ftre <- function(dir){
   
-  dir <- dirs.bsln[2] # Correr y borrar
+  # dir <- dirs.bsln[2] # Correr y borrar
 
   mdl <- basename(dir)
   cat('To process: ', dir, '\n')
@@ -93,7 +93,7 @@ down.ftre <- function(dir){
   # To read as a raster file into a map function
   map(.x = 1:nrow(prd), .f = function(d){
     
-    d <- 1 # Correr y borrar 
+    # d <- 1 # Correr y borrar 
     
     cat('To process: ', d, '\n')
     pr <- prd[d,]
@@ -106,9 +106,9 @@ down.ftre <- function(dir){
     
     vrs <- c('tasmin', 'tasmax')
     
-    map(.x = 1:legnth(vrs), .f = function(v){
+    map(.x = 1:length(vrs), .f = function(v){
       
-      v <- 1 # Correr y borrar
+      # v <- 1 # Correr y borrar
       vr <- vrs[v]
       rs.bs <- fl.bs %>% grep(vr, ., value = T) %>% terra::rast()
       rs.bs.rw <- fl.bs.rw %>% grep(vr, ., value = T) %>% terra::rast()
@@ -123,7 +123,7 @@ down.ftre <- function(dir){
       
       anml <- map(.x = 1:12, .f = function(m){
         
-        m <- 1 # Correr y borrar
+        # m <- 1 # Correr y borrar
         mn <- ifelse(m < 10, glue('0{m}'), as.character(m))
         
         # To filtering the monts
@@ -200,7 +200,10 @@ down.ftre <- function(dir){
   
 }
 
-
+down.ftre(dir = dirs[2])
+down.ftre(dir = dirs[3])
+down.ftre(dir = dirs[4])
+down.ftre(dir = dirs[5])
 
 
 

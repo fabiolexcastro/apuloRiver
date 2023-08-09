@@ -169,7 +169,7 @@ down.ftre <- function(dir){
       
       fnal <- map(.x = 1:12, .f = function(m){
 
-          m <- 1 # Correr y borrar
+          # m <- 1 # Correr y borrar
           m <- ifelse(m < 10, paste0('0', m), as.character(m))
           rs.bs.m <- rs.bs[[grep(paste0('-', m, '-'), time(rs.bs), value = FALSE)]]
           fn <- rs.bs.m + anml[[as.numeric(m)]]
@@ -181,6 +181,12 @@ down.ftre <- function(dir){
       fnal
       fnal <- reduce(fnal, c)
       fnal
+      
+      # To write the final raster 
+      dir.out <- glue('./data/tif/nasa/cmip6/ssp245/{vr}/down/{vr}_{yr.ft}.tif')
+      dir_create(dirname(dir.out))
+      terra::writeRaster(x = fnal, filename = dir.out, overwrite = TRUE, filetype = 'GTiff')
+      cat('Done!\n')
       
     })
     

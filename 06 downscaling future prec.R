@@ -53,7 +53,8 @@ down.ftre <- function(dir){
     as.character() %>% 
     grep('pr', ., value = T) %>% 
     dir_ls() %>% 
-    as.character()
+    as.character() %>% 
+    grep('.nc$', ., value = T) 
   fls.ftr
   
   # To tidy the years

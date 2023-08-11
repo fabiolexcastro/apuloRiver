@@ -22,7 +22,7 @@ path <- glue('./tif/nasa/cmip6/historical/{mdel}/pr/{mdel}')#a
 dirs.bsln <- dir_ls(path, type = 'directory')
 dir_ls(dirs.bsln[1], regexp = '.tif$')
 
-dirs.bsln.raw <- glue('./tif/nasa/cmip6/historical/{mdel}')
+dirs.bsln.raw <- glue('./tif/nasa/cmip6/historical/{mdel}/pr')
 
 path.ftre <- './data/tif/nasa/cmip6/ssp245'
 

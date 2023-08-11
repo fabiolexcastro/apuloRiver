@@ -50,7 +50,10 @@ down.ftre <- function(dir){
   fls.ftr <- dir_ls(path.ftre) %>% 
     grep(mdel, ., value = T) %>% 
     dir_ls() %>% 
-    as.character() 
+    as.character() %>% 
+    grep('pr', ., value = T) %>% 
+    dir_ls() %>% 
+    as.character()
   fls.ftr
   
   # To tidy the years

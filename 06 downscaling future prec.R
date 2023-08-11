@@ -18,9 +18,9 @@ plot(bsin)
 
 # Climate data list
 mdel <- 'EC-Earth3'
-path <- glue('./tif/nasa/cmip6/historical/{mdel}/pr/{mdel}')
+path <- glue('./tif/nasa/cmip6/historical/{mdel}/pr/{mdel}')#a
 dirs.bsln <- dir_ls(path, type = 'directory')
-dir_ls(dirs[1], regexp = '.tif$')
+dir_ls(dirs.bsln[1], regexp = '.tif$')
 
 path.ftre <- './data/tif/nasa/cmip6/ssp245'
 
@@ -34,7 +34,9 @@ down.ftre <- function(dir){
   
   # Historic dataset (downscaling)
   fls.hst <- dir_ls(dir) %>% 
-    as.character()
+    as.character() %>% 
+    grep('down', ., value = T) %>% 
+    mixedsort()
   head(fls.hst, 2)
   
   

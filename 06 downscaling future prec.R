@@ -10,7 +10,6 @@ g <- gc(reset = TRUE)
 rm(list = ls())
 options(scipen = 999, warn = -1)
 
-
 # Load data ---------------------------------------------------------------
 
 # Basin shapefile 
@@ -20,5 +19,25 @@ plot(bsin)
 # Climate data list
 mdel <- 'EC-Earth3'
 path <- './tif/nasa/cmip6/historical/{mdel}/pr/{mdel}'
-dirs <- dir_ls(path, type = 'directory')
+dirs.bsln <- dir_ls(path, type = 'directory')
 dir_ls(dirs[1], regexp = '.tif$')
+
+path.ftre <- './data/tif/nasa/cmip6/ssp245'
+
+# Function to use ---------------------------------------------------------
+down.ftre <- function(dir){
+  
+  dir <- dirs.bsln[1]
+  
+  mdl <- mdel
+  cat('To process ', basename(dir), '\n')
+  
+  # Historic dataset (downscaling)
+  fls.hst <- dir_ls(dir) %>% 
+    as.character()
+  head(fls.hst, 2)
+  
+  
+  
+  
+}

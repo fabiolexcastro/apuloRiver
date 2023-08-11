@@ -22,6 +22,8 @@ path <- glue('./tif/nasa/cmip6/historical/{mdel}/pr/{mdel}')#a
 dirs.bsln <- dir_ls(path, type = 'directory')
 dir_ls(dirs.bsln[1], regexp = '.tif$')
 
+dirs.bsln.raw <- glue('./tif/nasa/cmip6/historical/{mdel}')
+
 path.ftre <- './data/tif/nasa/cmip6/ssp245'
 
 # Function to use ---------------------------------------------------------
@@ -37,7 +39,12 @@ down.ftre <- function(dir){
     as.character() %>% 
     grep('down', ., value = T) %>% 
     mixedsort()
-  head(fls.hst, 2)
+  
+  # Historic dataset original 
+  fls.hst.raw <- dir_ls(dirs.bsln.raw) %>% 
+    as.character() %>% 
+    grep('.nc$', ., value = T)
+  fls.hst.raw
   
   
   

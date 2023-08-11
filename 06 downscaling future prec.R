@@ -46,6 +46,11 @@ down.ftre <- function(dir){
     grep('.nc$', ., value = T)
   fls.hst.raw
   
+  # Future dataset
+  fls.ftr <- dir_ls(path.ftre) %>% 
+    as.character() %>% 
+    grep('.tif$', ., value = T)
+  fls.ftr
   
   
   

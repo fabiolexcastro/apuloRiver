@@ -48,9 +48,13 @@ down.ftre <- function(dir){
   
   # Future dataset
   fls.ftr <- dir_ls(path.ftre) %>% 
-    as.character() %>% 
-    grep('.tif$', ., value = T)
+    grep(mdel, ., value = T) %>% 
+    dir_ls() %>% 
+    as.character() 
   fls.ftr
+  
+  # To tidy the years
+  yrs.hst <- basename(fls.hst)
   
   
   

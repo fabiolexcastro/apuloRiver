@@ -18,7 +18,7 @@ plot(bsin)
 
 # Climate data list
 mdel <- 'EC-Earth3'
-path <- './tif/nasa/cmip6/historical/{mdel}/pr/{mdel}'
+path <- glue('./tif/nasa/cmip6/historical/{mdel}/pr/{mdel}')
 dirs.bsln <- dir_ls(path, type = 'directory')
 dir_ls(dirs[1], regexp = '.tif$')
 

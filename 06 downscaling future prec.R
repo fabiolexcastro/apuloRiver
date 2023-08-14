@@ -63,7 +63,8 @@ down.ftre <- function(dir){
     map_chr(., 8) %>% 
     gsub('.nc$', '', .) %>% 
     unique()
-  ##
+  
+  yrs.ftr <- basename(fls.ftr)
   
   
   

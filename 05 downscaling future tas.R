@@ -122,6 +122,10 @@ down.ftre <- function(dir){
         dts.bs <- dts.bs[[-grep('02-29', dts.bs, value = F)]]
       }
       
+      if(leap_year(yr.ft)){
+        dts.ft <- dts.ft[[-grep('02-29', dts.ft, value = F)]]
+      }#
+      
       time(rs.bs) <- dts.bs
       time(rs.bs.rw) <- dts.bs
       time(rs.ft) <- dts.ft

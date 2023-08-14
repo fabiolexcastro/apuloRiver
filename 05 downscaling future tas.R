@@ -119,11 +119,11 @@ down.ftre <- function(dir){
       dts.ft <- seq(as.Date(paste0(yr.ft, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yr.ft, '-12-31'), format = '%Y-%m-%d'), by = 'day')
       
       if(leap_year(yr.bs)){
-        dts.bs <- dts.bs[[-grep('02-29', dts.bs, value = F)]]
+        dts.bs <- dts.bs[-grep('02-29', dts.bs, value = F)]
       }
       
       if(leap_year(yr.ft)){
-        dts.ft <- dts.ft[[-grep('02-29', dts.ft, value = F)]]
+        dts.ft <- dts.ft[-grep('02-29', dts.ft, value = F)]
       }#
       
       time(rs.bs) <- dts.bs

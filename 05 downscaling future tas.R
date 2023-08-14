@@ -27,7 +27,7 @@ bsin <- terra::vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
 plot(bsin)
 
 # Function to use ---------------------------------------------------------
-
+#
 down.ftre <- function(dir){
   
   # dir <- dirs.bsln[2] # Correr y borrar
@@ -42,7 +42,8 @@ down.ftre <- function(dir){
     map(.x = ., dir_ls, regexp = '.nc$') %>% 
     map(.x = ., as.character) %>% 
     unlist() %>% 
-    as.character()
+    as.character() %>% 
+    grep('down-cund', ., value = T)
 
   # Historic dataset (original)
   fls.hst.raw <- dir_ls(dirs.bsln.raw) %>% 
@@ -190,13 +191,7 @@ down.ftre <- function(dir){
       
     })
     
-    
-    
   })
-  
-  
-  
-  
   
 }
 

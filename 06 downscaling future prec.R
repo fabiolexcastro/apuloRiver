@@ -165,6 +165,7 @@ down.ftre <- function(dir){
       m <- ifelse(m < 10, paste0('0', m), as.character(m))
       rs.bs.m <- rs.bs[[grep(paste0('-', m, '-'), time(rs.bs), value = FALSE)]]
       rs.bs.m[rs.bs.m == -9999] <- NA
+      rs.bs.m <- terra::crop(rs.bs.m, bsin) %>% terra::mask(., bsin)
       fn <- rs.bs.m * (1 + anml[[as.numeric(m)]])
       names(fn) <- time(fn)
       return(fn)

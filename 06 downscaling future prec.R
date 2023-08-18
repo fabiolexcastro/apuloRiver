@@ -156,6 +156,9 @@ down.ftre <- function(dir){
     })
     
     anml <- reduce(anml, c)
+    names(anml) <- glue('anomalies_{1:12}')
+    rm(m)
+    
     
   })
   

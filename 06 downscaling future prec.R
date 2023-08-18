@@ -103,7 +103,7 @@ down.ftre <- function(dir){
     
     anml <- map(.x = 1:12, .f = function(m){
       
-      m <- 1 # Correr y borrar
+      #m <- 1 # Correr y borrar
       
       print(month.abb[m])
       mn <- ifelse(m < 10, paste0('0', m), as.character(m))
@@ -154,6 +154,8 @@ down.ftre <- function(dir){
       return(int)
       
     })
+    
+    anml <- reduce(anml, c)
     
   })
   

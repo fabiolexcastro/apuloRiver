@@ -63,7 +63,8 @@ down.ftre <- function(dir){
     grep('tas', ., value = T) %>% 
     map(., dir_ls, regexp = '.nc$') %>% 
     unlist() %>% 
-    as.character()
+    as.character() %>% 
+    grep('/cund_', ., value = T)
 
   # To tidy the years
   yrs.hst <- basename(fls.hst) %>% 

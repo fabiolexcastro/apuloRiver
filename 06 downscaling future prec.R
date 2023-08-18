@@ -159,6 +159,19 @@ down.ftre <- function(dir){
     names(anml) <- glue('anomalies_{1:12}')
     rm(m)
     
+    fnal <- map(.x = 1:12, .f = function(m){
+      
+      m <- 1 # Correr y borrar
+      m <- ifelse(m < 10, paste0('0', m), as.character(m))
+      rs.bs.m <- rs.bs[[grep(paste0('-', m, '-'), time(rs.bs), value = FALSE)]]
+      rs.bs.m[rs.bs.m == -9999] <- NA
+      fn <- rs.bs.m + anml[[as.numeric(m)]]
+      names(fn) <- time(fn)
+      return(fn)
+      
+    })
+    
+    
     
   })
   

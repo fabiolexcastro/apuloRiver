@@ -126,7 +126,6 @@ down.ftre <- function(dir){
       
       plot(c(r.bs.r, r.ft))
       
-      r.bs <- r.bs * 86400
       r.bs.r <- r.bs.r * 86400
       r.ft <- r.ft * 86400
       
@@ -140,7 +139,7 @@ down.ftre <- function(dir){
       
       crd <- terra::as.data.frame(anom, xy = T)
       names(crd)[3] <- 'mean'      
-      crd <- mutate(crd, mean = ifelse(is.inf(mean), 0, mean))
+      crd <- mutate(crd, mean = ifelse(is.infinite(mean), 0, mean))
       
       library(fields)
       tps <- fields::Tps(x = crd[,c('x', 'y')], Y = crd[,'mean']) 
@@ -172,6 +171,9 @@ down.ftre <- function(dir){
       
     })
     
+    fnal <- reduce(fnal, c)
+    fnal
+    plot(fnal)
     
     
     

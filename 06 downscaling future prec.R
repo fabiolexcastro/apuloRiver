@@ -113,9 +113,9 @@ down.ftre <- function(dir){
       r.bs.r <- rs.bs.rw[[grep(glue('-{mn}-'), time(rs.bs.rw), value = FALSE)]]
       r.ft <- rs.ft[[grep(glue('-{mn}-'), time(rs.ft), value = FALSE)]]
       
-      r.bs <- sum(r.bs)
-      r.bs.r <- sum(r.bs.r)
-      r.ft <- sum(r.ft)
+      r.bs <- terra::app(r.bs, sum, na.rm = T)
+      r.bs.r <- terra::app(r.bs.r, sum, na.rm = T)
+      r.ft <- terra::app(r.ft, sum, na.rm = T)
       
       if(nrow(as.data.frame(r.bs)) == 0){
         cat('NA ')
@@ -171,6 +171,10 @@ down.ftre <- function(dir){
       return(fn)
       
     })
+    
+    
+    
+    
     
     
     

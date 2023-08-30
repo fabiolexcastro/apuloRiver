@@ -175,6 +175,10 @@ down.ftre <- function(dir){
     fnal
     plot(fnal)
     
+    fnal.tble <- terra::as.data.frame(fnal, xy = T, na.rm = F)
+    fnal.tble <- as_tibble(fnal.tble)
+    
+    
     
     
     

@@ -197,7 +197,10 @@ down.ftre <- function(dir){
         fnl <- terra::mask(fnl, bsin)
         plot(fnl)
         
+      } else {
+        cat('Values has no NAs\n')
       }
+      
       
     })
     

@@ -1,5 +1,5 @@
 
-
+# Radicad 979669046
 ## Downscaling future for temperature variables
 ## Jul 18th 2023
 
@@ -191,6 +191,18 @@ down.ftre <- function(dir){
       fnal
       fnal <- reduce(fnal, c)
       fnal
+      
+      # Problem with the NaN
+      map(.x = 1:nlyr(fnal), .f = function(z){
+        
+        z <- 1 # Correr y borrar
+        cat('Layer: ', i, '\n')
+        fnl <- fnal[[i]]
+        vls <- values(fnal)
+        
+      })
+      
+      
       
       # To write the final raster 
       dir.out <- glue('./data/tif/nasa/cmip6/ssp245/{mdl}/{vr}/down/{vr}_{yr.ft}.tif')

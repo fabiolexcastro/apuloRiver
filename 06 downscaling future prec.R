@@ -209,11 +209,9 @@ down.ftre <- function(dir){
     
     # To write the final raster 
     dir.out <- glue('./data/tif/nasa/cmip6/ssp245/{mdl}/pr/down/pr_{yr.ft}.tif')
-    dir.out
-    
-    
-    
-    
+    dir_create(dirname(dir.out))
+    terra::writeRaster(x = fnal, filename = dir.out, overwrite = TRUE, filetype = 'GTiff')
+    cat('Done!\n')
     
   })
   

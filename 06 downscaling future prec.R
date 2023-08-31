@@ -212,7 +212,7 @@ down.ftre <- function(dir){
     dir_create(dirname(dir.out))
     terra::writeRaster(x = fnal, filename = dir.out, overwrite = TRUE, filetype = 'GTiff')
     cat('Done!\n')
-    
+    ###
   })
   
   

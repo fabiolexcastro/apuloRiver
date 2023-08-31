@@ -189,6 +189,16 @@ down.ftre <- function(dir){
       vls <- values(fnl)
       vls <- unique(vls[,1])
       
+      if(length(vls) <= 2){
+        
+        cat('Values length < 2\n')
+        fnl[] <- 0 
+        fnl <- terra::crop(fnl, bsin)
+        fnl <- terra::mask(fnl, bsin)
+        plot(fnl)
+        
+      }
+      
     })
     
     

@@ -175,8 +175,21 @@ down.ftre <- function(dir){
     fnal
     plot(fnal)
     
-    fnal.tble <- terra::as.data.frame(fnal, xy = T, na.rm = F)
-    fnal.tble <- as_tibble(fnal.tble)
+    
+    fnal
+    fnal <- reduce(fnal, c)
+    fnal
+    
+    # Problem with the NaN
+    map(.x = 1:nlyr(fnal), .f = function(z){
+      
+      z <- 1 # Correr y borrar
+      cat('Layer: ', i, '\n')
+      fnl <- fnal[[i]]
+      vls <- values(fnal)#
+      
+    })
+    
     
     
     

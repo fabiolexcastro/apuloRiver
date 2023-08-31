@@ -181,9 +181,9 @@ down.ftre <- function(dir){
     fnal
     
     # Problem with the NaN
-    map(.x = 1:nlyr(fnal), .f = function(z){
+    trra <- map(.x = 1:nlyr(fnal), .f = function(z){
       
-      z <- 1 # Correr y borrar
+      # z <- 1 # Correr y borrar
       cat('Layer: ', z, '\n')
       fnl <- fnal[[z]]
       vls <- values(fnl)
@@ -201,6 +201,7 @@ down.ftre <- function(dir){
         cat('Values has no NAs\n')
       }
       
+      return(fnl)
       
     })
     

@@ -184,9 +184,10 @@ down.ftre <- function(dir){
     map(.x = 1:nlyr(fnal), .f = function(z){
       
       z <- 1 # Correr y borrar
-      cat('Layer: ', i, '\n')
-      fnl <- fnal[[i]]
-      vls <- values(fnal)#
+      cat('Layer: ', z, '\n')
+      fnl <- fnal[[z]]
+      vls <- values(fnl)
+      vls <- unique(vls[,1])
       
     })
     

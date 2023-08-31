@@ -207,7 +207,9 @@ down.ftre <- function(dir){
     
     trra <- reduce(trra, c)
     
-    
+    # To write the final raster 
+    dir.out <- glue('./data/tif/nasa/cmip6/ssp245/{mdl}/pr/down/pr_{yr.ft}.tif')
+    dir.out
     
     
     

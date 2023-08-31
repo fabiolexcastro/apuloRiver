@@ -205,6 +205,7 @@ down.ftre <- function(dir){
       
     })
     
+    trra <- reduce(trra, c)
     
     
     

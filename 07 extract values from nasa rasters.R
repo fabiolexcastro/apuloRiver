@@ -56,6 +56,9 @@ extrac.prec.hist <- function(dir){
     rst <- terra::rast(fls)
     vls <- terra::extract(rst, tble[,c('Long_', 'Lat')])
     vls <- as_tibble(cbind(tble[,c('Long_', 'Lat')], vls))
+    vls <- gather(vls, var, value, -Long_, -Lat)
+    vls
+    
     
     
   })

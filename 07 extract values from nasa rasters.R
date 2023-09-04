@@ -21,3 +21,4 @@ bsin <- terra::vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
 
 # A simple plot
 plot(bsin)
+points(tble$Long_, tble$Lat, pch = 16, col = 'red')

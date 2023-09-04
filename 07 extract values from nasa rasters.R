@@ -49,7 +49,9 @@ extrac.prec.hist <- function(dir){
     fls <- drs[i] %>% 
       dir_ls() %>% 
       grep('down_', ., value = T) %>% 
-      grep('.tif$', ., value = T)
+      grep('.tif$', ., value = T) %>% 
+      as.character() %>% 
+      mixedsort()
     
   })
   

@@ -22,3 +22,16 @@ bsin <- terra::vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
 # A simple plot
 plot(bsin)
 points(tble$Long_, tble$Lat, pch = 16, col = 'red')
+
+# Directories
+vars <- c('pr', 'tasmax', 'tasmin')
+path.bsln <- './tif/nasa/cmip6/historical'
+dirs.bsln <- dir_ls(path.bsln, type = 'directory') %>% as.character()
+path.bsln
+dirs.bsln
+
+# Functions  --------------------------------------------------------------
+
+
+
+

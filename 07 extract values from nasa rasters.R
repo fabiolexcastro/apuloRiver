@@ -36,7 +36,9 @@ extrac.prec.hist <- function(dir){
   dir <- dirs.bsln[1] # Correr y comentar 
   
   cat('To process: ', dir, '\n')
-  dir_ls(dir)
+  dir_ls(dir) %>% 
+    grep('pr', ., value = T) %>% 
+    dir_ls()
   
 }
 

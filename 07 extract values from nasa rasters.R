@@ -31,7 +31,14 @@ path.bsln
 dirs.bsln
 
 # Functions  --------------------------------------------------------------
-
+extrac.prec.hist <- function(dir){
+  
+  dir <- dirs.bsln[1] # Correr y comentar 
+  
+  cat('To process: ', dir, '\n')
+  dir_ls(dir)
+  
+}
 
 
 

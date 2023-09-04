@@ -42,9 +42,9 @@ extrac.prec.hist <- function(dir){
     dir_ls(., type = 'directory') %>% 
     as.character()
   
-  map(.x = 1:length(drs), .f = function(i){
+  tbl <- map(.x = 1:length(drs), .f = function(i){
     
-    i <- 1 # Correr y borrar
+    # i <- 1 # Correr y borrar
     
     fls <- drs[i] %>% 
       dir_ls() %>% 

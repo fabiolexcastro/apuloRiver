@@ -62,7 +62,9 @@ extrac.prec.hist <- function(dir){
     mdl
     
     vls <- mutate(vls, model = basename(mdl))
+    vls <- relocate(vls, model, Long_, Lat, ID, var, value)
     vls
+    cat('Done! ')
     
     
     

@@ -61,6 +61,9 @@ extrac.prec.hist <- function(dir){
     mdl <- dirname(drs) %>% unique()
     mdl
     
+    vls <- mutate(vls, model = basename(mdl))
+    vls
+    
     
     
   })

@@ -15,3 +15,9 @@ tble <- read.xlsx('./data/tbl/Subcuencas Coordenadas.xlsx')
 head(tble)
 tble <- as_tibble(tble)
 tble
+
+# Spatial data
+bsin <- terra::vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
+
+# A simple plot
+plot(bsin)

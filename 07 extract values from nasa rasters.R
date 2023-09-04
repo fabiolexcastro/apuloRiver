@@ -51,12 +51,17 @@ extrac.prec.hist <- function(dir){
       grep('down_', ., value = T) %>% 
       grep('.tif$', ., value = T) %>% 
       as.character() %>% 
-      mixedsort()
+      mixedsort() 
     
-    rst <- terra::rast(fls)
-    vls <- terra::extract(rst, tble[,c('Long_', 'Lat')])
-    vls <- as_tibble(cbind(tble[,c('Long_', 'Lat')], vls))
-    vls <- gather(vls, var, value, -Long_, -Lat, -ID)
+    rst <- map(fls, rast)
+    
+    vls <- map(.x = 1:length(rst), .f = function(x){
+      rst[[x]] %>%
+        terra::extract(., tble[,c('Long_', 'Lat')]) %>% 
+        as_tibble() %>% 
+        gather(vls, var, value, -Long, -Lat, -ID)
+    }) %>% 
+      bind_rows()
     
     mdl <- dirname(drs) %>% unique()
     mdl

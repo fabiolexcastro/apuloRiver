@@ -57,7 +57,9 @@ extrac.prec.hist <- function(dir){
     vls <- terra::extract(rst, tble[,c('Long_', 'Lat')])
     vls <- as_tibble(cbind(tble[,c('Long_', 'Lat')], vls))
     vls <- gather(vls, var, value, -Long_, -Lat, -ID)
-    vls
+    
+    mdl <- dirname(drs)
+    mdl
     
     
     

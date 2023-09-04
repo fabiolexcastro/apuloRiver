@@ -54,6 +54,9 @@ extrac.prec.hist <- function(dir){
       mixedsort()
     
     rst <- terra::rast(fls)
+    vls <- terra::extract(rst, tble[,c('Long_', 'Lat')])
+    vls <- as_tibble(cbind(tble[,c('Long_', 'Lat')], vls))
+    
     
   })
   

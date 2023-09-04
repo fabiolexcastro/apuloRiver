@@ -58,7 +58,7 @@ extrac.prec.hist <- function(dir){
     vls <- as_tibble(cbind(tble[,c('Long_', 'Lat')], vls))
     vls <- gather(vls, var, value, -Long_, -Lat, -ID)
     
-    mdl <- dirname(drs)
+    mdl <- dirname(drs) %>% unique()
     mdl
     
     

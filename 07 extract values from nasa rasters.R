@@ -63,9 +63,10 @@ extrac.prec.hist <- function(dir){
     
     vls <- mutate(vls, model = basename(mdl))
     vls <- relocate(vls, model, Long_, Lat, ID, var, value)
+    vls <- mutate(vls, year = basename(drs[i]))
     vls
     cat('Done! ')
-    
+    return(vls)
     
     
   })

@@ -13,3 +13,5 @@ options(scipen = 999, warn = -1)
 # Load libraries ----------------------------------------------------------
 tble <- read.xlsx('./data/tbl/Subcuencas Coordenadas.xlsx')
 head(tble)
+tble <- as_tibble(tble)
+tble

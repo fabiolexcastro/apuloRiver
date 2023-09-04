@@ -46,8 +46,10 @@ extrac.prec.hist <- function(dir){
     
     i <- 1 # Correr y borrar
     
-    dir <- drs[i] %>% 
-      dir_ls()
+    fls <- drs[i] %>% 
+      dir_ls() %>% 
+      grep('down_', ., value = T) %>% 
+      grep('.tif$', ., value = T)
     
   })
   

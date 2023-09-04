@@ -53,6 +53,8 @@ extrac.prec.hist <- function(dir){
       as.character() %>% 
       mixedsort()
     
+    rst <- terra::rast(fls)
+    
   })
   
   

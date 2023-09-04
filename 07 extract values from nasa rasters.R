@@ -38,7 +38,7 @@ extrac.prec.hist <- function(dir){
   cat('To process: ', dir, '\n')
   dir_ls(dir) %>% 
     grep('pr', ., value = T) %>% 
-    dir_ls()
+    dir_ls(., type = 'directory')
   
 }
 

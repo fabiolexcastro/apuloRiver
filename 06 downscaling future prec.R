@@ -98,7 +98,7 @@ down.ftre <- function(dir){
       print('leap year future')  
       pos.ft <- grep('02-29', dts.ft, value = F)
       dts.ft <- dts.ft[-pos.ft]
-      rs.ft <- rs.ft[-pos.ft]
+      rs.ft <- rs.ft[[-pos.ft]]
     }
     
     time(rs.bs) <- dts.bs

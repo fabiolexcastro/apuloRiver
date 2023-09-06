@@ -89,12 +89,16 @@ down.ftre <- function(dir){
     
     if(leap_year(yr.bs)){
       print('leap year basename')
-      dts.bs <- dts.bs[-grep('02-29', dts.bs, value = F)]
+      pos.bs <- grep('02-29', dts.bs, value = F)
+      dts.bs <- dts.bs[-pos.bs]
+      rs.bs <- rs.bs[[-pos.bs]]
     }
     
     if(leap_year(yr.ft)){
       print('leap year future')  
-      dts.ft <- dts.ft[-grep('02-29', dts.ft, value = F)]
+      pos.ft <- grep('02-29', dts.ft, value = F)
+      dts.ft <- dts.ft[-pos.ft]
+      rs.ft <- rs.ft[-pos.ft]
     }
     
     time(rs.bs) <- dts.bs
@@ -174,11 +178,6 @@ down.ftre <- function(dir){
     fnal <- reduce(fnal, c)
     fnal
     plot(fnal)
-    
-    
-    fnal
-    fnal <- reduce(fnal, c)
-    fnal
     
     # Problem with the NaN
     trra <- map(.x = 1:nlyr(fnal), .f = function(z){

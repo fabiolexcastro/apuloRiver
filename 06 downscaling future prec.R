@@ -92,6 +92,7 @@ down.ftre <- function(dir){
       pos.bs <- grep('02-29', dts.bs, value = F)
       dts.bs <- dts.bs[-pos.bs]
       rs.bs <- rs.bs[[-pos.bs]]
+      rs.bs.rw <- rs.bs.rw[[-pos.bs]]
     }
     
     if(leap_year(yr.ft)){

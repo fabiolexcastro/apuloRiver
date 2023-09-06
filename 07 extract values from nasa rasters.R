@@ -59,7 +59,7 @@ extrac.prec.hist <- function(dir){
       rst[[x]] %>%
         terra::extract(., tble[,c('Long_', 'Lat')]) %>% 
         as_tibble() %>% 
-        gather(vls, var, value, -Long, -Lat, -ID)
+        gather(var, value, -ID)
     }) %>% 
       bind_rows()
     
@@ -67,7 +67,8 @@ extrac.prec.hist <- function(dir){
     mdl
     
     vls <- mutate(vls, model = basename(mdl))
-    vls <- relocate(vls, model, Long_, Lat, ID, var, value)
+    vls <- inner_join(vls, tble[,c('Long_', 'Lat', 'Subbasin')], by = c('ID' = 'Subbasin'))
+    vls <- relocate(vls, model, Long_, Lat, ID, Subbasin, var, value)
     vls <- mutate(vls, year = basename(drs[i]))
     vls
     cat('Done! ')

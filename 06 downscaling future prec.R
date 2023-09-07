@@ -85,6 +85,9 @@ down.ftre <- function(dir){
     rs.bs <- map(fl.bs, rast)
     ex.bs <- map(rs.bs, ext)
     ex.bs <- map(ex.bs, as.vector)
+    ex.bs <- as.data.frame(do.call(rbind, ex.bs))   
+    ex.bs <- as_tibble(ex.bs)
+    
     
     # Fin de las líneas temporales
     

@@ -80,6 +80,14 @@ down.ftre <- function(dir){
     fl.ft <- grep(yr.ft, fls.ftr, value = T)
     
     rs.bs <- rast(fl.bs)
+    
+    # Líneas temporales 
+    rs.bs <- map(fl.bs, rast)
+    map(rs.bs, ext)
+    
+    # Fin de las líneas temporales
+    
+    
     plot(rs.bs) # Correr y borrar
     rs.bs.rw <- rast(fl.bs.rw)
     rs.ft <- rast(fl.ft)

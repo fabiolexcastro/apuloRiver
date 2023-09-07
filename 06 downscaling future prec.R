@@ -92,8 +92,7 @@ down.ftre <- function(dir){
     
     ms <- rs.bs[[1]]
     rs.bs <- map(.x = 1:length(rs.bs), .f = function(a) terra::resample(rs.bs[[a]], ms, method = 'bilinear'))
-    
-    
+    rs.bs <- reduce(rs.bs, c)
     
     # Fin de las líneas temporales
     

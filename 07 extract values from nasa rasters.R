@@ -77,7 +77,9 @@ extrac.prec.hist <- function(dir){
     
   })
   
-  tbl <- bind_rows(tbl)
+  yrs <- basename(drs)
+  
+  
   
 }
 

@@ -83,7 +83,8 @@ down.ftre <- function(dir){
     
     # Líneas temporales 
     rs.bs <- map(fl.bs, rast)
-    map(rs.bs, ext)
+    ex.bs <- map(rs.bs, ext)
+    ex.bs <- unlist(ex.bs)
     
     # Fin de las líneas temporales
     

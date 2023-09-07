@@ -87,7 +87,8 @@ down.ftre <- function(dir){
     ex.bs <- map(ex.bs, as.vector)
     ex.bs <- as.data.frame(do.call(rbind, ex.bs))   
     ex.bs <- as_tibble(ex.bs)
-    
+    ex.bs <- mutate(ex.bs, band = paste0('Day :', 1:365))
+    write.csv(ex.bs, 'tmp-miss.csv', row.names = FALSE)
     
     # Fin de las líneas temporales
     

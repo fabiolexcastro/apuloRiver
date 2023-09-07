@@ -88,7 +88,12 @@ down.ftre <- function(dir){
     ex.bs <- as.data.frame(do.call(rbind, ex.bs))   
     ex.bs <- as_tibble(ex.bs)
     ex.bs <- mutate(ex.bs, band = paste0('Day :', 1:365))
-    write.csv(ex.bs, 'tmp-miss.csv', row.names = FALSE)
+    write.csv(ex.bs, 'tmp-miss.csv', row.names = FALSE) # 204:225
+    
+    ms <- rs.bs[[1]]
+    rs.bs <- map(.x = 1:length(rs.bs), .f = function(a) terra::resample(rs.bs[[a]], ms, method = 'bilinear'))
+    
+    
     
     # Fin de las líneas temporales
     

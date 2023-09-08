@@ -98,8 +98,10 @@ extrac.prec.hist <- function(dir){
     
   })
 
-  dfm[[1]]
-  
+  dfm <- bind_rows(dfm)
+  dim(dfm)
+  head(dfm)
+  tail(dfm)
   
   
 }

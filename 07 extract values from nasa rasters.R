@@ -92,6 +92,8 @@ extrac.prec.hist <- function(dir){
     tb <- dplyr::select(tb, -Long_, -Lat)
     tb <- spread(tb, ID, value)
     head(tb, 2)
+    tb <- mutate(tb, date = dts[[i]])
+    head(tb, 5)
     
     
   })

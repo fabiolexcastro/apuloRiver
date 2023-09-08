@@ -38,7 +38,9 @@ extrac.prec.hist <- function(dir){
   cat('To process: ', dir, '\n')
   drs <- dir_ls(dir) %>% 
     grep('pr', ., value = T) %>% 
-    dir_ls(., regexp = '.nc$')
+    dir_ls(., type = 'directory') %>% 
+    dir_ls(., type = 'directory') %>% 
+    as.character()
   
   tbl <- map(.x = 1:length(drs), .f = function(i){
     
@@ -124,9 +126,7 @@ extrac.tmax.hist <- function(dir){
   cat('To process: ', dir, '\n')
   drs <- dir_ls(dir) %>% 
     grep('tasmax', ., value = T) %>% 
-    dir_ls(., type = 'directory') %>% 
-    dir_ls(., type = 'directory') %>% 
-    as.character()
+    dir_ls(., regexp = '.nc$')
   
   tbl <- map(.x = 1:length(drs), .f = function(i){
     

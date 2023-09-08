@@ -88,15 +88,15 @@ extrac.prec.hist <- function(dir){
     i <- 1 # Correr y borrar
     cat('To process:', i, '\n') 
     tb <- tbl[[i]]
-    head(tb, 2)
     tb <- dplyr::select(tb, -Long_, -Lat)
     tb <- spread(tb, ID, value)
-    head(tb, 2)
     tb <- mutate(tb, date = dts[[i]])
-    head(tb, 5)
-    
+    cat('Date added\t')
+    return(tb)
     
   })
+
+  dfm[[1]]
   
   
   

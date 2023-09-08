@@ -99,9 +99,10 @@ extrac.prec.hist <- function(dir){
   })
 
   dfm <- bind_rows(dfm)
-  dim(dfm)
+  dfm <- gather(dfm, stt, value, -var, -model, -year, -day, -date)
   head(dfm)
-  tail(dfm)
+  p_load(xlsx, readx, openxlsx)
+  write.xlsx(dfm, glue('../'))
   
   
 }

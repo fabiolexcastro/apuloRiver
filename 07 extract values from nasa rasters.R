@@ -102,9 +102,10 @@ extrac.prec.hist <- function(dir){
   dfm <- gather(dfm, stt, value, -var, -model, -year, -day, -date)
   dfm <- mutate(dfm, value = ifelse(value < 0, 0, value))
   dfm <- spread(dfm, stt, value)
+  dfm <- mutate(dfm, variable = 'prec')
   head(dfm)
   p_load(xlsx, readx, openxlsx)
-  write.xlsx(dfm, glue('../'))
+  write.xlsx(dfm, glue('./data/tbl/values-sts_{basename(dir)}_prec-hist.xlsx'))
   
   
 }

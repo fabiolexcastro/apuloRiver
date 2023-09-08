@@ -78,10 +78,19 @@ extrac.prec.hist <- function(dir){
   })
   
   yrs <- basename(drs)
-  yrs <- yrs[1:5] # correr y borrar
   dts <- map(yrs, .f = function(i){
     sqn <- seq(as.Date(paste0(i, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(i, '-12-31'), format = '%Y-%m-%d'), by = 'day')
     return(sqn)
+  })  
+
+  dfm <- map(.x = 1:length(tbl), .f = function(i){
+
+    i <- 1 # Correr y borrar
+    cat('To process:', i, '\n') 
+    tb <- tbl[[i]]
+    head(tb, 2)
+    
+    
   })
   
   

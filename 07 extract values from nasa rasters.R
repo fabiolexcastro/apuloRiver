@@ -101,6 +101,7 @@ extrac.prec.hist <- function(dir){
   dfm <- bind_rows(dfm)
   dfm <- gather(dfm, stt, value, -var, -model, -year, -day, -date)
   dfm <- mutate(dfm, value = ifelse(value < 0, 0, value))
+  dfm <- spread(dfm, stt, value)
   head(dfm)
   p_load(xlsx, readx, openxlsx)
   write.xlsx(dfm, glue('../'))

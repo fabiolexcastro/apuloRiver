@@ -126,7 +126,7 @@ extrac.tmax.hist <- function(dir){
   cat('To process: ', dir, '\n')
   drs <- dir_ls(dir) %>% 
     grep('tasmax', ., value = T) %>% 
-    dir_ls(., regexp = '.nc$')
+    dir_ls(., regexp = '.nc$') 
   
   tbl <- map(.x = 1:length(drs), .f = function(i){
     
@@ -134,10 +134,8 @@ extrac.tmax.hist <- function(dir){
     
     fls <- drs[i] %>% 
       dir_ls() %>% 
-      grep('down_', ., value = T) %>% 
-      grep('.tif$', ., value = T) %>% 
-      as.character() %>% 
-      mixedsort() 
+      grep('tasmax_day', ., value = T) %>% 
+      as.character() 
     
     rst <- map(fls, rast)
     

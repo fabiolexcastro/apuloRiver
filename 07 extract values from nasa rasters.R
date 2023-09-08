@@ -89,6 +89,7 @@ extrac.prec.hist <- function(dir){
     cat('To process:', i, '\n') 
     tb <- tbl[[i]]
     head(tb, 2)
+    tb <- dplyr::select(tb, -Long_, -Lat)
     tb <- spread(tb, ID, value)
     head(tb, 2)
     

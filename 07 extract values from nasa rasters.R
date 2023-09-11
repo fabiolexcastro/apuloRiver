@@ -163,12 +163,6 @@ extrac.tmax.hist <- function(dir){
     
     
   })
-  
-  yrs <- basename(drs)
-  dts <- map(yrs, .f = function(i){
-    sqn <- seq(as.Date(paste0(i, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(i, '-12-31'), format = '%Y-%m-%d'), by = 'day')
-    return(sqn)
-  })  
 
   dfm <- map(.x = 1:length(tbl), .f = function(i){
 
@@ -187,15 +181,88 @@ extrac.tmax.hist <- function(dir){
 
   dfm <- bind_rows(dfm)
   dfm <- gather(dfm, stt, value, -var, -model, -year, -day, -date)
-  dfm <- mutate(dfm, value = ifelse(value < 0, 0, value))
   dfm <- spread(dfm, stt, value)
-  dfm <- mutate(dfm, variable = 'prec')
+  dfm <- mutate(dfm, variable = 'tmax')
   head(dfm)
   p_load(xlsx, readx, openxlsx)
   write.xlsx(dfm, glue('./data/tbl/values-sts_{basename(dir)}_tmax-hist.xlsx'))
   cat('Done!\n')
   
 }
+
+extrac.tmin.hist <- function(dir){
+  
+  # dir <- dirs.bsln[1] # Correr y comentar 
+  
+  cat('To process: ', dir, '\n')
+  fls <- dir_ls(dir) %>% 
+    grep('tasmin', ., value = T) %>% 
+    dir_ls(., regexp = '.nc$') %>% 
+    grep('down', ., value = T) %>% 
+    as.character()
+  
+  tbl <- map(.x = 1:length(drs), .f = function(i){
+    
+    # i <- 1 # Correr y borrar
+    
+    fle <- fls[i] %>% grep('tasmin_day', ., value = T) 
+    rst <- terra::rast(fle)
+    
+    vls <- map(.x = 1:nlyr(rst), .f = function(x){
+      rst[[x]] %>%
+        terra::extract(., tble[,c('Long_', 'Lat')]) %>% 
+        as_tibble() %>% 
+        gather(var, value, -ID)
+    }) %>% 
+      bind_rows()
+    
+    mdl <- dirname(drs) %>% unique()
+    mdl
+    
+    vls <- mutate(vls, model = basename(mdl))
+    vls <- spread(vls, ID, value)
+    vls <- mutate(vls, day = parse_number(var))
+    vls <- vls %>% arrange(day)
+    yea <- basename(drs[i]) %>% str_sub(., start = nchar(.) -6, end = nchar(.) - 3)
+    vls <- mutate(vls, year = yea)
+    sqn <- seq(as.Date(paste0(yea, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yea, '-12-31'), format = '%Y-%m-%d'), by = 'day')#
+    vls <- mutate(vls, date = sqn)
+    vls <- dplyr::select(vls, -var)
+    colnames(vls)[1] <- 'variable'
+    cat('Done! ')
+    return(vls)
+    
+    
+  })
+  
+  dfm <- map(.x = 1:length(tbl), .f = function(i){
+    
+    i <- 1 # Correr y borrar
+    cat('To process:', i, '\n') 
+    tb <- tbl[[i]]
+    tb <- dplyr::select(tb, -Long_, -Lat)
+    tb <- spread(tb, ID, value)
+    tb <- mutate(tb, day = parse_number(var), day = as.numeric(day))
+    tb <- tb %>% arrange(day)
+    tb <- mutate(tb, date = dts[[i]])
+    cat('Date added\t')
+    return(tb)
+    
+  })
+  
+  dfm <- bind_rows(dfm)
+  dfm <- gather(dfm, stt, value, -var, -model, -year, -day, -date)
+  dfm <- spread(dfm, stt, value)
+  dfm <- mutate(dfm, variable = 'tmin')
+  head(dfm)
+  p_load(xlsx, readx, openxlsx)
+  write.xlsx(dfm, glue('./data/tbl/values-sts_{basename(dir)}_tmin-hist.xlsx'))
+  cat('Done!\n')
+  
+}
+
+
+
 
 
 

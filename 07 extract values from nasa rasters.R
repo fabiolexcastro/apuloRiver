@@ -151,7 +151,7 @@ extrac.tmax.hist <- function(dir){
     vls <- mutate(vls, model = basename(mdl))
     vls <- spread(vls, ID, value)
     vls <- mutate(vls, day = parse_number(var))
-    vls <- vls %>% arrange(var)
+    vls <- vls %>% arrange(day)
     vls <- relocate(vls, model, Long_, Lat, ID, Subbasin, var, value)
     vls <- mutate(vls, year = basename(drs[i]))
     vls

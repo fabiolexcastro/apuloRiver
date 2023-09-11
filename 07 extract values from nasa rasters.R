@@ -133,11 +133,7 @@ extrac.tmax.hist <- function(dir){
     
     # i <- 1 # Correr y borrar
     
-    fls <- drs[i] %>% 
-      dir_ls() %>% 
-      grep('tasmax_day', ., value = T) %>% 
-      as.character() 
-    
+    fle <- fls[i] %>% grep('tasmax_day', ., value = T) 
     rst <- map(fls, rast)
     
     vls <- map(.x = 1:length(rst), .f = function(x){

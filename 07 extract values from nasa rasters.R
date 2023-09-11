@@ -134,7 +134,7 @@ extrac.tmax.hist <- function(dir){
     # i <- 1 # Correr y borrar
     
     fle <- fls[i] %>% grep('tasmax_day', ., value = T) 
-    rst <- map(fls, rast)
+    rst <- terra::rast(fle)
     
     vls <- map(.x = 1:length(rst), .f = function(x){
       rst[[x]] %>%

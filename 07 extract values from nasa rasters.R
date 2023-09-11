@@ -137,7 +137,7 @@ extrac.tmax.hist <- function(dir){
     fle <- fls[i] %>% grep('tasmax_day', ., value = T) 
     rst <- terra::rast(fle)
     
-    vls <- map(.x = 1:length(rst), .f = function(x){
+    vls <- map(.x = 1:nlyr(rst), .f = function(x){
       rst[[x]] %>%
         terra::extract(., tble[,c('Long_', 'Lat')]) %>% 
         as_tibble() %>% 
@@ -149,7 +149,9 @@ extrac.tmax.hist <- function(dir){
     mdl
     
     vls <- mutate(vls, model = basename(mdl))
-    vls <- inner_join(vls, tble[,c('Long_', 'Lat', 'Subbasin')], by = c('ID' = 'Subbasin'))
+    vls <- spread(vls, ID, value)
+    vls <- mutate(vls, day = parse_number(var))
+    vls <- vls %>% arrange(var)
     vls <- relocate(vls, model, Long_, Lat, ID, Subbasin, var, value)
     vls <- mutate(vls, year = basename(drs[i]))
     vls

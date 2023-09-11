@@ -154,6 +154,7 @@ extrac.tmax.hist <- function(dir){
     vls <- vls %>% arrange(day)
     yea <- basename(drs[i]) %>% str_sub(., start = nchar(.) -6, end = nchar(.) - 3)
     vls <- mutate(vls, year = yea)
+    sqn <- seq(as.Date(paste0(yea, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yea, '-12-31'), format = '%Y-%m-%d'), by = 'day')#
     vls
     cat('Done! ')
     return(vls)

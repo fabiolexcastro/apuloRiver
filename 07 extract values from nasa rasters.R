@@ -152,7 +152,7 @@ extrac.tmax.hist <- function(dir){
     vls <- spread(vls, ID, value)
     vls <- mutate(vls, day = parse_number(var))
     vls <- vls %>% arrange(day)
-    yea <- basename(drs[i]) %>% str_sub(., start = nchar(.) -7, end = nchar(.) - 4)
+    yea <- basename(drs[i]) %>% str_sub(., start = nchar(.) -6, end = nchar(.) - 3)
     vls <- mutate(vls, year = yea)
     vls
     cat('Done! ')

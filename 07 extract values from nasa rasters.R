@@ -68,7 +68,7 @@ extrac.prec.hist <- function(dir){
     
     vls <- mutate(vls, model = basename(mdl))
     vls <- inner_join(vls, tble[,c('Long_', 'Lat', 'Subbasin')], by = c('ID' = 'Subbasin'))
-    vls <- relocate(vls, model, Long_, Lat, ID, Subbasin, var, value)
+    vls <- relocate(vls, model, Long_, Lat, ID, var, value)
     vls <- mutate(vls, year = basename(drs[i]))
     vls
     cat('Done! ')
@@ -124,9 +124,10 @@ extrac.tmax.hist <- function(dir){
   # dir <- dirs.bsln[1] # Correr y comentar 
   
   cat('To process: ', dir, '\n')
-  drs <- dir_ls(dir) %>% 
+  fls <- dir_ls(dir) %>% 
     grep('tasmax', ., value = T) %>% 
-    dir_ls(., regexp = '.nc$') 
+    dir_ls(., regexp = '.nc$') %>% 
+    as.character()
   
   tbl <- map(.x = 1:length(drs), .f = function(i){
     

@@ -126,6 +126,7 @@ extrac.tmax.hist <- function(dir){
   cat('To process: ', dir, '\n')
   fls <- dir_ls(dir) %>% 
     grep('tasmax', ., value = T) %>% 
+    grep('down', ., value = T) %>% 
     dir_ls(., regexp = '.nc$') %>% 
     as.character()
   

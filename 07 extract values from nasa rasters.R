@@ -96,10 +96,18 @@ extrac.prec.hist <- function(dir){
     tb <- spread(tb, ID, value)
     tb <- mutate(tb, day = parse_number(var), day = as.numeric(day))
     tb <- tb %>% arrange(day)
-    yr <- uniue(tb$year)
+    yr <- unique(tb$year)
     
+    if(leap_year(yr)){
+      print('Leap year')
+      dt <- dts[[i]]
+      dt[-grep('02-29', dt, value = FALSE)]
+    } else { 
+      print('No leap year')
+      dt <- dts[[i]]  
+    }
     
-    tb <- mutate(tb, date = dts[[i]])
+    tb <- mutate(tb, date = dt)
     cat('Date added\t')
     return(tb)
     

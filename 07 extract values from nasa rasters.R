@@ -97,6 +97,7 @@ extrac.prec.hist <- function(dir){
     tb <- mutate(tb, day = parse_number(var), day = as.numeric(day))
     tb <- tb %>% arrange(day)
     yr <- unique(tb$year)
+    yr <- as.numeric(yr)
     
     if(leap_year(yr)){
       print('Leap year')

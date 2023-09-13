@@ -80,7 +80,7 @@ extrac.prec.hist <- function(dir){
   yrs <- basename(drs)
   yrs <- str_split(yrs, '_')
   yrs <- map(yrs, 8)
-  yrs <- gsub('.nc', '', unlist(yrs))
+  yrs <- gsub('.nc', '',)
   
   dts <- map(yrs, .f = function(i){
     sqn <- seq(as.Date(paste0(i, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(i, '-12-31'), format = '%Y-%m-%d'), by = 'day')
@@ -217,6 +217,7 @@ extrac.tmin.hist <- function(dir){
   tbl <- map(.x = 1:length(fls), .f = function(i){
     
     # i <- 1 # Correr y borrar
+    print(i)
     
     fle <- fls[i] %>% grep('tasmin_day', ., value = T) 
     rst <- terra::rast(fle)

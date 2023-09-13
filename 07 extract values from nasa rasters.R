@@ -101,7 +101,7 @@ extrac.prec.hist <- function(dir){
     if(leap_year(yr)){
       print('Leap year')
       dt <- dts[[i]]
-      dt[-grep('02-29', dt, value = FALSE)]
+      dt <- dt[-grep('02-29', dt, value = FALSE)]
     } else { 
       print('No leap year')
       dt <- dts[[i]]  

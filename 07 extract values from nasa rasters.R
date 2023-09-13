@@ -209,7 +209,8 @@ extrac.tmin.hist <- function(dir){
     grep('down', ., value = T) %>% 
     as.character()
   
-  tbl <- map(.x = 1:length(drs), .f = function(i){
+  
+  tbl <- map(.x = 1:length(fls), .f = function(i){
     
     # i <- 1 # Correr y borrar
     

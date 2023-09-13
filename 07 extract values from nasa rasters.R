@@ -79,7 +79,7 @@ extrac.prec.hist <- function(dir){
   
   yrs <- basename(drs)
   yrs <- str_split(yrs, '_')
-  yrs <- lapply(yrs, 8)
+  yrs <- map(yrs, 8)
   
   dts <- map(yrs, .f = function(i){
     sqn <- seq(as.Date(paste0(i, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(i, '-12-31'), format = '%Y-%m-%d'), by = 'day')

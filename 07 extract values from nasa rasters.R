@@ -216,7 +216,7 @@ extrac.tmin.hist <- function(dir){
     }) %>% 
       bind_rows()
     
-    mdl <- dirname(drs) %>% unique()
+    mdl <- dirname(drs) %>% unique() %>% basename()
     mdl
     
     vls <- mutate(vls, model = basename(mdl))

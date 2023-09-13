@@ -89,13 +89,16 @@ extrac.prec.hist <- function(dir){
 
   dfm <- map(.x = 1:length(tbl), .f = function(i){
 
-    i <- 1 # Correr y borrar
+    # i <- 1 # Correr y borrar
     cat('To process:', i, '\n') 
     tb <- tbl[[i]]
     tb <- dplyr::select(tb, -Long_, -Lat)
     tb <- spread(tb, ID, value)
     tb <- mutate(tb, day = parse_number(var), day = as.numeric(day))
     tb <- tb %>% arrange(day)
+    yr <- uniue(tb$year)
+    
+    
     tb <- mutate(tb, date = dts[[i]])
     cat('Date added\t')
     return(tb)

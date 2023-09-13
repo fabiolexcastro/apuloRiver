@@ -190,6 +190,14 @@ extrac.tmax.hist <- function(dir){
   
 }
 
+tmax.mdl1 <- extrac.tmax.hist(dirs.bsln[1])
+tmax.mdl2 <- extrac.tmax.hist(dirs.bsln[2])
+tmax.mdl3 <- extrac.tmax.hist(dirs.bsln[3])
+tmax.mdl4 <- extrac.tmax.hist(dirs.bsln[4])
+tmax.mdl5 <- extrac.tmax.hist(dirs.bsln[5])
+
+# Temperatura mínima
+
 extrac.tmin.hist <- function(dir){
   
   # dir <- dirs.bsln[1] # Correr y comentar 
@@ -216,7 +224,8 @@ extrac.tmin.hist <- function(dir){
     }) %>% 
       bind_rows()
     
-    mdl <- dirname(drs) %>% unique() %>% basename()
+    
+    mdl <- dirname(fle) %>% unique() %>% basename()
     mdl
     
     vls <- mutate(vls, model = basename(mdl))

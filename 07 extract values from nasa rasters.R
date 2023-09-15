@@ -132,7 +132,6 @@ prec.mdl4 <- extrac.prec.hist(dirs.bsln[4])
 prec.mdl5 <- extrac.prec.hist(dirs.bsln[5])
 
 # Temperatura máxima -------------------------------
-
 extrac.tmax.hist <- function(dir){
   
   # dir <- dirs.bsln[1] # Correr y comentar 
@@ -223,7 +222,6 @@ tmax.mdl4 <- extrac.tmax.hist(dirs.bsln[4])
 tmax.mdl5 <- extrac.tmax.hist(dirs.bsln[5])
 
 # Temperatura mínima
-
 extrac.tmin.hist <- function(dir){
   
   # dir <- dirs.bsln[1] # Correr y comentar 
@@ -239,7 +237,7 @@ extrac.tmin.hist <- function(dir){
   tbl <- map(.x = 1:length(fls), .f = function(i){
     
     # i <- 1 # Correr y borrar
-    print(i)
+    cat('To make the year number: ', i, '\n')
     
     fle <- fls[i] %>% grep('tasmin_day', ., value = T) 
     rst <- terra::rast(fle)

@@ -272,8 +272,11 @@ extrac.tmin.hist <- function(dir){
   
 }
 
-
-
+tmin.mdl1 <- extrac.tmin.hist(dirs.bsln[1])
+tmin.mdl1 <- extrac.tmin.hist(dirs.bsln[2])
+tmin.mdl1 <- extrac.tmin.hist(dirs.bsln[3])
+tmin.mdl1 <- extrac.tmin.hist(dirs.bsln[4])
+tmin.mdl1 <- extrac.tmin.hist(dirs.bsln[5])
 
 
 

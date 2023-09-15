@@ -54,6 +54,16 @@ extrac.prec.ftre <- function(ssp, mdl){
     rst <- terra::rast(fle)
     plot(rst)
     
+    vls <- map(.x = 1:nlyr(rst), .f = function(x){
+      rst[[x]] %>%
+        terra::extract(., tble[,c('Long_', 'Lat')]) %>% 
+        as_tibble() %>% 
+        gather(var, value, -ID)
+    }) %>% 
+      bind_rows()
+    
+    vls[[9]]
+    
     
   })
   

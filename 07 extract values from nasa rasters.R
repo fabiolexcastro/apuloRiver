@@ -259,7 +259,8 @@ extrac.tmin.hist <- function(dir){
     vls <- spread(vls, ID, value)
     vls <- mutate(vls, day = parse_number(var))
     vls <- vls %>% arrange(day)
-    yea <- basename(drs[i]) %>% str_sub(., start = nchar(.) -6, end = nchar(.) - 3)
+    yea <- fle %>% basename() %>% str_sub(., start = nchar(.) - 6, end = nchar(.) - 3)
+    yea
     vls <- mutate(vls, year = yea)
     sqn <- seq(as.Date(paste0(yea, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yea, '-12-31'), format = '%Y-%m-%d'), by = 'day')#
     vls <- mutate(vls, date = sqn)

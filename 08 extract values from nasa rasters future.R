@@ -77,3 +77,20 @@ extrac.prec.ftre <- function(ssp, mdl){
   cat('Done!\n')
  
 }
+
+prec.mdl1.1 <- extrac.prec.hist(ssp = ssps[1], mdl = mdls[1])
+prec.mdl1.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[1])
+
+prec.mdl2.1 <- extrac.prec.hist(ssp = ssps[1], mdl = mdls[2])
+prec.mdl2.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[2])
+
+prec.mdl3.1 <- extrac.prec.hist(ssp = ssps[1], mdl = mdls[3])
+prec.mdl3.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[3])
+
+prec.mdl4.1 <- extrac.prec.hist(ssp = ssps[1], mdl = mdls[4])
+prec.mdl4.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[4])
+
+prec.mdl5.1 <- extrac.prec.hist(ssp = ssps[1], mdl = mdls[5])
+prec.mdl5.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[5])
+
+

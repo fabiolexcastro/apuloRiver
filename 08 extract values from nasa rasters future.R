@@ -31,8 +31,12 @@ mdls <- dir_ls(dirs.ssps)[1:5]
 # Functions  --------------------------------------------------------------
 extrac.prec.ftre <- function(ssp, mdl){
   
-  dir <- dirs.bsln[1] # Correr y comentar
-  ssp <- ssps[1] # Correr y comentar 
+  dir <- dirs.ssps[1] # Correr y comentar
+  mdl <- mdls[1] # Correr y comentar 
+  
+  dirs.ssps %>% 
+    dir_ls(., type = 'directory') %>% 
+    grep(mdl, ., value = T)
   
   
   

@@ -235,7 +235,6 @@ extrac.tmin.hist <- function(dir){
     grep('down', ., value = T) %>% 
     as.character()
   
-  
   tbl <- map(.x = 1:length(fls), .f = function(i){
     
     # i <- 1 # Correr y borrar
@@ -266,28 +265,12 @@ extrac.tmin.hist <- function(dir){
     sqn <- seq(as.Date(paste0(yea, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yea, '-12-31'), format = '%Y-%m-%d'), by = 'day')#
     vls <- mutate(vls, date = sqn)
     vls <- dplyr::select(vls, -var)
-    colnames(vls)[1] <- 'variable'
     cat('Done! ')
     return(vls)
     
-    
   })
   
-  dfm <- map(.x = 1:length(tbl), .f = function(i){
-    
-    i <- 1 # Correr y borrar
-    cat('To process:', i, '\n') 
-    tb <- tbl[[i]]
-    tb <- dplyr::select(tb, -Long_, -Lat)
-    tb <- spread(tb, ID, value)
-    tb <- mutate(tb, day = parse_number(var), day = as.numeric(day))
-    tb <- tb %>% arrange(day)
-    tb <- mutate(tb, date = dts[[i]])
-    cat('Date added\t')
-    return(tb)
-    
-  })
-  
+  dfm <- tbl
   dfm <- bind_rows(dfm)
   dfm <- gather(dfm, stt, value, -var, -model, -year, -day, -date)
   dfm <- spread(dfm, stt, value)

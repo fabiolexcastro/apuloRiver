@@ -29,6 +29,8 @@ dirs.ssps <- dir_ls(path.ftre, type = 'directory') %>% as.character()
 mdls <- dir_ls(dirs.ssps)[1:5]
 
 # Functions  --------------------------------------------------------------
+
+# Precipitation -----------------------------------------------------------
 extrac.prec.ftre <- function(ssp, mdl){
   
   # dir <- dirs.ssps[1] # Correr y comentar

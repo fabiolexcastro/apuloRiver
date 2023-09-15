@@ -28,4 +28,13 @@ path.ftre <- './data/tif/nasa/cmip6'
 dirs.ssps <- dir_ls(path.ftre, type = 'directory') %>% as.character()
 mdls <- dir_ls(dirs.ssps)[1:5]
 
-
+# Functions  --------------------------------------------------------------
+extrac.prec.ftre <- function(ssp, mdl){
+  
+  dir <- dirs.bsln[1] # Correr y comentar
+  ssp <- ssps[1] # Correr y comentar 
+  
+  
+  
+ 
+}

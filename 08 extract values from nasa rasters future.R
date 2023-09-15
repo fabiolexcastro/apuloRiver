@@ -34,7 +34,7 @@ extrac.prec.ftre <- function(ssp, mdl){
   dir <- dirs.ssps[1] # Correr y comentar
   mdl <- mdls[1] # Correr y comentar 
   
-  dirs.ssps %>% 
+  fles <- dirs.ssps %>% 
     dir_ls(., type = 'directory') %>% 
     grep(mdl, ., value = T) %>% 
     as.character() %>% 
@@ -45,7 +45,17 @@ extrac.prec.ftre <- function(ssp, mdl){
     dir_ls(., regexp = '.tif$') %>% 
     as.character()
     
-  
+  tbls <- map(.x = 1:length(fles), .f = function(i){
+    
+    i <- 1 # Correr y comentar
+    
+    cat('To make the year number: ', i, '\n')
+    fle <- fles[i] 
+    rst <- terra::rast(fle)
+    plot(rst)
+    
+    
+  })
   
   
  

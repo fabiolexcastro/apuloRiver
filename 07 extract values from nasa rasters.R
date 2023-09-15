@@ -221,6 +221,8 @@ tmax.mdl3 <- extrac.tmax.hist(dirs.bsln[3])
 tmax.mdl4 <- extrac.tmax.hist(dirs.bsln[4])
 tmax.mdl5 <- extrac.tmax.hist(dirs.bsln[5])
 
+
+
 # Temperatura mínima
 extrac.tmin.hist <- function(dir){
   

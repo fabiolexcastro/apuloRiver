@@ -125,13 +125,11 @@ extrac.prec.hist <- function(dir){
   cat('Done!\n')
   
 }
-
 prec.mdl1 <- extrac.prec.hist(dirs.bsln[1])
 prec.mdl2 <- extrac.prec.hist(dirs.bsln[2])
 prec.mdl3 <- extrac.prec.hist(dirs.bsln[3])
 prec.mdl4 <- extrac.prec.hist(dirs.bsln[4])
 prec.mdl5 <- extrac.prec.hist(dirs.bsln[5])
-
 
 # Temperatura máxima -------------------------------
 
@@ -150,6 +148,7 @@ extrac.tmax.hist <- function(dir){
     
     # i <- 1 # Correr y borrar
     
+    cat('To make the year number: ', i, '\n')
     fle <- fls[i] %>% grep('tasmax_day', ., value = T) 
     rst <- terra::rast(fle)
     
@@ -175,7 +174,7 @@ extrac.tmax.hist <- function(dir){
     
     if(leap_year(yr)){
       print('Leap year')
-      dt <- sqn[[i]]
+      dt <- sqn
       dt <- dt[-grep('02-29', dt, value = FALSE)]
     } else { 
       print('No leap year')

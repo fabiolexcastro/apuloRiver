@@ -247,7 +247,7 @@ extrac.tmin.hist <- function(dir){
     
     sqn <- seq(as.Date(paste0(yea, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yea, '-12-31'), format = '%Y-%m-%d'), by = 'day')#
     
-    if(leap_year(yr)){
+    if(leap_year(yea)){
       print('Leap year')
       dt <- sqn
       dt <- dt[-grep('02-29', dt, value = FALSE)]
@@ -257,7 +257,7 @@ extrac.tmin.hist <- function(dir){
     }
     
     
-    vls <- mutate(vls, date = sqn)
+    vls <- mutate(vls, date = dt)
     vls <- dplyr::select(vls, -var)
     cat('Done! ')
     return(vls)

@@ -253,12 +253,11 @@ extrac.tmin.hist <- function(dir){
       dt <- dt[-grep('02-29', dt, value = FALSE)]
     } else { 
       print('No leap year')
-      dt <- sqn[[i]]  
+      dt <- sqn 
     }
     
-    
     vls <- mutate(vls, date = dt)
-    vls <- dplyr::select(vls, -var)
+    vls <- mutate(vls, var = 'tmin')
     cat('Done! ')
     return(vls)
     

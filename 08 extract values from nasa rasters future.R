@@ -62,7 +62,7 @@ extrac.prec.ftre <- function(ssp, mdl){
     }) %>% 
       bind_rows()
     
-    vls[[9]]
+    vls <- mutate(vls, value = ifelse(is.na(value), 0, value))
     
     
   })

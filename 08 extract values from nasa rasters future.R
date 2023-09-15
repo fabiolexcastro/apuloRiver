@@ -41,7 +41,9 @@ extrac.prec.ftre <- function(ssp, mdl){
     dir_ls() %>% 
     grep('pr', ., value = T) %>% 
     dir_ls(type = 'directory') %>% 
-    grep('down',., value = T)
+    grep('down',., value = T) %>% 
+    dir_ls(., regexp = '.tif$') %>% 
+    as.character()
     
   
   

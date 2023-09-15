@@ -31,8 +31,8 @@ mdls <- dir_ls(dirs.ssps)[1:5]
 # Functions  --------------------------------------------------------------
 extrac.prec.ftre <- function(ssp, mdl){
   
-  dir <- dirs.ssps[1] # Correr y comentar
-  mdl <- mdls[1] # Correr y comentar 
+  # dir <- dirs.ssps[1] # Correr y comentar
+  # mdl <- mdls[1] # Correr y comentar 
   
   fles <- dirs.ssps %>% 
     dir_ls(., type = 'directory') %>% 
@@ -47,7 +47,7 @@ extrac.prec.ftre <- function(ssp, mdl){
     
   tbls <- map(.x = 1:length(fles), .f = function(i){
     
-    i <- 1 # Correr y comentar
+    # i <- 1 # Correr y comentar
     
     cat('To make the year number: ', i, '\n')
     fle <- fles[i] 
@@ -72,5 +72,8 @@ extrac.prec.ftre <- function(ssp, mdl){
   
   tbls <- bind_rows(tbls)
   tbls
+  p_load(xlsx, readx, openxlsx)
+  write.xlsx(tbls, glue('./data/tbl/values-sts_{basename(mdl)}_prec-ftre-{basename(dirs.ssps)}.xlsx'))
+  cat('Done!\n')
  
 }

@@ -180,7 +180,7 @@ extrac.tmax.hist <- function(dir){
     #   dt <- sqn
     # }
     
-    sqn <- dt
+    vls <- mutate(vls, date = sqn)
     vls <- mutate(vls, date = dt)
     vls <- dplyr::select(vls, -var)
     colnames(vls)[1] <- 'variable'

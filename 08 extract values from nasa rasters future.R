@@ -97,11 +97,11 @@ prec.mdl5.1 <- extrac.prec.hist(ssp = ssps[1], mdl = mdls[5])
 prec.mdl5.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[5])
 
 # Temperature -------------------------------------------------------------
-extract.tasm.ftre <- function(ssp, mdl){
+extract.tasm.ftre <- function(var, ssp, mdl){
   
-  var <- 'tasmax' # Correr y comentar
-  dir <- dirs.ssps[1] # Correr y comentar
-  mdl <- mdls[1] # Correr y comentar
+  # var <- 'tasmax' # Correr y comentar
+  # dir <- dirs.ssps[1] # Correr y comentar
+  # mdl <- mdls[1] # Correr y comentar
   
   fles <- dirs.ssps %>% 
     dir_ls(., type = 'directory') %>% 

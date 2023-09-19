@@ -96,4 +96,28 @@ prec.mdl4.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[4])
 prec.mdl5.1 <- extrac.prec.hist(ssp = ssps[1], mdl = mdls[5])
 prec.mdl5.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[5])
 
+# Temperature -------------------------------------------------------------
+extract.tasm.ftre <- function(ssp, mdl){
+  
+  var <- 'tmax' # Correr y comentar
+  dir <- dirs.ssps[1] # Correr y comentar
+  mdl <- mdls[1] # Correr y comentar
+  
+  fles <- dirs.ssps %>% 
+    dir_ls(., type = 'directory') %>% 
+    grep(mdl, ., value = T) %>% 
+    as.character() %>% 
+    dir_ls() %>% 
+    grep('pr', ., value = T) %>% 
+    dir_ls(type = 'directory') %>% 
+    grep('down',., value = T) %>% 
+    dir_ls(., regexp = '.tif$') %>% 
+    as.character()
+  
+}
+
+
+
+
+
 

@@ -148,7 +148,17 @@ extract.tasm.ftre <- function(var, ssp, mdl){
   
 }
 
+vars <- c('tasmax', 'tasmin')
 
+# ACCESS-ESM1
+map(.x = 1:2, .f = function(v){
+  extract.tasm.ftre(var = vars[v], ssp = ssps[1], mdl = mdls[1])
+})
+
+# 2nd
+map(.x = 1:2, .f = function(v){
+  extract.tasm.ftre(var = vars[v], ssp = ssps[1], mdl = mdls[2])
+})
 
 
 

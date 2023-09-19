@@ -39,6 +39,7 @@ extrac.prec.ftre <- function(ssp, mdl){
   fles <- dirs.ssps %>% 
     dir_ls(., type = 'directory') %>% 
     grep(mdl, ., value = T) %>% 
+    grep(ssp, ., value = T) %>% 
     as.character() %>% 
     dir_ls() %>% 
     grep('pr', ., value = T) %>% 

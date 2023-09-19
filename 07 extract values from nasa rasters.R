@@ -171,15 +171,16 @@ extrac.tmax.hist <- function(dir){
     sqn <- seq(as.Date(paste0(yea, '-01-01'), format = '%Y-%m-%d'), as.Date(paste0(yea, '-12-31'), format = '%Y-%m-%d'), by = 'day')#
     yea <- as.numeric(yea)
     
-    if(leap_year(yr)){
-      print('Leap year')
-      dt <- sqn
-      dt <- dt[-grep('02-29', dt, value = FALSE)]
-    } else { 
-      print('No leap year')
-      dt <- sqn[[i]]  
-    }
+    # if(leap_year(yr)){
+    #   print('Leap year')
+    #   dt <- sqn
+    #   dt <- dt[-grep('02-29', dt, value = FALSE)]
+    # } else { 
+    #   print('No leap year')
+    #   dt <- sqn
+    # }
     
+    sqn <- dt
     vls <- mutate(vls, date = dt)
     vls <- dplyr::select(vls, -var)
     colnames(vls)[1] <- 'variable'

@@ -102,12 +102,13 @@ prec.mdl5.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[5])
 extract.tasm.ftre <- function(var, ssp, mdl){
   
   # var <- 'tasmax' # Correr y comentar
-  # dir <- dirs.ssps[1] # Correr y comentar
+  # sp <- 'ssp245' # Correr y comentar
   # mdl <- mdls[1] # Correr y comentar
   
   fles <- dirs.ssps %>% 
     dir_ls(., type = 'directory') %>% 
     grep(mdl, ., value = T) %>% 
+    grep(ssp, ., value = T) %>% 
     as.character() %>% 
     dir_ls() %>% 
     grep(var, ., value = T) %>% 
@@ -145,7 +146,7 @@ extract.tasm.ftre <- function(var, ssp, mdl){
   tbls <- bind_rows(tbls)
   tbls
   p_load(xlsx, readx, openxlsx)
-  write.xlsx(as.data.frame(tbls), glue('./data/tbl/values-sts_{basename(mdl)}_{var}-ftre-{basename(dirs.ssps)}.xlsx'))
+  write.xlsx(as.data.frame(tbls), glue('./data/tbl/values-sts_{basename(mdl)}_{var}-ftre-{ssp}.xlsx'))
   cat('Done!\n')
   
 }

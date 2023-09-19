@@ -77,7 +77,7 @@ extrac.prec.ftre <- function(ssp, mdl){
   tbls
   p_load(xlsx, readx, openxlsx)
   tbls <- as.data.frame(tbls)
-  write.xlsx(tbls, glue('./data/tbl/values-sts_{basename(mdl)}_prec-ftre-{basename(dirs.ssps)}.xlsx'))
+  openxlsx::write.xlsx(x = tbls, file = glue('./data/tbl/values-sts_{basename(mdl)}_prec-ftre-{basename(dirs.ssps)}.xlsx'))
   cat('Done!\n')
  
 }

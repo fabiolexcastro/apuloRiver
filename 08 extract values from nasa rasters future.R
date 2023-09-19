@@ -99,7 +99,7 @@ prec.mdl5.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[5])
 # Temperature -------------------------------------------------------------
 extract.tasm.ftre <- function(ssp, mdl){
   
-  var <- 'tmax' # Correr y comentar
+  var <- 'tasmax' # Correr y comentar
   dir <- dirs.ssps[1] # Correr y comentar
   mdl <- mdls[1] # Correr y comentar
   
@@ -113,6 +113,32 @@ extract.tasm.ftre <- function(ssp, mdl){
     grep('down',., value = T) %>% 
     dir_ls(., regexp = '.tif$') %>% 
     as.character()
+  
+  tbls <- map(.x = 1:length(fles), .f = function(i){
+    
+    # i <- 1 # Correr y comentar
+    
+    cat('To make the year number: ', i, '\n')
+    fle <- fles[i] 
+    rst <- terra::rast(fle)
+    rst <- ifel(rst < 0, 0, rst)
+    plot(rst)
+    
+    vls <- map(.x = 1:nlyr(rst), .f = function(x){
+      rst[[x]] %>%
+        terra::extract(., tble[,c('Long_', 'Lat')]) %>% 
+        as_tibble() %>% 
+        gather(var, value, -ID)
+    }) %>% 
+      bind_rows()
+    
+    vls <- mutate(vls, value = ifelse(is.na(value), 0, value))
+    vls <- mutate(vls, model = basename(mdl), date = var)
+    vls <- mutate(vls, var = 'prec')
+    vls <- spread(vls, ID, value)
+    return(vls)
+    
+  })
   
 }
 

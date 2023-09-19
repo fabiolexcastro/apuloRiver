@@ -33,7 +33,7 @@ mdls <- dir_ls(dirs.ssps)[1:5]
 # Precipitation -----------------------------------------------------------
 extrac.prec.ftre <- function(ssp, mdl){
   
-  # dir <- dirs.ssps[1] # Correr y comentar
+  # ssp <- 'ssp245' # Correr y comentar
   # mdl <- mdls[1] # Correr y comentar 
   
   fles <- dirs.ssps %>% 

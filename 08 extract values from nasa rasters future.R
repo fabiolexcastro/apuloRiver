@@ -108,7 +108,7 @@ extract.tasm.ftre <- function(ssp, mdl){
     grep(mdl, ., value = T) %>% 
     as.character() %>% 
     dir_ls() %>% 
-    grep('pr', ., value = T) %>% 
+    grep(var, ., value = T) %>% 
     dir_ls(type = 'directory') %>% 
     grep('down',., value = T) %>% 
     dir_ls(., regexp = '.tif$') %>% 

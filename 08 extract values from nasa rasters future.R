@@ -75,6 +75,9 @@ extrac.prec.ftre <- function(ssp, mdl){
     yea <- pull(vls, 5) %>% str_sub(., 1, 4) %>% unique()
     prd <- prds %>% filter(hist == yea) %>% pull(3) %>% unique()
     
+    dts.raw <- time(rst)
+    
+    
     vls <- mutate(vls, value = ifelse(is.na(value), 0, value))
     vls <- mutate(vls, model = basename(mdl), date = var)
     vls <- mutate(vls, var = 'prec')

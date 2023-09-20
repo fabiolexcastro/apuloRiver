@@ -27,6 +27,12 @@ vars <- c('pr', 'tasmax', 'tasmin')
 path.ftre <- './data/tif/nasa/cmip6'
 dirs.ssps <- dir_ls(path.ftre, type = 'directory') %>% as.character()
 mdls <- dir_ls(dirs.ssps)[1:5]
+mdls <- basename(mdls)
+
+# To check the periods
+prds <- tibble(hist = c(yrs.hst.raw, yrs.hst.raw, 2010:2014), 
+               hist_raw = c(yrs.hst, yrs.hst, 2010:2014), 
+               ftre = c(2015:(2015+40), 2055:2095, 2096:2100))
 
 # Functions  --------------------------------------------------------------
 
@@ -102,7 +108,7 @@ prec.mdl5.2 <- extrac.prec.hist(ssp = ssps[2], mdl = mdls[5])
 extract.tasm.ftre <- function(var, ssp, mdl){
   
   # var <- 'tasmax' # Correr y comentar
-  # sp <- 'ssp245' # Correr y comentar
+  # ssp <- 'ssp245' # Correr y comentar
   # mdl <- mdls[1] # Correr y comentar
   
   fles <- dirs.ssps %>% 

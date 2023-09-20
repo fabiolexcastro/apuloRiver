@@ -87,7 +87,7 @@ extrac.prec.ftre <- function(ssp, mdl){
     yea <- as.numeric(yea)
     sqn <- seq(as.Date(glue('{yea}-01-01'), format = '%Y-%m-%d'), as.Date(glue('{yea}-12-31'), format = '%Y-%m-%d'), by = 'day')
     
-    
+    vls <- mutate(vls, var = sqn)
     vls <- mutate(vls, value = ifelse(is.na(value), 0, value))
     vls <- mutate(vls, model = basename(mdl), date = var)
     vls <- mutate(vls, var = 'prec')

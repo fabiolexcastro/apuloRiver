@@ -30,8 +30,8 @@ mdls <- dir_ls(dirs.ssps)[1:5]
 mdls <- basename(mdls)
 
 # To check the periods
-prds <- tibble(hist = c(yrs.hst.raw, yrs.hst.raw, 2010:2014), 
-               hist_raw = c(yrs.hst, yrs.hst, 2010:2014), 
+prds <- tibble(hist = c(1974:2014, 1974:2014, 2010:2014), 
+               hist_raw = c(1974:2014, 1974:2014, 2010:2014), 
                ftre = c(2015:(2015+40), 2055:2095, 2096:2100))
 
 # Functions  --------------------------------------------------------------

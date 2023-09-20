@@ -90,7 +90,7 @@ extrac.prec.ftre <- function(ssp, mdl){
     
     vls <- spread(vls, ID, value)
     vls <- mutate(vls, var = sqn)
-    vls <- gather(vls, variable, value, -var)
+    vls <- gather(vls, ID, value, -var)
     vls <- mutate(vls, value = ifelse(is.na(value), 0, value))
     vls <- mutate(vls, model = basename(mdl), date = var)
     vls <- mutate(vls, var = 'prec')

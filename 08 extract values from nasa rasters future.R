@@ -77,10 +77,11 @@ extrac.prec.ftre <- function(ssp, mdl){
     
     dts.raw <- time(rst)
     
-    if(length(dts.raw) == 365){
+    if(length(sqn) == 365){
       cat('Not leap year')
     } else {
       cat('Leap year')
+      sqn <- sqn[-grep('-02-29', sqn, value = F)]
     }
     
     yea <- prds[i, 3]

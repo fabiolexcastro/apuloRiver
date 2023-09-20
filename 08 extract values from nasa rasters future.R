@@ -83,6 +83,7 @@ extrac.prec.ftre <- function(ssp, mdl){
       cat('Leap year')
     }
     
+    yea <- prds[i, 3]
     
     
     vls <- mutate(vls, value = ifelse(is.na(value), 0, value))

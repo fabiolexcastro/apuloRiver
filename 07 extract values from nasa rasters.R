@@ -108,6 +108,8 @@ extrac.prec.hist <- function(dir){
       dt <- dts[[i]]  
     }
     
+    dt <- dts[[i]]
+    
     tb <- mutate(tb, date = dt)
     cat('Date added\t')
     return(tb)

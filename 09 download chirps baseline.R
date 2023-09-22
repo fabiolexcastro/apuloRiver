@@ -27,3 +27,8 @@ terra::writeRaster(x = chrp, filename = './tif/chirps/raw/chirps_apulo-bsin.tif'
 
 # Read the points ---------------------------------------------------------
 pnts <- read.xlsx('./data/tbl/Subecuencas Coordenadas.xlsx')
+pnts <- dplyr::select(pnts, Long_, Lat, Subbasin)
+
+plot(chrp[[5]])
+points(pnts$Long_, pnts$Lat, pch = 16, col = 'red')
+

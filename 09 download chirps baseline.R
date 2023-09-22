@@ -32,3 +32,7 @@ pnts <- dplyr::select(pnts, Long_, Lat, Subbasin)
 plot(chrp[[5]])
 points(pnts$Long_, pnts$Lat, pch = 16, col = 'red')
 
+clls <- terra::extract(chrp[[5]], pnts[,c('Long_', 'Lat')], cell = T)
+clls
+
+

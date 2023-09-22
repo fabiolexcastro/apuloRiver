@@ -25,3 +25,5 @@ chrp <- chrp[[1]]
 # Write  ------------------------------------------------------------------
 terra::writeRaster(x = chrp, filename = './tif/chirps/raw/chirps_apulo-bsin.tif', overwrite = TRUE)
 
+# Read the points ---------------------------------------------------------
+pnts <- read.xlsx('./data/tbl/Subecuencas Coordenadas.xlsx')

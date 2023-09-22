@@ -41,7 +41,7 @@ dtes <- seq(as.Date('1983-01-01', format = '%Y-%m-%d'), as.Date('2014-12-31', fo
 chrx <- get_chirts(object = chrp, dates = dtes, var = 'Tmax', as.raster = TRUE)
 
 
-
+#
 
 
 

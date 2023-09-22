@@ -22,4 +22,6 @@ bsin <- terra::vect('../shp/Cuenca/Cuenca_Río_Apulo.shp')
 chrp <- climateR::getCHIRPS(AOI = st_as_sf(bsin), startDate = '1983-01-01', endDate = '2014-12-31')
 chrp <- chrp[[1]]
 
+# Write  ------------------------------------------------------------------
+terra::writeRaster(x = chrp, filename = './tif/chirps/raw/chirps_apulo-bsin.tif', overwrite = TRUE)
 

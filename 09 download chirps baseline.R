@@ -37,8 +37,12 @@ clls
 nlyr(chrp)
 
 # Temperature -------------------------------------------------------------
+
 dtes <- seq(as.Date('1983-01-01', format = '%Y-%m-%d'), as.Date('2014-12-31', format = '%Y-%m-%d'), by = 'day')
+dtes <- seq(as.Date('1983-01-01', format = '%Y-%m-%d'), as.Date('1983-12-31', format = '%Y-%m-%d'), by = 'day')
+
 chrx <- get_chirts(object = bsin, dates = dtes, var = 'Tmax', as.raster = TRUE)
+
 
 
 #

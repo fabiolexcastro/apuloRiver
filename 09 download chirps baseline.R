@@ -6,12 +6,12 @@
 
 # Load libraries ----------------------------------------------------------
 library(pacman)
-pacman::p_load(elevatr, spatialEco, terra, RSAGA, fs, sf, readxl, openxlsx, tidyverse, glue, gtools, RColorBrewer)
+pacman::p_load(elevatr, remotes, chirps, spatialEco, terra, RSAGA, fs, sf, readxl, openxlsx, tidyverse, glue, gtools, RColorBrewer)
 
-install.packages('chirps')
+# install.packages('chirps')
 library(chirps)
 
-library(remotes)
+library()
 remotes::install_github("mikejohnson51/climateR")
 
 g <- gc(reset = TRUE)

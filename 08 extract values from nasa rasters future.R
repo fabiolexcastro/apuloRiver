@@ -176,7 +176,7 @@ extract.tasm.ftre <- function(var, ssp, mdl){
     }
     
     vls <- mutate(vls, date = sqn)
-    vls <- dplyr::select(vls, -var)
+    vls <- dplyr::select(vls, -variable)
     return(vls)
     
   })

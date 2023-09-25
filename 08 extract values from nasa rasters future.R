@@ -170,12 +170,13 @@ extract.tasm.ftre <- function(var, ssp, mdl){
     vls <- mutate(vls, variable = var)
     vls <- spread(vls, ID, value)
 
-    if(nrow(vls) == 365 & length(sqn) == 366){
+    if(nrow(vls) == 365 & length(sqn) == 365){
       print('Leap year 366')
       vls <- vls[-grep('02-29', vls$var, value = FALSE),]
     }
     
     vls <- mutate(vls, date = sqn)
+    vls <- dplyr::select(vls, -var)
     return(vls)
     
   })

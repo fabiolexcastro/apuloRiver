@@ -149,7 +149,6 @@ extract.tasm.ftre <- function(var, ssp, mdl){
     cat('To make the year number: ', i, '\n')
     fle <- fles[i] 
     rst <- terra::rast(fle)
-    rst <- ifel(rst < 0, 0, rst)
     plot(rst)
     
     vls <- map(.x = 1:nlyr(rst), .f = function(x){
@@ -178,6 +177,7 @@ extract.tasm.ftre <- function(var, ssp, mdl){
     vls <- mutate(vls, date = sqn)
     vls <- dplyr::select(vls, -variable)
     vls <- mutate(vls, varb = var)
+    vls <- vls[,-1]
     return(vls)
     
   })

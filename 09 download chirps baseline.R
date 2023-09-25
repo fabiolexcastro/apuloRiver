@@ -37,15 +37,23 @@ clls
 nlyr(chrp)
 
 # Temperature -------------------------------------------------------------
-
 dtes <- seq(as.Date('1983-01-01', format = '%Y-%m-%d'), as.Date('2014-12-31', format = '%Y-%m-%d'), by = 'day')
-dtes <- seq(as.Date('1983-01-01', format = '%Y-%m-%d'), as.Date('1983-12-31', format = '%Y-%m-%d'), by = 'day')
+path <- 'https://data.chc.ucsb.edu/products/CHIRTSdaily/v1.0/global_tifs_p05/'
+vars <- c('Tmin', 'Tmax')
 
-chrx <- get_chirts(object = bsin, dates = dtes, var = 'Tmax', as.raster = TRUE)
-
-
-
-#
+down.chrt <- function(varb, year){
+  
+  varb <- vars[1]
+  year <- 1983
+  
+  cat('To process: ', varb, ' ', year, '\n')
+  seqn <- seq(as.Date(glue('{year}-01-01'), format = '%Y-%m-%d'), as.Date(glue('{year}-12-31'), format = '%Y-%m-%d'), by = 'day')
+  seqn <- gsub('-', '.', seqn)
+  urls <- as.character(glue('{path}/{varb}/{year}/{varb}.{seqn}.tif'))
+  
+  
+  
+}
 
 
 

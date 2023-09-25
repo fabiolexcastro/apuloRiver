@@ -168,8 +168,14 @@ extract.tasm.ftre <- function(var, ssp, mdl){
     vls <- mutate(vls, value = ifelse(is.na(value), 0, value))
     vls <- mutate(vls, model = basename(mdl))
     vls <- mutate(vls, variable = var)
-    vls <- mutate(vls, date = sqn)
     vls <- spread(vls, ID, value)
+
+    if(nrow(vls) == 365 & length(sqn) == 366){
+      print('Leap year 366')
+      vls <- vls[-grep('02-29', vls$var, value = FALSE),]
+    }
+    
+    vls <- mutate(vls, date = sqn)
     return(vls)
     
   })

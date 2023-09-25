@@ -160,6 +160,11 @@ extract.tasm.ftre <- function(var, ssp, mdl){
     }) %>% 
       bind_rows()
     
+    # Tidy the years
+    prd <- prds[i,]
+    prd
+    
+    
     vls <- mutate(vls, value = ifelse(is.na(value), 0, value))
     vls <- mutate(vls, model = basename(mdl), date = var)
     vls <- mutate(vls, var = 'prec')

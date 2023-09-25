@@ -162,7 +162,7 @@ extract.tasm.ftre <- function(var, ssp, mdl){
     
     # Tidy the years
     prd <- prds[i,]
-    prd
+    yea <- prd$ftre %>% as.numeric()
     
     
     vls <- mutate(vls, value = ifelse(is.na(value), 0, value))

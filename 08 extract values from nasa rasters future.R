@@ -163,6 +163,7 @@ extract.tasm.ftre <- function(var, ssp, mdl){
     # Tidy the years
     prd <- prds[i,]
     yea <- prd$ftre %>% as.numeric()
+    sqn <- seq(as.Date(glue('{yea}-01-01'), format = '%Y-%m-%d'), as.Date(glue('{yea}-12-31'), format = '%Y-%m-%d'), by = 'day')
     
     
     vls <- mutate(vls, value = ifelse(is.na(value), 0, value))

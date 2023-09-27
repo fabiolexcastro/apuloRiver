@@ -37,10 +37,11 @@ extract.values <- function(yr){
   yr <- year[1]
   
   rst <- rstr[[grep(paste0(yr, '-'), names(rstr), value = FALSE)]]
-  vls <- terra::extract(rst, pnts[,2:3])
+  vls <- terra::extract(rst, pnts[,1:2])
   vls <- cbind(pnts, vls)
   vls <- as_tibble(vls)
   vls <- gather(vls, var, value, -Long_, -Lat, -Subbasin, -ID)
+  vls <- dplyr::select(vls, -ID, Subbasin, Lon = Long_, Lat = Lat, var, value)
   
   
 }

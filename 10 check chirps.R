@@ -40,6 +40,7 @@ extract.values <- function(yr){
   vls <- terra::extract(rst, pnts[,2:3])
   vls <- cbind(pnts, vls)
   vls <- as_tibble(vls)
+  vls <- gather(vls, var, value, -Long_, -Lat, -Subbasin, -ID)
   
   
 }

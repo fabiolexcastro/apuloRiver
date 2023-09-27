@@ -4,7 +4,7 @@
 
 # Load libraries
 require(pacman)
-pacman::p_load(terra, fs, sf, tidyverse, rgeos, gtools, stringr, lubridate)
+pacman::p_load(terra, fs, sf, tidyverse, rgeos, gtools, readxl, openxlsx, stringr, lubridate)
 
 g <- gc(reset = T)
 rm(list = ls())

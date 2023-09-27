@@ -63,7 +63,11 @@ down.chrt <- function(varb, year){
     rst <- terra::rast(out)
     plot(rst)
     rst <- terra::crop(rst, bsin)
-    terra::writeRaster(x = rst, filename = glue('../data/tif/chir'))
+    terra::writeRaster(x = rst, filename = glue('../data/tif/chirts/bsl/raw/bsin_{basename(out)}'), overwrite = TRUE)
+    
+    file.remove(out)
+    rm(lnk, out, rst)
+    gc(reset = TRUE)
     
   })
   

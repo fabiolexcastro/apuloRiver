@@ -41,15 +41,15 @@ vars <- c('Tmin', 'Tmax')
 
 down.chrt <- function(varb, year){
   
-  varb <- vars[1]
-  year <- 1983
+  # varb <- vars[1]
+  # year <- 1983
   
   cat('To process: ', varb, ' ', year, '\n')
   seqn <- seq(as.Date(glue('{year}-01-01'), format = '%Y-%m-%d'), as.Date(glue('{year}-12-31'), format = '%Y-%m-%d'), by = 'day')
   seqn <- gsub('-', '.', seqn)
-  urls <- as.character(glue('{path}/{varb}/{year}/{varb}.{seqn}.tif'))
+  urls <- as.character(glue('{path}{varb}/{year}/{varb}.{seqn}.tif'))
   
-  map(.x = 1:lenght(url), .f = function(u){
+  map(.x = 1:length(urls), .f = function(u){
     
     cat('To download: ', basename(urls[u]), '\n')
     lnk <- urls[u]
@@ -71,9 +71,24 @@ down.chrt <- function(varb, year){
     
   })
   
+  cat('Finish!\n')
   
   
 }
+
+# To download CHIRT - All in one step
+yrs <- 1974:2014
+
+# Minimum temperature
+map(.x = 1:length(year), .f = function(i){
+  down.chrt(varb = 'Tmin', year = yrs[i])  
+})
+
+# Maximum temperature
+map(.x = 1:length(year), .f = function(i){
+  down.chrt(varb = 'Tmax', year = yrs[i])  
+})
+
 
 
 

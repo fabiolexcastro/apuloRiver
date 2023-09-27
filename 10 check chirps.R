@@ -24,5 +24,7 @@ pnts <- dplyr::select(pnts, Long_, Lat, Subbasin)
 
 head(pnts)
 
+# To extract the values ---------------------------------------------------
+names(rstr)
 
 

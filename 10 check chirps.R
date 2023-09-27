@@ -53,6 +53,8 @@ extract.values <- function(yr){
 
 # To apply the function ---------------------------------------------------
 tbls <- map(.x = year, .f = extract.values) #
+tbls <- bind_rows(tbls)
 
+write.csv(tbls, './data/tbl/values_chirps-bsln_raw.csv', row.names = FALSE)
 
 

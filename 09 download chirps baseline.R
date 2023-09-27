@@ -53,7 +53,7 @@ down.chrt <- function(varb, year){
     
     cat('To download: ', basename(urls[u]), '\n')
     lnk <- urls[u]
-    out <- glue('../data/tif/chirps/bsl/raw')
+    out <- glue('../data/tif/chirts/bsl/raw')
     
     dir_create(out)
     out <- glue('{out}/{basename(lnk)}')
@@ -62,7 +62,8 @@ down.chrt <- function(varb, year){
     
     rst <- terra::rast(out)
     plot(rst)
-    
+    rst <- terra::crop(rst, bsin)
+    terra::writeRaster(x = rst, filename = glue('../data/tif/chir'))
     
   })
   

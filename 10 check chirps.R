@@ -26,5 +26,5 @@ head(pnts)
 
 # To extract the values ---------------------------------------------------
 names(rstr)
-
+dtes <- names(rstr) %>% str_split(., pattern = '_')
 

@@ -26,6 +26,7 @@ head(pnts)
 
 # To extract the values ---------------------------------------------------
 names(rstr)
-dtes <- names(rstr) %>% str_split(., pattern = '_') 
-dtes <- map(dtes, 2)
+dtes <- names(rstr) %>% str_split(., pattern = '_') %>% map(., 2)
+dtes <- unlist(dtes)
+year <- str_sub(dtes, 1, 4)
 

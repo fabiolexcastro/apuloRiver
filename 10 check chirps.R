@@ -17,3 +17,12 @@ rstr <- rast(path)
 
 rstr
 plot(rstr)
+
+# Points
+pnts <- read.xlsx('./data/tbl/Subecuencas Coordenadas.xlsx')
+pnts <- dplyr::select(pnts, Long_, Lat, Subbasin)
+
+head(pnts)
+
+
+

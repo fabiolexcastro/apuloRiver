@@ -1,6 +1,5 @@
 
 
-
 ## Extract values from the points
 ## September 19 th 2023
 
@@ -9,7 +8,6 @@ library(pacman)
 pacman::p_load(elevatr, remotes, chirps, spatialEco, terra, RSAGA, fs, sf, readxl, openxlsx, tidyverse, glue, gtools, RColorBrewer)
 
 # remotes::install_github("mikejohnson51/climateR")
-
 g <- gc(reset = TRUE)
 rm(list = ls())
 options(scipen = 999, warn = -1)
@@ -50,6 +48,23 @@ down.chrt <- function(varb, year){
   seqn <- seq(as.Date(glue('{year}-01-01'), format = '%Y-%m-%d'), as.Date(glue('{year}-12-31'), format = '%Y-%m-%d'), by = 'day')
   seqn <- gsub('-', '.', seqn)
   urls <- as.character(glue('{path}/{varb}/{year}/{varb}.{seqn}.tif'))
+  
+  map(.x = 1:lenght(url), .f = function(u){
+    
+    cat('To download: ', basename(urls[u]), '\n')
+    lnk <- urls[u]
+    out <- glue('../data/tif/chirps/bsl/raw')
+    
+    dir_create(out)
+    out <- glue('{out}/{basename(lnk)}')
+    
+    download.file(url = lnk, destfile = out, mode = 'wb')
+    
+    rst <- terra::rast(out)
+    plot(rst)
+    
+    
+  })
   
   
   

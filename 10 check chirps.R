@@ -42,6 +42,8 @@ extract.values <- function(yr){
   vls <- as_tibble(vls)
   vls <- gather(vls, var, value, -Long_, -Lat, -Subbasin, -ID)
   vls <- dplyr::select(vls, -ID, Subbasin, Lon = Long_, Lat = Lat, var, value)
+  vls <- mutate(vls, date = str_sub(var, 8, nchar(var)))
+  
   
   
 }

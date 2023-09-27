@@ -31,3 +31,16 @@ dtes <- unlist(dtes)
 year <- str_sub(dtes, 1, 4)
 year <- unique(year)
 
+# Function ----------------------------------------------------------------
+extract.values <- function(yr){
+  
+  yr <- year[1]
+  
+  rst <- rstr[[grep(paste0(yr, '-'), names(rstr), value = FALSE)]]
+  rst
+  
+  
+  
+}
+
+

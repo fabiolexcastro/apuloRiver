@@ -37,8 +37,9 @@ extract.values <- function(yr){
   yr <- year[1]
   
   rst <- rstr[[grep(paste0(yr, '-'), names(rstr), value = FALSE)]]
-  rst
-  
+  vls <- terra::extract(rst, pnts[,2:3])
+  vls <- cbind(pnts, vls)
+  vls <- as_tibble(vls)
   
   
 }

@@ -26,7 +26,8 @@ extr.vles <- function(yr){
   
   cat('To process: ', yr, '\n')
   fls <- grep(yr, fles, value = T)
-  fls
-  
+  fls <- as.character(fls)
+  rst <- rast(fls)
+  plot(rst)
   
 }

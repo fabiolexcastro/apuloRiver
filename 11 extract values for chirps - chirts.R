@@ -54,5 +54,6 @@ tmin.vles <- map(.x = 1:length(year), .f = function(i){
   extr.vles(yr = year[i], vr = 'Tmin')
 })
 
+tmin.vles <- bind_rows(tmin.vles)
 write.csv(tmin.vles, './tbl_chirts-tmin.csv', row.names = FALSE)#
 

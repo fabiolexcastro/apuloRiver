@@ -69,6 +69,8 @@ down.chrt <- function(varb, year){
     rm(lnk, out, rst)
     gc(reset = TRUE)
     
+    Sys.sleep(3)
+    
   })
   
   cat('Finish!\n')

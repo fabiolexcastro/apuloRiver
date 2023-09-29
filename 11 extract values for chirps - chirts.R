@@ -13,9 +13,7 @@ options(scipen = 999, warn = -1)
 bsin <- terra::vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
 path.chrt <- '../data/tif/chirts/bsl/raw'
 fles <- dir_ls(path.chrt, regexp = '.tif$')
+year <- 1983:2014
+pnts <- read.xlsx('./data/tbl/Subecuencas Coordenadas.xlsx')
 
-
-
-
-
-
+head(pnts)

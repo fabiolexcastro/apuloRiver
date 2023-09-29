@@ -11,7 +11,7 @@ options(scipen = 999, warn = -1)
 
 # Load data ---------------------------------------------------------------
 bsin <- terra::vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
-path.chrt <- './data/tif/chirts/bsl/raw'
+path.chrt <- '../data/tif/chirts/bsl/raw'
 fles <- dir_ls(path.chrt, regexp = '.tif$')
 
 

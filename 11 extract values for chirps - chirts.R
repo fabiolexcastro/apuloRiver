@@ -37,6 +37,7 @@ extr.vles <- function(yr, vr){
   library(stringr)
   vls <- gather(vls, var, value, -Subbasin, -Long_, -Lat, -ID)
   vls <- mutate(vls, date = str_sub(var, 6, nchar(var)))
+  vls <- mutate(vls, date = as.Date(date, format = '%Y.%m.%d'))
   
   
 }

@@ -30,6 +30,8 @@ extr.vles <- function(yr, vr){
   fls <- grep(vr, fls, value = T)
   fls <- as.character(fls)
   rst <- rast(fls)
-  vls <- terra::extract(v)
+  vls <- terra::extract(rst, pnts[,c('Long_', 'Lat')])
+  head(vls)
+  
   
 }

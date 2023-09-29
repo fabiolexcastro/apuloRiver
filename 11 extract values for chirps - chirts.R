@@ -33,6 +33,7 @@ extr.vles <- function(yr, vr){
   vls <- terra::extract(rst, pnts[,c('Long_', 'Lat')])
   vls <- cbind(pnts, vls)
   vls <- as_tibble(vls)
+  vls <- gather(vls, var, value, -Subbasin, -Long_, -Lat, -ID)
   
   
   

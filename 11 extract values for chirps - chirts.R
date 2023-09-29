@@ -4,6 +4,7 @@
 library(pacman)
 pacman::p_load(elevatr, remotes, chirps, spatialEco, terra, RSAGA, fs, sf, readxl, openxlsx, tidyverse, glue, gtools, RColorBrewer)
 
+
 # remotes::install_github("mikejohnson51/climateR")
 g <- gc(reset = TRUE)
 rm(list = ls())
@@ -23,12 +24,13 @@ pnts <- pnts %>% dplyr::select(Subbasin, Long_, Lat)
 # Functions to use --------------------------------------------------------
 extr.vles <- function(yr, vr){
   
-  # yr <- 1983 # Correr y borrar
-  # vr <- 'Tmin'
+  yr <- 1983 # Correr y borrar
+  vr <- 'Tmin'
   
   cat('To process: ', yr, '\n')
   fls <- grep(yr, fles, value = T)
   fls <- grep(vr, fls, value = T)
+  fls <- grep('bsin_', fls, value = T)
   fls <- as.character(fls)
   rst <- rast(fls)
   vls <- terra::extract(rst, pnts[,c('Long_', 'Lat')])
@@ -49,6 +51,6 @@ extr.vles <- function(yr, vr){
 
 # To extract the values  --------------------------------------------------
 tmin.vles <- map(.x = 1:length(year), .f = function(i){
-  extr.vles(yr = year[i], var = 'Tmin')
+  extr.vles(yr = year[i], vr = 'Tmin')
 })
 

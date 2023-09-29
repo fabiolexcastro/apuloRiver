@@ -31,7 +31,9 @@ extr.vles <- function(yr, vr){
   fls <- as.character(fls)
   rst <- rast(fls)
   vls <- terra::extract(rst, pnts[,c('Long_', 'Lat')])
-  head(vls)
+  vls <- cbind(pnts, vls)
+  vls <- as_tibble(vls)
+  
   
   
 }

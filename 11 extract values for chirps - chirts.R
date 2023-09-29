@@ -40,5 +40,8 @@ extr.vles <- function(yr, vr){
   vls <- mutate(vls, date = as.Date(date, format = '%Y.%m.%d'))
   vls <- mutate(vls, variable = str_sub(var, 1, 4))
   vls <- mutate(vls, variable = tolower(variable))
+  vls <- dplyr::select(vls, Subbasin, Long_, Lat, variable, date, value)
+  cat('Done!\n')
+  return(vls)
   
 }

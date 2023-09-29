@@ -14,6 +14,8 @@ bsin <- terra::vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
 path.chrt <- '../data/tif/chirts/bsl/raw'
 fles <- dir_ls(path.chrt, regexp = '.tif$')
 year <- 1983:2014
-pnts <- read.xlsx('./data/tbl/Subecuencas Coordenadas.xlsx')
+pnts <- read.xlsx('./data/tbl/Subcuencas Coordenadas.xlsx')
 
 head(pnts)
+
+pnts <- pnts %>% dplyr::select(Subbasin, Long_, Lat)

@@ -19,3 +19,14 @@ pnts <- read.xlsx('./data/tbl/Subcuencas Coordenadas.xlsx')
 head(pnts)
 
 pnts <- pnts %>% dplyr::select(Subbasin, Long_, Lat)
+
+extr.vles <- function(yr){
+  
+  yr <- 1983 # Correr y borrar
+  
+  cat('To process: ', yr, '\n')
+  fls <- grep(yr, fles, value = T)
+  fls
+  
+  
+}

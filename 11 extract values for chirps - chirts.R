@@ -35,7 +35,7 @@ extr.vles <- function(yr, vr){
   vls <- as_tibble(vls)
   library(tidyr)
   vls <- gather(vls, var, value, -Subbasin, -Long_, -Lat, -ID)
-  
+  vls <- mutate(vls, date = str_sub(var, 6, nchar(var)))
   
   
 }

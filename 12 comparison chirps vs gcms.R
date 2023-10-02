@@ -51,6 +51,8 @@ mdel <- prec.bsln %>% dplyr::select(model, date, `1`, `2`, `3`, `4`)
 mdel <- mdel %>% gather(Subbasin, value, -model, -date)
 
 obsr <- mutate(obsr, model = 'Baseline', type = 'Real')
+obsr <- relocate(obsr, model, type, date, Subbasin, value)
+obsr
 mdel <- mutate(obsr, type = 'Modelled')
 prec <- bind_rows(obsr, mdel)
 write.xlsx(prec, './data/values_stts_GCMs-BSLN_prec.xlsx')

@@ -29,9 +29,11 @@ prec.bsln <- map(.x = 1:length(prec.bsln), .f = function(i){
   tble <- as_tibble(tble)
   tble[is.na(tble)] <- 0
   cat('Done!\n')
+  return(tble)
   
 })
 
+prec.bsln <- bind_rows(prec.bsln)
 
   
   

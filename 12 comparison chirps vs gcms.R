@@ -27,6 +27,8 @@ prec.bsln <- map(.x = prec.bsln, .f = function(i){
   file <- prec.bsln[i]
   tble <- openxlsx::read.xlsx(file)
   dtes <- openxlsx::convertToDate(tble$date)
+  tble <- mutate(tble, date = dtes)
+  glimpse(tble)
   
 })
 

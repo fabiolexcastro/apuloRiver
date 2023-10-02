@@ -13,4 +13,7 @@ path <- './data/tbl'
 fles <- dir_ls(path)
 fles <- as.character(fles)
 
-
+# Precipitation -----------------------------------------------------------
+fles.prec <- grep('prec', fles, value = T)
+prec.bsln <- grep('prec-hist', fles.prec, value = T)
+prec.ftre <- grep('prec-ftre', fles.prec, value = T)

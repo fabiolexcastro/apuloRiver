@@ -24,8 +24,8 @@ pnts <- pnts %>% dplyr::select(Subbasin, Long_, Lat)
 # Functions to use --------------------------------------------------------
 extr.vles <- function(yr, vr){
   
-  yr <- 1983 # Correr y borrar
-  vr <- 'Tmin'
+  # yr <- 1983 # Correr y borrar
+  # vr <- 'Tmin'
   
   cat('To process: ', yr, '\n')
   fls <- grep(yr, fles, value = T)
@@ -50,10 +50,21 @@ extr.vles <- function(yr, vr){
 }
 
 # To extract the values  --------------------------------------------------
+
+# Minimum temperatura
 tmin.vles <- map(.x = 1:length(year), .f = function(i){
   extr.vles(yr = year[i], vr = 'Tmin')
 })
 
 tmin.vles <- bind_rows(tmin.vles)
 write.csv(tmin.vles, './tbl_chirts-tmin.csv', row.names = FALSE)#
+
+# Maximum temperature 
+tmax.vles <- map(.x = 1:length(year), .f = function(i){
+  extr.vles(yr = year[i], vr = 'Tmax')
+})
+tmax.vles <- bind_rows(vles)
+write.csv(tmax.vles, './tbl_chirts-tmax.csv', row.names = FALSE)
+
+
 

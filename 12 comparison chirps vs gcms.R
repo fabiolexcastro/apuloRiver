@@ -19,7 +19,7 @@ prec.bsln <- grep('prec-hist', fles.prec, value = T)
 prec.ftre <- grep('prec-ftre', fles.prec, value = T)
 
 # Baseline 
-prec.bsln <- map(.x = prec.bsln, .f = function(i){
+prec.bsln <- map(.x = 1:length(prec.bsln), .f = function(i){
   
   cat('To process: ', i, '\n')
   file <- prec.bsln[i]

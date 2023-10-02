@@ -46,6 +46,12 @@ c('Lon', 'Lat', 'Subbasin', 'value', 'date')
 colnames(prec.chrp)
 colnames(prec.bsln)
 
+obsr <- prec.chrp %>% dplyr::select(Subbasin, date, value)
+mdel <- prec.bsln %>% dplyr::select(model, date, `1`, `2`, `3`, `4`)
+
+
+
+
 
 
 

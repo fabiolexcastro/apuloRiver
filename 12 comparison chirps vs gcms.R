@@ -37,8 +37,8 @@ prec.bsln <- bind_rows(prec.bsln)
 write.xlsx(prec.bsln, './data/tbl/values-sts_GCMs_prec-hist.xlsx')
 
 prec.chrp <- grep('values_chirps-bsln_raw.csv', fles, value = T)
-prec.chrp
-
+prec.chrp <- read.xlsx(prec.chrp)
+head(prec.chrp)
 
 
 

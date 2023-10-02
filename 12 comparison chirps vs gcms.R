@@ -34,5 +34,11 @@ prec.bsln <- map(.x = 1:length(prec.bsln), .f = function(i){
 })
 
 prec.bsln <- bind_rows(prec.bsln)
-
 write.xlsx(prec.bsln, './data/tbl/values-sts_GCMs_prec-hist.xlsx')
+
+prec.chrp <- grep('values_chirps-bsln_raw.csv', fles, value = T)
+prec.chrp
+
+
+
+

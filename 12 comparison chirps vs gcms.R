@@ -21,8 +21,6 @@ prec.ftre <- grep('prec-ftre', fles.prec, value = T)
 # Baseline 
 prec.bsln <- map(.x = prec.bsln, .f = function(i){
   
-  i <- 1 # Correr y borrar
-  
   cat('To process: ', i, '\n')
   file <- prec.bsln[i]
   tble <- openxlsx::read.xlsx(file)
@@ -30,11 +28,11 @@ prec.bsln <- map(.x = prec.bsln, .f = function(i){
   tble <- mutate(tble, date = dtes)
   tble <- as_tibble(tble)
   tble[is.na(tble)] <- 0
+  cat('Done!\n')
   
 })
 
-prec.bsln <- map(.x = 1:length(prec.bsln), .f = fucntion(i){
-  
+
   
   
   

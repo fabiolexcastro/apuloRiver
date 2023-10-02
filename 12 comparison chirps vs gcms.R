@@ -10,6 +10,7 @@ options(scipen = 999, warn = -1)
 
 # Load data ---------------------------------------------------------------
 path <- './data/tbl'
-fles <- dir_ls(path, regexp = '.csv$')
+fles <- dir_ls(path)
+fles <- as.character(fles)
 
 

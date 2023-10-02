@@ -39,6 +39,15 @@ write.xlsx(prec.bsln, './data/tbl/values-sts_GCMs_prec-hist.xlsx')
 prec.chrp <- grep('values_chirps-bsln_raw.csv', fles, value = T)
 prec.chrp <- read_csv(prec.chrp)
 head(prec.chrp)
+tail(prec.chrp)
+
+c('Lon', 'Lat', 'Subbasin', 'value', 'date')
+
+colnames(prec.chrp)
+colnames(prec.bsln)
+
+
+
 
 
 

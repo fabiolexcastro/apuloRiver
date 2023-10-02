@@ -49,6 +49,7 @@ colnames(prec.bsln)
 obsr <- prec.chrp %>% dplyr::select(Subbasin, date, value)
 mdel <- prec.bsln %>% dplyr::select(model, date, `1`, `2`, `3`, `4`)
 
+head(mdel)
 
 
 

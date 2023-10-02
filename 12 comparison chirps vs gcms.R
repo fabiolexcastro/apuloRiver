@@ -25,6 +25,7 @@ prec.bsln <- map(.x = prec.bsln, .f = function(i){
   
   cat('To process: ', i, '\n')
   file <- prec.bsln[i]
+  tble <- openxlsx::read.xlsx(file)
   
   
 })

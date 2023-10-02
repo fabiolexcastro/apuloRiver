@@ -52,7 +52,7 @@ mdel <- mdel %>% gather(Subbasin, value, -model, -date)
 
 obsr <- mutate(obsr, model = 'Baseline', type = 'Real')
 mdel <- mutate(obsr, type = 'Modelled')
-
+prec <- bind_rows(obsr, mdel)
 
                         
 

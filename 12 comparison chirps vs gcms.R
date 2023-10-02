@@ -35,14 +35,4 @@ prec.bsln <- map(.x = 1:length(prec.bsln), .f = function(i){
 
 prec.bsln <- bind_rows(prec.bsln)
 
-  
-  
-  
-  
-})
-
-
-
-# Future 
-prec.ftre <- map(.x = prec.ftre, .f = read.xlsx)
-
+write.xlsx(prec.bsln, './data/tbl/values-sts_GCMs_prec-hist.xlsx')

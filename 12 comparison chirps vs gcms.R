@@ -85,7 +85,7 @@ calcNASH <- function(bs){
     tb <- tb %>% dplyr::select(-type)
     tb <- tb %>% spread(model, value)
     tb <- tb %>% mutate(year = year(date))
-    
+    tb <- tb %>% filter(year >= 1983)
     tb %>% filter(date == '1974-01-01')
     
     

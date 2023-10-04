@@ -69,4 +69,16 @@ write.xlsx(prec, './data/values_stts_GCMs-BSLN_prec.xlsx')
 
 # Comparison
 p_load(hydroGOF)
+calcNASH <- function(bs){
+  
+  bs <- 1
+  cat('To process: ', bs, '\n')
+  
+  tbl <- filter(prec, Subbasin == as.character(bs))
+  tbl
+  
+  
+}
+
+
 

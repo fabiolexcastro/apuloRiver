@@ -86,7 +86,9 @@ calcNASH <- function(bs){
     tb <- tb %>% spread(model, value)
     tb <- tb %>% mutate(year = year(date))
     tb <- tb %>% filter(year >= 1983)
-    tb %>% filter(date == '1974-01-01')
+    colnames(tb) <- c('date', 'subbasin', 'mdel', 'obsr', 'year')
+    ns <- NSE(sim = pull(tb, mdel), obs = pull(tb, obsr))
+    
     
     
   })

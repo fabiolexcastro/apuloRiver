@@ -75,17 +75,15 @@ calcNASH <- function(bs){
   cat('To process: ', bs, '\n')
   
   tbl <- filter(prec, Subbasin == as.character(bs))
-  tbl
+  cmb <- tibble(obsr = 'Baseline', model = mdls)
   
-  cmb <- map_dfr(.x = 1:5, .f = function(i){
+  map(.x = 1:nrow(cmb), .f = function(i){
     
-    mdl <- mdls[i]
-    cmb <- expand.grid('Baseline', mdls)
-    cmb <- mutate(cmb, Var1 = as.character(Var1), Var2 = as.character(Var2))
-    cmb <- mutate(cmb, eq = Var1 == Var2)
-    cmb <- filter(cmb, eq != TRUE)
-    cmb <- cmb[,1:2]
-    return(cmb)
+    cm <- cmb[i,]
+    md <- cm$model
+    tb <- tbl %>% filter(model %in% c('Baseline', md))
+    tb <- tb %>% spread(model, value)
+    
     
   })
   

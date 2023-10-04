@@ -40,6 +40,7 @@ prec.bsln <- bind_rows(prec.bsln)
 unique(prec.bsln$model)
 write.xlsx(prec.bsln, './data/tbl/values-sts_GCMs_prec-hist.xlsx')
 
+# Baseline
 prec.chrp <- grep('values_chirps-bsln_raw.csv', fles, value = T)
 prec.chrp <- read_csv(prec.chrp)
 head(prec.chrp)

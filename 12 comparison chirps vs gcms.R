@@ -77,7 +77,7 @@ calcNASH <- function(bs){
   tbl <- filter(prec, Subbasin == as.character(bs))
   cmb <- tibble(obsr = 'Baseline', model = mdls)
   
-  map(.x = 1:nrow(cmb), .f = function(i){
+  nsh <- map(.x = 1:nrow(cmb), .f = function(i){
     
     cm <- cmb[i,]
     md <- cm$model
@@ -88,8 +88,9 @@ calcNASH <- function(bs){
     tb <- tb %>% filter(year >= 1983)
     colnames(tb) <- c('date', 'subbasin', 'mdel', 'obsr', 'year')
     ns <- NSE(sim = pull(tb, mdel), obs = pull(tb, obsr))
-    
-    
+    rs <- tibble(model = md, nash = ns)
+    cat('Done!\n')
+    return(rs)
     
   })
   
@@ -97,5 +98,7 @@ calcNASH <- function(bs){
   
 }
 
+
+#
 
 

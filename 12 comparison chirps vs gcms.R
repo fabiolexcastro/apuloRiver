@@ -19,6 +19,7 @@ mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
 prec.bsln <- grep('prec-hist', fles.prec, value = T)
 prec.bsln <- grep(paste0(mdls, collapse = '|'), prec.bsln, value = T)
 prec.ftre <- grep('prec-ftre', fles.prec, value = T)
+prec.ftre <- grep(paste0(mdls, collapse = '|'), prec.ftre, value = T)
 
 # Baseline 
 prec.bsln <- map(.x = 1:length(prec.bsln), .f = function(i){

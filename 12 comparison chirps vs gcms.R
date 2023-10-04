@@ -88,7 +88,9 @@ calcNASH <- function(bs){
     tb <- tb %>% filter(year >= 1983)
     colnames(tb) <- c('date', 'subbasin', 'mdel', 'obsr', 'year')
     ns <- NSE(sim = pull(tb, mdel), obs = pull(tb, obsr))
-    rs <- tibble(model = md, nash = ns)
+    rn <- rNSE(sim = pull(tb, mdel), obs = pull(tb, obsr))
+    rm <- rmse(sim = pull(tb, mdel), obs = pull(tb, obsr))
+    rs <- tibble(model = md, nash = ns, rnas = rn, rmse = rm)
     cat('Done!\n')
     return(rs)
     

@@ -15,7 +15,9 @@ fles <- as.character(fles)
 
 # Precipitation -----------------------------------------------------------
 fles.prec <- grep('prec', fles, value = T)
+mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
 prec.bsln <- grep('prec-hist', fles.prec, value = T)
+prec.bsln <- grep(paste0(mdls, collapse = '|'), prec.bsln, value = T)
 prec.ftre <- grep('prec-ftre', fles.prec, value = T)
 
 # Baseline 

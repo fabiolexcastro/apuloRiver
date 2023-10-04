@@ -94,6 +94,8 @@ calcNASH <- function(bs){
     
   })
   
+  nsh <- bind_rows(nsh)
+  
   
   
 }

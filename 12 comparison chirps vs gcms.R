@@ -68,4 +68,5 @@ prec %>% filter(Subbasin == '1' & date == '1983-01-01')
 write.xlsx(prec, './data/values_stts_GCMs-BSLN_prec.xlsx')
 
 # Comparison
+p_load(hydroGOF)
 

@@ -82,6 +82,7 @@ calcNASH <- function(bs){
     cm <- cmb[i,]
     md <- cm$model
     tb <- tbl %>% filter(model %in% c('Baseline', md))
+    tb <- tb %>% dplyr::select(-type)
     tb <- tb %>% spread(model, value)
     
     

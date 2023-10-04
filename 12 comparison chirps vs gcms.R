@@ -77,10 +77,17 @@ calcNASH <- function(bs){
   tbl <- filter(prec, Subbasin == as.character(bs))
   tbl
   
-  cmb <- expand.grid(mdls, mlds)
-  cmb <- as_tibble(cmb)
-  
-  
+  cmb <- map_dfr(.x = 1:5, .f = function(i){
+    
+    mdl <- mdls[i]
+    cmb <- expand.grid(mdl, mdls)
+    cmb <- mutate(cmb, Var1 = as.character(Var1), Var2 = as.character(Var2))
+    cmb <- mutate(cmb, eq = Var1 == Var2)
+    cmb <- filter(cmb, eq != TRUE)
+    cmb <- cmb[,1:2]
+    return(cmb)
+    
+  })
   
   
   

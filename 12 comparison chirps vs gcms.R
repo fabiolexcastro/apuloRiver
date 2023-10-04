@@ -77,6 +77,12 @@ calcNASH <- function(bs){
   tbl <- filter(prec, Subbasin == as.character(bs))
   tbl
   
+  cmb <- expand.grid(mdls, mlds)
+  cmb <- as_tibble(cmb)
+  
+  
+  
+  
   
 }
 

@@ -80,7 +80,7 @@ calcNASH <- function(bs){
   cmb <- map_dfr(.x = 1:5, .f = function(i){
     
     mdl <- mdls[i]
-    cmb <- expand.grid(mdl, mdls)
+    cmb <- expand.grid('Baseline', mdls)
     cmb <- mutate(cmb, Var1 = as.character(Var1), Var2 = as.character(Var2))
     cmb <- mutate(cmb, eq = Var1 == Var2)
     cmb <- filter(cmb, eq != TRUE)

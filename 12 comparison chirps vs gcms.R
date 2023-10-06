@@ -95,8 +95,9 @@ calcNASH <- function(bs){
   })
   
   nsh <- bind_rows(nsh)
-  
-  
+  nsh <- nsh %>% mutate(basin == bs)
+  cat('Analysis done!\n')
+  return(nsh)
   
 }
 

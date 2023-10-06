@@ -104,6 +104,8 @@ calcNASH <- function(bs){
 nash <- map(1:4, calcNASH)
 nash <- bind_rows(nash)
 
+write.csv(nash, './enviarfabio.csv')
+
 nash %>% 
   mutate(basin = as.character(basin)) %>% 
   group_by(basin) %>% 

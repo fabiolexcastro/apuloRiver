@@ -107,7 +107,7 @@ nash <- bind_rows(nash)
 nash %>% 
   mutate(basin = as.character(basin)) %>% 
   group_by(basin) %>% 
-  filter(min(rmnse)) %>% 
+  filter(min(rmse)) %>% 
   ungroup()
 
 

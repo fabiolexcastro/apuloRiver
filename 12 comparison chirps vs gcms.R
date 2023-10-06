@@ -119,7 +119,62 @@ topn
 write.csv(prec, './enviarfabio2.csv', row.names = FALSE)
 
 # To make the graph  ------------------------------------------------------
+library(lubridate)
 
+prec <- read_csv('./enviarfabio2.csv')
+prec <- mutate(prec, Subbasin = as.character(Subbasin))
+unique(prec$model)
+unique(prec$type)
 
+smmr <- prec %>% 
+  mutate(year = year(date), month = month(date)) %>% 
+  group_by(year, month, Subbasin, model, type) %>% 
+  summarise(value = sum(value)) %>% 
+  ungroup() %>% 
+  mutate(month = ifelse(month < 10, paste0('0', month), as.numeric(month))) %>% 
+  mutate(date = paste0(year, '-', month, '-01'), 
+         date = as.Date(date, format = '%Y-%m-%d')) %>% 
+  filter(year > 1983) %>% 
+  mutate(model = ifelse(model == 'Baseline', 'CHIRPS', model), 
+         model = factor(model, levels = c('CHIRPS', 'ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')))
 
+dir.create('./png')
+
+make.graph <- function(bsin){
+  
+  bsin <- '1'
+  
+  gprec <- ggplot(data = smmr %>% filter(Subbasin == bsin), aes(x = date, y = value, group = model, col = model)) + 
+    geom_line() +
+    facet_wrap(.~ model, nrow = 6) +
+    # facet_wrap(.~ model, nrow = 6) +
+    labs(x = 'Fecha', y = 'Precipitación (mm)', col = '') +
+    theme_minimal() +
+    theme(legend.position = 'bottom', 
+          strip.text = element_text(face = 'bold', hjust = 0.5, size = 12))
+
+  ggsave(plot = gprec, filename = glue('./png/graph_prec_{bsin}_v1.png'), units = 'in', width = 8, height = 16, dpi = 300)
+  
+  gpre2 <- ggplot(data = smmr %>% filter(Subbasin == bsin, model %in% c('CHIRPS', 'CanESM5')), aes(x = date, y = value, group = model, col = model)) + 
+    geom_line() +
+    labs(x = 'Fecha', y = 'Precipitación (mm)', col = '') +
+    theme_minimal() +
+    theme(legend.position = 'bottom', 
+          strip.text = element_text(face = 'bold', hjust = 0.5, size = 12))
+  
+  ggsave(plot = gpre2, filename = glue('./png/graph_prec_{bsin}_v2.png'), units = 'in', width = 12, height = 7, dpi = 300)
+  
+}
+
+gprec <- ggplot(data = smmr, aes(x = date, y = value, group = model, col = model)) + 
+  # geom_line() +
+  geom_smooth(se = FALSE, method = 'loess') +
+  facet_wrap(.~ Subbasin, nrow = 6) +
+  # facet_wrap(.~ model, nrow = 6) +
+  labs(x = 'Fecha', y = 'Precipitación (mm)', col = '') +
+  theme_minimal() +
+  theme(legend.position = 'bottom', 
+        strip.text = element_text(face = 'bold', hjust = 0.5, size = 12))
+
+ggsave(plot = gprec, filename = './png/graph_prec-models_all-basins.png', units = 'in', width = 9, height = 20, dpi = 300)
 

@@ -104,7 +104,10 @@ calcNASH <- function(bs){
 nash <- map(1:4, calcNASH)
 nash <- bind_rows(nash)
 
-nash
+nash %>% 
+  group_by(basin) %>% 
+  filter(min(rmnse)) %>% 
+  ungroup()
 
 
 

@@ -1,5 +1,4 @@
 
-
 # Load libraries ----------------------------------------------------------
 library(pacman)
 pacman::p_load(elevatr, remotes, readxl, xlsx, openxlsx, chirps, spatialEco, terra, RSAGA, fs, sf, readxl, openxlsx, tidyverse, glue, gtools, RColorBrewer)
@@ -87,9 +86,9 @@ calcNASH <- function(bs){
     tb <- tb %>% mutate(year = year(date))
     tb <- tb %>% filter(year >= 1983)
     colnames(tb) <- c('date', 'subbasin', 'mdel', 'obsr', 'year')
-    ns <- NSE(sim = pull(tb, mdel), obs = pull(tb, obsr))
-    rn <- rNSE(sim = pull(tb, mdel), obs = pull(tb, obsr))
-    rm <- rmse(sim = pull(tb, mdel), obs = pull(tb, obsr))
+    ns <- NSE(sim = pull(tb, mdel), obs = pull(tb, obsr), na.rm = T)
+    rn <- rNSE(sim = pull(tb, mdel), obs = pull(tb, obsr), na.rm = T)
+    rm <- rmse(sim = pull(tb, mdel), obs = pull(tb, obsr), na.rm = T)
     rs <- tibble(model = md, nash = ns, rnas = rn, rmse = rm)
     cat('Done!\n')
     return(rs)

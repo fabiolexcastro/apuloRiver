@@ -105,6 +105,7 @@ nash <- map(1:4, calcNASH)
 nash <- bind_rows(nash)
 
 nash %>% 
+  mutate(basin = as.character(basin)) %>% 
   group_by(basin) %>% 
   filter(min(rmnse)) %>% 
   ungroup()

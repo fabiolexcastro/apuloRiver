@@ -106,11 +106,16 @@ nash <- bind_rows(nash)
 
 write.csv(nash, './enviarfabio.csv')
 
-nash %>% 
+nash <- read_csv('./enviarfabio.csv')
+
+topn <- nash %>% 
   mutate(basin = as.character(basin)) %>% 
   group_by(basin) %>% 
-  filter(min(rmse)) %>% 
+  slice_min(rmse, with_ties = FALSE) %>% 
   ungroup()
+
+topn
+
 
 
 

@@ -100,7 +100,9 @@ calcNASH <- function(bs){
   
 }
 
+# To apply the function 
+nash <- map(1:5, calcNASH)
 
-#
+
 
 

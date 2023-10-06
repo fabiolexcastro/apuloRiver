@@ -101,8 +101,10 @@ calcNASH <- function(bs){
 }
 
 # To apply the function 
-nash <- map(1:5, calcNASH)
+nash <- map(1:4, calcNASH)
+nash <- bind_rows(nash)
 
+nash
 
 
 

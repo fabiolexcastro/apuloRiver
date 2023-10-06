@@ -116,6 +116,10 @@ topn <- nash %>%
 
 topn
 
+write.csv(prec, './enviarfabio2.csv', row.names = FALSE)
+
+# To make the graph  ------------------------------------------------------
+
 
 
 

@@ -70,7 +70,6 @@ write.xlsx(prec, './data/values_stts_GCMs-BSLN_prec.xlsx')
 p_load(hydroGOF)
 calcNASH <- function(bs){
   
-  bs <- 1
   cat('To process: ', bs, '\n')
   
   tbl <- filter(prec, Subbasin == as.character(bs))
@@ -95,7 +94,7 @@ calcNASH <- function(bs){
   })
   
   nsh <- bind_rows(nsh)
-  nsh <- nsh %>% mutate(basin == bs)
+  nsh <- nsh %>% mutate(basin = bs)
   cat('Analysis done!\n')
   return(nsh)
   

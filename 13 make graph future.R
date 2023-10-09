@@ -36,7 +36,10 @@ extr.vles <- function(sspe, mdel){
     grep('down', ., value = T) %>% 
     map(., dir_ls) %>% 
     unlist() %>% 
-    as.character()
+    as.character() %>% 
+    grep('.tif$', ., value = T)
+  
+  length(fles)
   
   
   

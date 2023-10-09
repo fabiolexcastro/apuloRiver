@@ -30,8 +30,7 @@ extr.vles <- function(sspe, mdel){
     grep(mdel, ., value = T) %>% 
     dir_ls() %>% 
     as.character() %>% 
-    map(., dir_ls) %>% 
-    map(., as.character)
+    map(., dir_ls) 
   
   
   
@@ -40,6 +39,8 @@ extr.vles <- function(sspe, mdel){
   
 }
 
+
+#
 
 
 

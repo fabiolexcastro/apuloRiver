@@ -33,7 +33,10 @@ extr.vles <- function(sspe, mdel){
     map(., dir_ls) %>% 
     unlist() %>% 
     as.character() %>% 
-    grep('down', ., value = T) 
+    grep('down', ., value = T) %>% 
+    map(., dir_ls) %>% 
+    unlist() %>% 
+    as.character()
   
   
   

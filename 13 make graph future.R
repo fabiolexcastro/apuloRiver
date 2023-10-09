@@ -26,6 +26,9 @@ extr.vles <- function(sspe, mdel){
   
   fles <- grep(sspe, dir_ls(path), value = TRUE) %>% 
     dir_ls() %>% 
+    as.character() %>% 
+    grep(mdel, ., value = T) %>% 
+    dir_ls() %>% 
     as.character()
   
   

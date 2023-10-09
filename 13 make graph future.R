@@ -29,13 +29,9 @@ extr.vles <- function(sspe, varb){
   fles <- grep(sspe, fles, value = T)
   fles <- as.character(fles)
   fles
-  tble <- map(fles, read.xslx)
-  
-
-  
-  
-  head(tble)
-
+  tble <- map(fles, read.xlsx)
+  tble <- as_tibble(tble)
+  tble <- bind_rows(tble)
   
   
   

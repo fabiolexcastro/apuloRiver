@@ -26,6 +26,10 @@ extr.vles <- function(sspe, varb){
   
   fles <- dir_ls('./data/tbl', regexp = '.xlsx$')
   fles <- grep(varb, fles, value = T)
+  fles <- grep(sspe, fles, value = T)
+  fles <- as.character(fles)
+  fles
+  tble <- read.xlsx(fles)
   
   
 

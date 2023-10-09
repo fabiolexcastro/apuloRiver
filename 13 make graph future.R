@@ -9,4 +9,11 @@ options(scipen = 999, warn = -1)
 
 # Load data ---------------------------------------------------------------
 
+path <- '/data/tif/nasa/cmip6'
+ssps <- as.character(dir_ls(path, type = 'directory'))
+vars <- c('pr', 'tasmin', 'tasmax')
+
+# Stations
+pnts <- read.xlsx('./data/tbl/Subecuencas Coordenadas.xlsx')
+pnts <- dplyr::select(pnts, Long_, Lat, Subbasin)
 

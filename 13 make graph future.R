@@ -19,10 +19,9 @@ pnts <- read.xlsx('./data/tbl/Subcuencas Coordenadas.xlsx')
 pnts <- dplyr::select(pnts, Long_, Lat, Subbasin)
 
 # Function to use ---------------------------------------------------------
-extr.vles <- function(sspe, mdel, varb){
+extr.vles <- function(sspe, varb){
   
   sspe <- 'ssp245'
-  mdel <- mdls[1]
   varb <- 'pr'
   
   fles <- dir_ls('./data/tbl', regexp = '.xlsx$')

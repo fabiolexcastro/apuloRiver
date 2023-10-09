@@ -1,7 +1,7 @@
 
 # Load libraries ----------------------------------------------------------
 require(pacman)
-pacman::p_load(terra, fs, sf, tidyverse, rgeos, gtools, stringr, glue)
+pacman::p_load(terra, fs, sf, tidyverse, rgeos, readxl, openxlsx, gtools, stringr, glue)
 
 g <- gc(reset = T)
 rm(list = ls())
@@ -15,13 +15,21 @@ vars <- c('pr', 'tasmin', 'tasmax')
 mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
 
 # Stations
-pnts <- read.xlsx('./data/tbl/Subecuencas Coordenadas.xlsx')
+pnts <- read.xlsx('./data/tbl/Subcuencas Coordenadas.xlsx')
 pnts <- dplyr::select(pnts, Long_, Lat, Subbasin)
 
 # Function to use ---------------------------------------------------------
-extr.vles <- function(sspe, mdel, varb){
+extr.vles <- function(sspe, mdel){
   
   sspe <- 'ssp245'
+  mdel <- mdls[1]
+  
+  fles <- grep(sspe, dir_ls(path), value = TRUE) %>% 
+    dir_ls() %>% 
+    as.character()
+  
+  
+  
   
   
   

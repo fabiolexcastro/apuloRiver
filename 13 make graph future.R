@@ -39,8 +39,14 @@ extr.vles <- function(sspe, mdel){
     as.character() %>% 
     grep('.tif$', ., value = T)
   
-  length(fles)
-  
+  map(.x = 1:3, .f = function(v){
+    
+    v <- 1 # Correr y borrar
+    cat('To process:', varb[v], '\n')
+    fls <- grep(varb[v], fles, value = T)
+    var <- varb[v]
+    
+  })
   
   
   

@@ -42,9 +42,21 @@ extr.vles <- function(sspe, mdel){
   map(.x = 1:3, .f = function(v){
     
     v <- 1 # Correr y borrar
-    cat('To process:', varb[v], '\n')
-    fls <- grep(varb[v], fles, value = T)
-    var <- varb[v]
+    cat('To process:', vars[v], '\n')
+    fls <- grep(vars[v], fles, value = T)
+    var <- vars[v]
+    
+    map(.x = 1:length(fls), .f = function(r){
+      
+      r <- 1 # Correr y borrar 
+      cat('Raster: ', r, '\n')
+      r <- fls[r]
+      r <- rast(r)
+      plot(r)
+      
+    })
+    
+    
     
   })
   

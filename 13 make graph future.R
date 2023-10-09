@@ -9,11 +9,24 @@ options(scipen = 999, warn = -1)
 
 # Load data ---------------------------------------------------------------
 
-path <- '/data/tif/nasa/cmip6'
+path <- './data/tif/nasa/cmip6'
 ssps <- as.character(dir_ls(path, type = 'directory'))
 vars <- c('pr', 'tasmin', 'tasmax')
+mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
 
 # Stations
 pnts <- read.xlsx('./data/tbl/Subecuencas Coordenadas.xlsx')
 pnts <- dplyr::select(pnts, Long_, Lat, Subbasin)
+
+# Function to use ---------------------------------------------------------
+extr.vles <- function(sspe, mdel, varb){
+  
+  sspe <- 'ssp245'
+  
+  
+  
+}
+
+
+
 

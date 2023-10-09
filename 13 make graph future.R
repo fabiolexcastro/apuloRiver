@@ -21,9 +21,10 @@ pnts <- dplyr::select(pnts, Long_, Lat, Subbasin)
 # Function to use ---------------------------------------------------------
 extr.vles <- function(sspe, varb){
   
-  sspe <- 'ssp245'
-  varb <- 'pr'
+  # sspe <- 'ssp245'
+  # varb <- 'pr'
   
+  cat('To process: ', sspe, ' ', varb, '\n')
   fles <- dir_ls('./data/tbl', regexp = '.xlsx$')
   fles <- grep(varb, fles, value = T)
   fles <- grep(sspe, fles, value = T)
@@ -37,11 +38,17 @@ extr.vles <- function(sspe, varb){
   tble <- mutate(tble, date = as.Date(date, format = '%Y-%m-%d'))
   colnames(tble) <- c('var', 'model', 'date', 'v1', 'v2', 'v3', 'v4')
   tble <- as_tibble(tble)
+  tble <- mutate(tble, ssp = sspe)
+  cat('Done!\n')
   
 }
 
+# Precipitation -----------------------------------------------------------
+prec <- map_dfr(.x = 1:2, .f = function(s){
+  extr.vles(sspe = ssps[s], varb = 'prec')
+})
 
-#
+
 
 
 

@@ -52,7 +52,10 @@ extr.vles <- function(sspe, mdel){
       cat('Raster: ', r, '\n')
       r <- fls[r]
       r <- rast(r)
-      plot(r)
+      z <- terra::extract(r, pnts[,c('Long_', 'Lat')])
+      z <- cbind(pnts, z)
+      z <- as_tibble(z)
+      
       
     })
     

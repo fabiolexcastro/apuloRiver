@@ -32,11 +32,7 @@ extr.vles <- function(sspe, varb){
   tble <- map(fles, read.xlsx)
   tble <- bind_rows(tble)
   table(tble$model)
-  
-  
-  
-  
-  
+  dtes <- openxlsx::convertToDate(tble$date)
   
   
 }

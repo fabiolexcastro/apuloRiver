@@ -56,7 +56,13 @@ extr.vles <- function(sspe, mdel){
       z <- cbind(pnts, z)
       z <- as_tibble(z)
       z <- gather(z, var, value, -Long_, -Lat, -Subbasin, -ID)
-      z
+      z <- mutate(z, date = as.Date(var, format = '%Y-%m-%d'))
+      z <- z[,-5]
+      
+      if(vars[v] == 'pr'){
+        cat('Prec\t')
+        z <- mutate(z, value = ifelse(value < 0, 0, value))
+      } 
       
     })
     

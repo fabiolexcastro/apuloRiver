@@ -35,7 +35,8 @@ extr.vles <- function(sspe, varb){
   dtes <- openxlsx::convertToDate(tble$date)
   tble <- mutate(tble, date = dtes)
   tble <- mutate(tble, date = as.Date(date, format = '%Y-%m-%d'))
-  
+  colnames(tble) <- c('var', 'model', 'date', 'v1', 'v2', 'v3', 'v4')
+  tble <- as_tibble(tble)
   
 }
 

@@ -30,8 +30,10 @@ extr.vles <- function(sspe, varb){
   fles <- as.character(fles)
   fles
   tble <- map(fles, read.xlsx)
-  tble <- as_tibble(tble)
   tble <- bind_rows(tble)
+  table(tble$model)
+  
+  
   
   
   

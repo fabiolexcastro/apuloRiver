@@ -29,7 +29,11 @@ extr.vles <- function(sspe, varb){
   fles <- grep(sspe, fles, value = T)
   fles <- as.character(fles)
   fles
-  tble <- read.xlsx(fles)
+  tble <- map(fles, read.xslx)
+  
+
+  
+  
   head(tble)
 
   

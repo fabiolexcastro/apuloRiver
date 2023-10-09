@@ -33,6 +33,8 @@ extr.vles <- function(sspe, varb){
   tble <- bind_rows(tble)
   table(tble$model)
   dtes <- openxlsx::convertToDate(tble$date)
+  tble <- mutate(tble, date = dtes)
+  tble <- mutate(tble, date = as.Date(date, format = '%Y-%m-%d'))
   
   
 }

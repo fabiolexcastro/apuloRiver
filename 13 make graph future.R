@@ -8,7 +8,6 @@ rm(list = ls())
 options(scipen = 999, warn = -1)
 
 # Load data ---------------------------------------------------------------
-
 path <- './data/tif/nasa/cmip6'
 ssps <- as.character(dir_ls(path, type = 'directory'))
 vars <- c('pr', 'tasmin', 'tasmax')
@@ -47,8 +46,7 @@ extr.vles <- function(sspe, varb){
 prec <- map_dfr(.x = 1:2, .f = function(s){
   extr.vles(sspe = ssps[s], varb = 'prec')
 })
-
-
+write.csv(prec, './enviarfabio_10132023.csv', row.names = F)
 
 
 

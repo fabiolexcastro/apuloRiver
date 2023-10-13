@@ -57,7 +57,16 @@ smmr.prec <- prec %>%
   dplyr::summarise(value = sum(value, na.rm = T)) %>% 
   ungroup() 
 
-tst <- filter(smmr.prec, ssp == 'ssp245')
+make.graph <- function(sp){
+  
+  sp <- 'ssp245'
+  tbl <- filter(smmr.prec, ssp == sp)
+  
+  ggplot(data = tst, aes(x = year, y = value, col = model)) + 
+    geom_line() + 
+    facet_wrap(~station) + 
+    theme_minimal()
+  
+  
+}
 
-ggplot(data = tst, aes(x = year, y = value, col = station)) + 
-  geom_line()

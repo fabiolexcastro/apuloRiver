@@ -59,14 +59,25 @@ smmr.prec <- prec %>%
 
 make.graph <- function(sp){
   
-  sp <- 'ssp245'
-  tbl <- filter(smmr.prec, ssp == sp)
+  # sp <- 'ssp245'
+  # tbl <- filter(smmr.prec, ssp == sp)
   
-  ggplot(data = tbl, aes(x = year, y = value, col = model)) + 
+  ggl <- ggplot(data = tbl, aes(x = year, y = value, col = model)) + 
     geom_line() + 
     facet_wrap(~station) + 
-    theme_minimal()
+    labs(x = 'Año', y = 'Prec. (mm)', col = 'GCM') +
+    ggtitle(label = paste0('Precipitación - ', sp)) +
+    theme_minimal() + 
+    theme(axis.text.y = element_text(angle = 90, hjust = 0.5, size = 7), 
+          axis.text.x = element_text(size = 7), 
+          plot.title = element_text(face = 'bold', hjust = 0.5),
+          strip.text = element_text(face = 'bold'), 
+          legend.position = 'bottom')
   
+  ggsave(plot = ggl, filename = glue('../png/prec_ftr_{sp}.png'), units = 'in', width = 9, height = 7, dpi = 300)
+  cat('Done!\n')
   
 }
+
+
 

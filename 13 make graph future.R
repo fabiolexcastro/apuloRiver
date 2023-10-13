@@ -50,8 +50,14 @@ prec <- map_dfr(.x = 1:2, .f = function(s){
 })
 
 prec <- gather(prec, station, value, -var, -model, -date, -ssp)
+smmr.prec <- prec %>% 
+  mutate(year = year(date), 
+         month = month(date)) %>% 
+  group_by(var, model, ssp, station, year) %>%
+  dplyr::summarise(value = sum(value, na.rm = T)) %>% 
+  ungroup() 
 
+tst <- filter(smmr.prec, ssp == 'ssp245')
 
-
-ggplot(data = filter(prec, ssp == 'ssp245'), aes(x = date, y = value, col = station)) + 
+ggplot(data = tst, aes(x = year, y = value, col = station)) + 
   geom_line()

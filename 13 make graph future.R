@@ -48,6 +48,10 @@ mdls <- c('ssp245', 'ssp585')
 prec <- map_dfr(.x = 1:2, .f = function(s){
   extr.vles(sspe = mdls[s], varb = 'prec')
 })
-write.csv(prec, './enviarfabio_10132023.csv', row.names = F)
+
+prec <- gather(prec, station, value, -var, -model, -date, -ssp)
 
 
+
+ggplot(data = filter(prec, ssp == 'ssp245'), aes(x = date, y = value, col = station)) + 
+  geom_line()

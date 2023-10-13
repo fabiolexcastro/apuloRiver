@@ -43,10 +43,10 @@ extr.vles <- function(sspe, varb){
 }
 
 # Precipitation -----------------------------------------------------------
+mdls <- c('ssp245', 'ssp585')
 prec <- map_dfr(.x = 1:2, .f = function(s){
-  extr.vles(sspe = ssps[s], varb = 'prec')
+  extr.vles(sspe = mdls[s], varb = 'prec')
 })
 write.csv(prec, './enviarfabio_10132023.csv', row.names = F)
-
 
 

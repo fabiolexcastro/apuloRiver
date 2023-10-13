@@ -62,7 +62,7 @@ make.graph <- function(sp){
   sp <- 'ssp245'
   tbl <- filter(smmr.prec, ssp == sp)
   
-  ggplot(data = tst, aes(x = year, y = value, col = model)) + 
+  ggplot(data = tbl, aes(x = year, y = value, col = model)) + 
     geom_line() + 
     facet_wrap(~station) + 
     theme_minimal()

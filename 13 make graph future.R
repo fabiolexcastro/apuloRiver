@@ -39,6 +39,7 @@ extr.vles <- function(sspe, varb){
   tble <- as_tibble(tble)
   tble <- mutate(tble, ssp = sspe)
   cat('Done!\n')
+  return(tble)
   
 }
 

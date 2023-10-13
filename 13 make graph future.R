@@ -74,10 +74,12 @@ make.graph <- function(sp){
           strip.text = element_text(face = 'bold'), 
           legend.position = 'bottom')
   
-  ggsave(plot = ggl, filename = glue('../png/prec_ftr_{sp}.png'), units = 'in', width = 9, height = 7, dpi = 300)
+  ggsave(plot = ggl, filename = glue('./png/prec_ftr_{sp}.png'), units = 'in', width = 9, height = 7, dpi = 300)
   cat('Done!\n')
   
 }
 
+make.graph(sp = 'ssp245')
+make.graph(sp = 'ssp585')
 
 

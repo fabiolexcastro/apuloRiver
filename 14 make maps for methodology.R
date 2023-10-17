@@ -12,6 +12,8 @@ options(scipen = 999, warn = -1)
 # Vector data
 bsin <- vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
 dpto <- vect('./shp/Base/dptos.gpkg')
+cndn <- dpto[dpto$DPTO_CNMBR == 'CUNDINAMARCA',]
+plot(cndn)
 
 # Raster data
 srtm <- rast('./tif/srtm/fill/srtm_z07_fill.tif')

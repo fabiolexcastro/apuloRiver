@@ -139,6 +139,8 @@ ggsave(plot = graw.bsl, filename = './png/maps/temp_raw-bsl_cundinamarca.png', u
 
 rgwr.bsl <- rast('./rawbsl_tmpr_GWR.tif')
 plot(rgwr.bsl)
+rgwr.bsl <- rgwr.bsl - 273.15
+rgwr.bsl.tbl.avg <- terra::as.data.frame(rgwr.bsl, xy = T) %>% as_tibble() %>% setNames(c('x', 'y', 'value'))
 
 ggwr.bsl <- ggmap(ggbx, alpha = 0.5) + 
   geom_tile(data = rgwr.bsl.tbl.avg, aes(x = x, y = y, fill = value)) + 

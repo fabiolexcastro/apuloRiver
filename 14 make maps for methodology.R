@@ -106,7 +106,6 @@ dir_create('./png/maps')
 ggsave(plot = gsrtm, filename = './png/maps/srtm_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
   
 # Temperature raw baseline ------------------------------------------------
-
 graw.bsl <- ggmap(ggbx, alpha = 0.5) + 
   geom_tile(data = rraw.bsl.tbl.avg, aes(x = x, y = y, fill = value)) + 
   scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
@@ -137,6 +136,9 @@ graw.bsl
 ggsave(plot = graw.bsl, filename = './png/maps/temp_raw-bsl_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
 
 # Temperature downscaling GWR baseline ------------------------------------
+
+rgwr.bsl <- rast('./rawbsl_tmpr_GWR.tif')
+plot(rgwr.bsl)
 
 ggwr.bsl <- ggmap(ggbx, alpha = 0.5) + 
   geom_tile(data = rgwr.bsl.tbl.avg, aes(x = x, y = y, fill = value)) + 

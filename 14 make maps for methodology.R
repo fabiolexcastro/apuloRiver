@@ -59,7 +59,7 @@ rdwn.ftr.tbl.avg
 
 # Now to make the maps ----------------------------------------------------
 p_load(ggmap, ggspatial)
-bbox <- as.numeric(c(-74.35, 4.51, -74.35, 4.85))
+bbox <- as.numeric(c(-74.60, 4.51, -74.35, 4.85))
 ggbx <- get_stamenmap(bbox, maptype = 'terrain', zoom = 10)
 
 ggmap(ggbx, alpha = 0.5) + 

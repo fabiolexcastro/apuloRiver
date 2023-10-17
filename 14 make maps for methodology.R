@@ -79,7 +79,7 @@ gsrtm <- ggmap(ggbx, alpha = 0.5) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'red', inherit.aes = FALSE) + 
   geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
   coord_sf(xlim = c(-74.88, -73.04), ylim = c(3.73, 5.83)) +
-  labs(x = 'Lon', y = 'Lat', fill = 'Altitud (m.s.n.m)')
+  labs(x = 'Lon', y = 'Lat', fill = 'Altitud (m.s.n.m)') +
   theme_minimal() +
   theme(legend.position = 'bottom', 
         legend.key.width = unit(3, 'line'),

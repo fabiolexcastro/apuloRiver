@@ -20,10 +20,16 @@ rraw.ftr <- rast('./data/tif/nasa/cmip6/ssp245/ACCESS-CM2/tasmax/cund_tasmax_day
 rgwr.bsl <- rast('./tif/nasa/cmip6/historical/ACCESS-CM2/tasmax/down-cund_tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn_1974.nc')
 rdwn.ftr <- rast('./data/tif/nasa/cmip6/ssp245/ACCESS-CM2/tasmax/down/tasmax_2015.tif')
 
+# Extract by mask  --------------------------------------------------------
+
+
+
 # Plotting ----------------------------------------------------------------
 plot(srtm[[1]])
 plot(rraw.bsl[[1]])
-
+plot(rraw.ftr[[1]])
+plot(rwgr.bsl[[1]])
+plot(rdwn.bsl[[1]])
 
 
 

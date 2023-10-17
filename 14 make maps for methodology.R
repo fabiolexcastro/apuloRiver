@@ -20,16 +20,25 @@ rraw.ftr <- rast('./data/tif/nasa/cmip6/ssp245/ACCESS-CM2/tasmax/cund_tasmax_day
 rgwr.bsl <- rast('./tif/nasa/cmip6/historical/ACCESS-CM2/tasmax/down-cund_tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn_1974.nc')
 rdwn.ftr <- rast('./data/tif/nasa/cmip6/ssp245/ACCESS-CM2/tasmax/down/tasmax_2015.tif')
 
-# Extract by mask  --------------------------------------------------------
-
-
-
 # Plotting ----------------------------------------------------------------
 plot(srtm[[1]])
 plot(rraw.bsl[[1]])
 plot(rraw.ftr[[1]])
-plot(rwgr.bsl[[1]])
-plot(rdwn.bsl[[1]])
+plot(rgwr.bsl[[1]])
+plot(rdwn.ftr[[1]])
+
+# Raster to table ---------------------------------------------------------
+srtm.tble <- terra::as.data.frame(srtm, xy = T) %>% as_tibble()
+rraw.bsl.tbl <- terra::as.data.frame(rraw.bsl, xy = T) %>% as_tibble()
+rraw.ftr.tbl <- terra::as.data.frame(rraw.ftr, xy = T) %>% as_tibble()
+rgwr.bsl.tbl <- terra::as.data.frame(rgwr.bsl, xy = T) %>% as_tibble()
+rdwn.ftr.tbl <- terra::as.data.frame(rdwn.ftr, xy = T) %>% as_tibble()
+
+
+
+
+
+
 
 
 

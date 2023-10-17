@@ -1,7 +1,7 @@
 
 # Load libraries ----------------------------------------------------------
 require(pacman)
-pacman::p_load(terra, fs, sf, tidyverse, rgeos, readxl, openxlsx, gtools, stringr, glue)
+pacman::p_load(terra, fs, sf, tidyverse, rgeos, readxl, openxlsx, gtools, stringr, glue, geodata)
 
 g <- gc(reset = T)
 rm(list = ls())
@@ -11,6 +11,7 @@ options(scipen = 999, warn = -1)
 
 # Vector data
 bsin <- vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
+dpto <- vect('./shp/Base/dptos.gpkg')
 
 # Raster data
 srtm <- rast('./tif/srtm/fill/srtm_z07_fill.tif')
@@ -59,12 +60,12 @@ rdwn.ftr.tbl.avg
 
 # Now to make the maps ----------------------------------------------------
 p_load(ggmap, ggspatial)
-bbox <- as.numeric(c(-74.60, 4.51, -74.35, 4.85))
+bbox <- as.numeric(c(-74.57, 4.51, -74.35, 4.85))
 ggbx <- get_stamenmap(bbox, maptype = 'terrain', zoom = 10)
 
 ggmap(ggbx, alpha = 0.5) + 
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'red', inherit.aes = FALSE) + 
-  coord_sf() +
+  coord_sf(xlim = c(-74.57, -75.35)) +
   theme()
 
 # SRTM --------------------------------------------------------------------

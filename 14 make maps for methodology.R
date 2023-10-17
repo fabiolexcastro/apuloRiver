@@ -40,6 +40,9 @@ rraw.ftr.tbl <- rraw.ftr.tbl %>% dplyr::select(1:33)
 rgwr.bsl.tbl <- rgwr.bsl.tbl %>% dplyr::select(1:33)
 rdwn.ftr.tbl <- rdwn.ftr.tbl %>% dplyr::select(1:33)
 
+rraw.bsl.tbl.avg <- rraw.bsl.tbl %>% mutate(gid = 1:nrow(.)) %>% gather(var, value, -gid, -x, -y)
+rraw.bsl.tbl.avg
+
 
 
 

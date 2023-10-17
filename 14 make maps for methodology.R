@@ -34,6 +34,16 @@ rraw.ftr.tbl <- terra::as.data.frame(rraw.ftr, xy = T) %>% as_tibble()
 rgwr.bsl.tbl <- terra::as.data.frame(rgwr.bsl, xy = T) %>% as_tibble()
 rdwn.ftr.tbl <- terra::as.data.frame(rdwn.ftr, xy = T) %>% as_tibble()
 
+# Selecting just January  -------------------------------------------------
+rraw.bsl.tbl <- rraw.bsl.tbl %>% dplyr::select(1:33)
+rraw.ftr.tbl <- rraw.ftr.tbl %>% dplyr::select(1:33)
+rgwr.bsl.tbl <- rgwr.bsl.tbl %>% dplyr::select(1:33)
+rdwn.ftr.tbl <- rdwn.ftr.tbl %>% dplyr::select(1:33)
+
+
+
+
+
 
 
 

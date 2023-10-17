@@ -58,6 +58,10 @@ rdwn.ftr.tbl.avg <- rdwn.ftr.tbl.avg %>% group_by(gid, x, y) %>% dplyr::summaris
 rdwn.ftr.tbl.avg
 
 # Now to make the maps ----------------------------------------------------
+p_load(ggmap, ggspatial)
+bbox <- as.numeric(c(-74.35, 4.51, -74.35 4.85))
+ggbx <- get_stamenmap(bbox, maptype = 'terrain', zoom = 10)
+ggmap(ggbx, alpha = 0.5)
 
 # SRTM --------------------------------------------------------------------
 srtm.tble <- srtm.tble %>% setNames(c('x', 'y', 'value'))
@@ -68,7 +72,10 @@ gsrtm <- ggplot() +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey50') +
   coord_sf() + 
   theme_minimal() +
-  theme(legend.position = 'bottom')
+  theme(legend.position = 'bottom', 
+        axis.text.y = element_text(angle = 90, hjust = 0.5),
+        axis.text.x = element_text(hjust = 0.5),
+        text = element_text(family = 'Gill Sans MT'))
 
 gsrtm
 

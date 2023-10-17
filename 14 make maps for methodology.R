@@ -27,9 +27,8 @@ rraw.ftr <- terra::crop(rraw.ftr, bsin)
 rgwr.bsl <- terra::crop(rgwr.bsl, bsin)
 rdwn.ftr <- terra::crop(rdwn.ftr, bsin)
 
-
-
-
+plot(srtm[[1]])
+plot(rraw.bsl[[1]])
 
 
 

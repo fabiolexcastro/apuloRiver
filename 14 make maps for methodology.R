@@ -99,11 +99,10 @@ gsrtm <- ggmap(ggbx, alpha = 0.5) +
     label.position = "bottom"
   )) 
 
-  
-  
 gsrtm
-
-
+dir_create('./png/maps')
+ggsave(plot = gsrtm, filename = './png/maps/srtm_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
+  
 
 
 

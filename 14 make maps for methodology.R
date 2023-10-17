@@ -67,7 +67,7 @@ ggbx <- get_stamenmap(bbox, maptype = 'terrain', zoom = 10)
 ggmap(ggbx, alpha = 0.5) + 
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'red', inherit.aes = FALSE) + 
   geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
-  coord_sf(xlim = c(-74.57, -75.35), ylim = c(3.73, 5.83)) +
+  coord_sf(xlim = c(-74.88, -73.04), ylim = c(3.73, 5.83)) +
   theme()
 
 # SRTM --------------------------------------------------------------------

@@ -60,7 +60,7 @@ rdwn.ftr.tbl.avg <- rdwn.ftr.tbl.avg %>% group_by(gid, x, y) %>% dplyr::summaris
 rdwn.ftr.tbl.avg
 
 # Now to make the maps ----------------------------------------------------
-p_load(ggmap, ggspatial)
+p_load(ggmap, ggspatial, RColorBrewer)
 bbox <- as.numeric(c(-74.88, 3.73, -73.04, 5.83))
 ggbx <- get_stamenmap(bbox, maptype = 'terrain', zoom = 8)
 
@@ -132,7 +132,7 @@ graw.bsl <- ggmap(ggbx, alpha = 0.5) +
   )) 
 
 graw.bsl
-ggsave(plot = gsrtm, filename = './png/maps/temp_raw-bsl_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
+ggsave(plot = graw.bsl, filename = './png/maps/temp_raw-bsl_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
 
 
 

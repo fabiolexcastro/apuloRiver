@@ -51,7 +51,7 @@ rraw.ftr.tbl.avg
 
 rgwr.bsl.tbl.avg <- rgwr.bsl.tbl %>% mutate(gid = 1:nrow(.)) %>% gather(var, value, -gid, -x, -y)
 rgwr.bsl.tbl.avg <- rgwr.bsl.tbl.avg %>% group_by(gid, x, y) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()  
-
+rgwr.bsl.tbl.avg <- rgwr.bsl.tbl.avg %>% mutate(value = value - 273.15)
 
 
 

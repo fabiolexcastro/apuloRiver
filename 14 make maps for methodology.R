@@ -181,7 +181,7 @@ gdfr.bsl <- ggmap(ggbx, alpha = 0.5) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
   geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
   coord_sf(xlim = c(-74.88, -73.04), ylim = c(3.73, 5.83)) +
-  labs(x = 'Lon', y = 'Lat', fill = 'Temperatura (°C)') +
+  labs(x = 'Lon', y = 'Lat', fill = 'Delta temperatura (°C)') +
   theme_minimal() +
   theme(legend.position = 'bottom', 
         legend.key.width = unit(2.5, 'line'),

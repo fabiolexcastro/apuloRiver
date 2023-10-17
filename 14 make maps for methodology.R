@@ -57,6 +57,24 @@ rdwn.ftr.tbl.avg <- rdwn.ftr.tbl %>% mutate(gid = 1:nrow(.)) %>% gather(var, val
 rdwn.ftr.tbl.avg <- rdwn.ftr.tbl.avg %>% group_by(gid, x, y) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()  
 rdwn.ftr.tbl.avg
 
+# Now to make the maps ----------------------------------------------------
+
+# SRTM --------------------------------------------------------------------
+srtm.tble <- srmt.tble %>% setNames(c('x', 'y', 'value'))
+
+gsrtm <- ggplot() + 
+  geom_tile(data = srtm.tble, aes(x = x, y = y, fill = value)) + 
+  scale_fill_gradientn(values = terrain.colors(10)) +
+  geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey50') +
+  coord_sf() + 
+  theme_minimal() +
+  theme(legend.position = 'bottom')
+
+gsrtm
+
+
+
+
 
 
 

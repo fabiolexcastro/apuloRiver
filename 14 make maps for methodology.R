@@ -203,9 +203,34 @@ gdfr.bsl <- ggmap(ggbx, alpha = 0.5) +
 
 ggsave(plot = gdfr.bsl, filename = './png/maps/temp_dfr-ftr-bsl_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
 
+# To get the centroids ----------------------------------------------------
 
+gcnt <- ggmap(ggbx, alpha = 0.5) + 
+  geom_point(data = rraw.dfr.tbl, aes(x = x, y = y), col = 'black') + 
+  geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
+  geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
+  coord_sf(xlim = c(-74.88, -73.04), ylim = c(3.73, 5.83)) +
+  labs(x = 'Lon', y = 'Lat') +
+  theme_minimal() +
+  theme(legend.position = 'bottom', 
+        legend.key.width = unit(2.5, 'line'),
+        axis.text.y = element_text(angle = 90, hjust = 0.5),
+        axis.text.x = element_text(hjust = 0.5),
+        text = element_text(family = 'Gill Sans MT')) +
+  guides(fill = guide_legend( 
+    direction = 'horizontal',
+    keyheight = unit(1.15, units = "mm"),
+    keywidth = unit(15, units = "mm"),
+    title.position = 'top',
+    title.hjust = 0.5,
+    label.hjust = .5,
+    nrow = 1,
+    byrow = T,
+    reverse = F,
+    label.position = "bottom"
+  )) 
 
-
+ggsave(plot = gcnt, filename = './png/maps/temp_dfr-cnt_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
 
 
 

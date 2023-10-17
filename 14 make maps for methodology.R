@@ -64,7 +64,7 @@ srtm.tble <- srtm.tble %>% setNames(c('x', 'y', 'value'))
 
 gsrtm <- ggplot() + 
   geom_tile(data = srtm.tble, aes(x = x, y = y, fill = value)) + 
-  scale_fill_gradientn(values = terrain.colors(10)) +
+  scale_fill_gradientn(colors = terrain.colors(10)) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey50') +
   coord_sf() + 
   theme_minimal() +

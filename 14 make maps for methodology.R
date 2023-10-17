@@ -13,7 +13,6 @@ options(scipen = 999, warn = -1)
 bsin <- vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
 dpto <- vect('./shp/Base/dptos.gpkg')
 cndn <- dpto[dpto$DPTO_CNMBR == 'CUNDINAMARCA',]
-plot(cndn)
 
 # Raster data
 srtm <- rast('./tif/srtm/fill/srtm_z07_fill.tif')
@@ -62,12 +61,13 @@ rdwn.ftr.tbl.avg
 
 # Now to make the maps ----------------------------------------------------
 p_load(ggmap, ggspatial)
-bbox <- as.numeric(c(-74.57, 4.51, -74.35, 4.85))
+bbox <- as.numeric(c(-74.88, 3.73, -73.04, 5.83))
 ggbx <- get_stamenmap(bbox, maptype = 'terrain', zoom = 10)
 
 ggmap(ggbx, alpha = 0.5) + 
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'red', inherit.aes = FALSE) + 
-  coord_sf(xlim = c(-74.57, -75.35)) +
+  geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
+  coord_sf(xlim = c(-74.57, -75.35), ) +
   theme()
 
 # SRTM --------------------------------------------------------------------

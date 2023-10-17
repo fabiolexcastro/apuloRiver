@@ -62,7 +62,7 @@ rdwn.ftr.tbl.avg
 # Now to make the maps ----------------------------------------------------
 p_load(ggmap, ggspatial)
 bbox <- as.numeric(c(-74.88, 3.73, -73.04, 5.83))
-ggbx <- get_stamenmap(bbox, maptype = 'terrain', zoom = 10)
+ggbx <- get_stamenmap(bbox, maptype = 'terrain', zoom = 8)
 
 ggmap(ggbx, alpha = 0.5) + 
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'red', inherit.aes = FALSE) + 
@@ -73,11 +73,12 @@ ggmap(ggbx, alpha = 0.5) +
 # SRTM --------------------------------------------------------------------
 srtm.tble <- srtm.tble %>% setNames(c('x', 'y', 'value'))
 
-gsrtm <- ggplot() + 
+gsrtm <- ggmap(ggbx, alpha = 0.5) + 
   geom_tile(data = srtm.tble, aes(x = x, y = y, fill = value)) + 
   scale_fill_gradientn(colors = terrain.colors(10)) +
-  geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey50') +
-  coord_sf() + 
+  geom_sf(data = st_as_sf(bsin), fill = NA, col = 'red', inherit.aes = FALSE) + 
+  geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
+  coord_sf(xlim = c(-74.88, -73.04), ylim = c(3.73, 5.83)) +
   theme_minimal() +
   theme(legend.position = 'bottom', 
         axis.text.y = element_text(angle = 90, hjust = 0.5),

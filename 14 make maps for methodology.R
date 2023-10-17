@@ -171,11 +171,8 @@ ggwr.bsl <- ggmap(ggbx, alpha = 0.5) +
 ggsave(plot = ggwr.bsl, filename = './png/maps/temp_gwr-bsl_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
 
 
-
-
-
-
-
+# To calculate the anomaly  -----------------------------------------------
+rraw.dfr <- rraw.ftr - rraw.bsl
 
 
 

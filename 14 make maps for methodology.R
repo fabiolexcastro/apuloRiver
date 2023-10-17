@@ -134,7 +134,7 @@ graw.bsl <- ggmap(ggbx, alpha = 0.5) +
 graw.bsl
 ggsave(plot = graw.bsl, filename = './png/maps/temp_raw-bsl_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
 
-
+#
 
 
 

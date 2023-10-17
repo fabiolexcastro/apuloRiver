@@ -60,7 +60,7 @@ rdwn.ftr.tbl.avg
 # Now to make the maps ----------------------------------------------------
 
 # SRTM --------------------------------------------------------------------
-srtm.tble <- srmt.tble %>% setNames(c('x', 'y', 'value'))
+srtm.tble <- srtm.tble %>% setNames(c('x', 'y', 'value'))
 
 gsrtm <- ggplot() + 
   geom_tile(data = srtm.tble, aes(x = x, y = y, fill = value)) + 

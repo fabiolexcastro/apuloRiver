@@ -27,6 +27,15 @@ agg.mnt <- function(var){
   fls <- grep(var, fles, value = T) %>% 
     as.character()
   
+  yrs <- fls %>% 
+    basename() %>% 
+    str_split(., pattern = '_') %>% 
+    map(., 2) %>% 
+    str_split(., pattern = '.') %>% 
+    map_chr(., 2)
+  
+  
+  
   
   
 }

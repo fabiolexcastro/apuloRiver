@@ -15,7 +15,7 @@ fles <- as.character(fles)
 
 # List temperature files
 fles.ftre <- grep('tas', fles, value = TRUE)
-
+mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
 
 
 

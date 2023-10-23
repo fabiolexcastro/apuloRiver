@@ -59,9 +59,10 @@ agg.mnt <- function(var){
     vl <- terra::extract(rs, pnts[,c('Long_', 'Lat')])
     vl <- cbind(pnts[,c('Subbasin', 'Long_', 'Lat')], vl)
     vl <- as_tibble(vl)
-    
-    
-    return(rs)
+    vl <- gather(vl, var, value, -Subbasin, -Long_, -Lat, -ID)
+    vl <- dplyr::select(vl, -ID)
+    vl
+    return(vl)
     
   })
   

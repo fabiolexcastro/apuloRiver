@@ -1,6 +1,4 @@
 
-
-
 # Load libraries ----------------------------------------------------------
 library(pacman)
 pacman::p_load(elevatr, remotes, readxl, xlsx, openxlsx, chirps, spatialEco, terra, RSAGA, fs, sf, readxl, openxlsx, tidyverse, glue, gtools, RColorBrewer)
@@ -20,5 +18,20 @@ bsin <- terra::vect('./shp/Cuenca/Cuenca_Río_Apulo.shp')
 
 # Basin shapefile
 pnts <- read.xlsx('./data/tbl/Subcuencas Coordenadas.xlsx')
+
+# Function to aggregate to monthly ----------------------------------------
+agg.mnt <- function(var){
+  
+  var <- 'Tmin' # Correr y borrar
+  
+  fls <- grep(var, fles, value = T) %>% 
+    as.character()
+  
+  
+  
+}
+
+
+
 
 

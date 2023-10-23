@@ -36,6 +36,15 @@ agg.mnt <- function(var){
     map_chr(2) %>% 
     unique()
   
+  map(.x = 1:length(yrs), .f = function(y){
+    
+    y <- 1 # Correr y borrar
+    year <- yrs[y]
+    fl <- grep(year, fls, value = T)
+    fl
+    
+  })
+  
   
   
   

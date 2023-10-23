@@ -61,6 +61,7 @@ agg.mnt <- function(var){
     vl <- as_tibble(vl)
     vl <- gather(vl, var, value, -Subbasin, -Long_, -Lat, -ID)
     vl <- dplyr::select(vl, -ID)
+    vl <- separate(vl, col = 'var', into = c('variable', 'date'), sep = '_')
     vl
     return(vl)
     

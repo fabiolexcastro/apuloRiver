@@ -67,7 +67,7 @@ agg.mnt <- function(var){
     
   })
   
-  
+  tbl <- rst
   
   
   

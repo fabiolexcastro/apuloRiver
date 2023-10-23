@@ -47,6 +47,8 @@ agg.mnt <- function(var){
       m <- 1 # Correr y borrar
       m <- ifelse(m < 10, paste0('0', m), as.character(m))
       f <- grep(paste0(year, '.', m, '.'), fl, value = T)
+      r <- rast(f)
+      plot(r)
       
     })
     

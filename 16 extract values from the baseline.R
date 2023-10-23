@@ -42,15 +42,17 @@ agg.mnt <- function(var){
     year <- yrs[y]
     fl <- grep(year, fls, value = T)
     
-    map(.x = 1:12, .f = function(m){
+    rs <- map(.x = 1:12, .f = function(m){
       
-      m <- 1 # Correr y borrar
+      cat('To process: ', m, '\n')
       m <- ifelse(m < 10, paste0('0', m), as.character(m))
       f <- grep(paste0(year, '.', m, '.'), fl, value = T)
       r <- rast(f)
-      plot(r)
+      a <- mean(r)
+      return(a)
       
-    })
+    }) %>% 
+      reduce(., c)
     
   })
   

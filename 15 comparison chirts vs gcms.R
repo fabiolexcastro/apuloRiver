@@ -14,8 +14,7 @@ fles <- dir_ls(path)
 fles <- as.character(fles)
 
 # List temperature files
-fles.tasm <- grep('tas', fles, value = TRUE)
-
+fles.ftre <- grep('tas', fles, value = TRUE)
 
 
 

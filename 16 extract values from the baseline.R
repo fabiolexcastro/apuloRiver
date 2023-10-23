@@ -41,7 +41,14 @@ agg.mnt <- function(var){
     y <- 1 # Correr y borrar
     year <- yrs[y]
     fl <- grep(year, fls, value = T)
-    fl
+    
+    map(.x = 1:12, .f = function(m){
+      
+      m <- 1 # Correr y borrar
+      m <- ifelse(m < 10, paste0('0', m), as.character(m))
+      f <- grep(paste0('.', m, '.'), fl, value = T)
+      
+    })
     
   })
   

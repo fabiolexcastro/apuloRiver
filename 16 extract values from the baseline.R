@@ -11,7 +11,7 @@ options(scipen = 999, warn = -1)
 
 # Load data ---------------------------------------------------------------
 
-path <- './data/tif/chirts/bsl/raw'
+path <- '../data/tif/chirts/bsl/raw'
 fles <- dir_ls(path, regexp = '.tif$')
 vars <- c('Tmax', 'Tmin')
 

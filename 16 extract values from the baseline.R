@@ -54,10 +54,18 @@ agg.mnt <- function(var){
     }) %>% 
       reduce(., c)
     
-    names(rs) <- glue('{var}_{y}-{1:12}')
+    names(rs) <- glue('{var}_{yrs[y]}-{1:12}')
+    
+    vl <- terra::extract(rs, pnts[,c('Long_', 'Lat')])
+    vl <- cbind(pnts[,c('Subbasin', 'Long_', 'Lat')], vl)
+    vl <- as_tibble(vl)
+    
+    
     return(rs)
     
   })
+  
+  
   
   
   

@@ -62,7 +62,7 @@ agg.mnt <- function(var){
     vl <- gather(vl, var, value, -Subbasin, -Long_, -Lat, -ID)
     vl <- dplyr::select(vl, -ID)
     vl <- separate(vl, col = 'var', into = c('variable', 'date'), sep = '_')
-    vl
+    rm(rs); gc(reset = TRUE)
     return(vl)
     
   })

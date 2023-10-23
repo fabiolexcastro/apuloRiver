@@ -29,18 +29,14 @@ agg.mnt <- function(var){
   
   yrs <- fls %>% 
     basename() %>% 
-    str_split(., pattern = '_') %>% 
-    map(., 2) %>% 
-    str_split(., pattern = '.') %>% 
-    map_chr(., 2)
-  
+    str_split(., pattern = '_') 
   
   
   
   
 }
 
-
+#
 
 
 

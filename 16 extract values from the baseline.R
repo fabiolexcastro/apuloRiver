@@ -22,7 +22,7 @@ pnts <- read.xlsx('./data/tbl/Subcuencas Coordenadas.xlsx')
 # Function to aggregate to monthly ----------------------------------------
 agg.mnt <- function(var){
   
-  var <- 'Tmin' # Correr y borrar
+  # var <- 'Tmin' # Correr y borrar
   
   fls <- grep(var, fles, value = T) %>% 
     as.character()
@@ -71,8 +71,8 @@ agg.mnt <- function(var){
   tbl <- bind_rows(tbl)
   dir <- glue('./data/tbl/values_stts_tasm')
   dir_create(dir) # correr y borrar
-  
-  
+  write.csv(x = tbl, filename = glue('{dir}/{var}_stts_chirts.csv'), row.names = FALSE)
+  cat('Done!\n')
   
 }
 

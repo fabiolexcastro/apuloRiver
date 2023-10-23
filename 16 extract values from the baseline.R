@@ -73,8 +73,13 @@ agg.mnt <- function(var){
   dir_create(dir) # correr y borrar
   write.csv(x = tbl, file = glue('{dir}/{var}_stts_chirts.csv'), row.names = FALSE)
   cat('Done!\n')
+  return(tbl)
   
 }
+
+# To apply the function  --------------------------------------------------
+tmin.vles <- agg.mnt(var = 'Tmin')
+tmax.vles <- agg.mnt(var = 'Tmax')
 
 
 

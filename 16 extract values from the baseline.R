@@ -36,9 +36,9 @@ agg.mnt <- function(var){
     map_chr(2) %>% 
     unique()
   
-  map(.x = 1:length(yrs), .f = function(y){
+  rst <- map(.x = 1:length(yrs), .f = function(y){
     
-    y <- 1 # Correr y borrar
+    cat('To process: ', yrs[y], '\n')
     year <- yrs[y]
     fl <- grep(year, fls, value = T)
     
@@ -54,6 +54,9 @@ agg.mnt <- function(var){
     }) %>% 
       reduce(., c)
     
+    names(rs) <- glue('{var}_{y}-{1:12}')
+    return(rs)
+    
   })
   
   
@@ -61,7 +64,7 @@ agg.mnt <- function(var){
   
 }
 
-#
+
 
 
 

@@ -68,7 +68,9 @@ agg.mnt <- function(var){
   })
   
   tbl <- rst
-  
+  tbl <- bind_rows(tbl)
+  dir <- glue('./data/tbl/values_stts_tasm')
+  dir_create(dir) # correr y borrar
   
   
   

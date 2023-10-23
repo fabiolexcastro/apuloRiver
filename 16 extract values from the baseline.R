@@ -32,7 +32,9 @@ agg.mnt <- function(var){
     str_split(., pattern = '_') %>% 
     map(., 2) %>% 
     unlist() %>% 
-    str_split(., '\\.')
+    str_split(., '\\.') %>% 
+    map_chr(2) %>% 
+    unique()
   
   
   

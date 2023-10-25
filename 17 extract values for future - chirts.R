@@ -95,7 +95,7 @@ tidy.tble.hist.tmax <- function(file){
   tble <- as_tibble(tble)  
   dtes <- openxlsx::convertToDate(tble$date)
   tble <- mutate(tble, date = dtes)
-  
+  tble <- gather(tble, var, value, -variable, -year, -date, -day)
   
 }
 

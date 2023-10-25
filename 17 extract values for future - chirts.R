@@ -61,7 +61,8 @@ tidy.tble.hist <- function(file){
   tble <- mutate(tble, date = dtes)
   nmes <- colnames(tble)
   
-  if(any(nmes) == 'var'){
+  if(any(nmes == 'var')){
+    print('var exists')
     colnames(tble)[1] <- 'variable'
   }
   

@@ -38,4 +38,9 @@ tmin.tble <- map(fles.tmin.ftre, tidy.tble)
 tmin.tble <- bind_rows(tmin.tble)
 write.csv(tmin.tble, 'data/tbl/values_stts_tasm/Tmin_stts_ftre.csv', row.names = FALSE)
 
+tmax.tble <- map(fles.tmax.ftre, tidy.tble)
+tmax.tble <- bind_rows(tmax.tble)
+
+
+
  

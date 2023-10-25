@@ -64,12 +64,16 @@ make.graph <- function(var, stt){
 
   ggl <- ggplot(data = tbl, aes(x = year, y = value, col = model)) + 
     geom_line() +
-    # facet_wrap(~model, ncol = 1, nrow = 6) +
-    ggtitle(label = ttl) +
+    facet_wrap(~model, ncol = 1, nrow = 6) +
+    ggtitle(label = glue('{ttl} - Coordenada: {stt}')) +
     labs(x = 'Año', y = 'Temperatura (°C)', col = '') +
     theme_minimal() + 
     theme(legend.position = 'bottom', 
           plot.title = element_text(size = 16, hjust = 0.5))
+  
+  dir <- glue(',./png/tasm'); dir_create(dir)
+  
+  ggsave(plot = ggl, filename = glue('../png/tasm/{var}_{stt}.png'), units = 'in', width = 7, height = 13, dpi = 300)
   
   
 }

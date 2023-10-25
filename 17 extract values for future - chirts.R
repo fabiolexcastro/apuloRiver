@@ -26,6 +26,7 @@ tidy.tble <- function(file){
   dtes <- openxlsx::convertToDate(tble$date)
   tble <- mutate(tble, date = dtes)
   tble <- gather(tble, station, value, -date, -model, -variable)
+  tble <- mutate(tble, year = year(date), month = month(date))
   tble
   
 }

@@ -59,14 +59,17 @@ make.graph <- function(var, stt){
   
   chr <- tbl %>% filter(model == 'CHIRTS') %>% group_by(variable, station, year, model) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
   tbl <- rbind(chr, tbl %>% filter(model != 'CHIRTS'))
+  
+  ttl <- ifelse(var == 'tmin', 'Temperatura mínima', 'Temperatura máxima')
 
-  ggplot(data = tbl, aes(x = year, y = value, col = model)) + 
-    geom_line(group = 1) +
-    facet_wrap(~model, ncol = 1, nrow = 6) + 
+  ggl <- ggplot(data = tbl, aes(x = year, y = value, col = model)) + 
+    geom_line() +
+    # facet_wrap(~model, ncol = 1, nrow = 6) +
+    ggtitle(label = ttl) +
+    labs(x = 'Año', y = 'Temperatura (°C)', col = '') +
     theme_minimal() + 
-    theme()
-  
-  
+    theme(legend.position = 'bottom', 
+          plot.title = element_text(size = 16, hjust = 0.5))
   
   
 }

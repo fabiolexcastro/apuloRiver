@@ -41,5 +41,14 @@ tbls.bsln <- bind_rows(tbls.chrt, tbls.gcms.bsln)
 tbls.bsln
 table(tbls.bsln$model)
 
+range(tbls.chrt$year)
+range(tbls.bsln$year)
+
+
+
+
+
+
+
 
 

@@ -66,7 +66,7 @@ tidy.tble.hist <- function(file){
   mdel <- str_split(file, '_') %>% map(2) %>% unlist()
   smmr.year <- mutate(smmr.year, model = mdel)
   cat('Done!\n')
-  return(tble)
+  return(smmr.year)
   
   
 }

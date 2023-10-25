@@ -47,6 +47,7 @@ agg.mnt <- function(var){
       cat('To process: ', m, '\n')
       m <- ifelse(m < 10, paste0('0', m), as.character(m))
       f <- grep(paste0(year, '.', m, '.'), fl, value = T)
+      f <- grep('/bsin_', f, value = T)
       r <- rast(f)
       a <- mean(r)
       return(a)

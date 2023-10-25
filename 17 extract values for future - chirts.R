@@ -28,7 +28,7 @@ tidy.tble <- function(file){
   tble <- gather(tble, station, value, -date, -model, -variable)
   tble <- mutate(tble, year = year(date), month = month(date))
   smmr <- tble %>% group_by(variable, model, station, year, month) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
-  
+  smmr.year <- smmr %>% group_by(variable model, station, year) %>% dplyr::summarise(value = mean(value, na,.rm = T)) %>% ungroup()
   
   
 }

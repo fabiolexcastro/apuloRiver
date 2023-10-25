@@ -71,3 +71,5 @@ tidy.tble.hist <- function(file){
   
 }
 
+tbls.hist <- map(.x = fles.hist, .f = tidy.tble.hist)
+

@@ -102,6 +102,8 @@ tidy.tble.hist.tmax <- function(file){
   smmr.year <- smmr %>% group_by(variable, station, year) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
   mdel <- str_split(file, '_') %>% map(2) %>% unlist()
   smmr.year <- mutate(smmr.year, model = mdel)
+  cat('Done!\n')
+  return(smmr.year)
   
 }
 

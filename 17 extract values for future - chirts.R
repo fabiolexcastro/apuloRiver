@@ -60,6 +60,7 @@ tidy.tble.hist <- function(file){
   dtes <- openxlsx::convertToDate(tble$date)
   tble <- mutate(tble, date = dtes)
   tble <- gather(tble, station, value, -date, -year, -day, -date, -variable)
+  tble <- mutate(tble, month = month(date))
   
   
   

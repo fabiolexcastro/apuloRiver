@@ -39,6 +39,7 @@ tbls.chrt <- mutate(tbls.chrt, year = as.numeric(year))
 tbls.bsln <- bind_rows(tbls.chrt, tbls.gcms.bsln)
 
 tbls.bsln
+table(tbls.bsln$model)
 
 
 

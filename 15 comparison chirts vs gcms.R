@@ -13,7 +13,6 @@ path <- './data/tbl/values_stts_tasm'
 fles <- dir_ls(path)
 fles <- as.character(fles)
 
-# List temperature files Baseline 
-
-
-
+# CHIRTS 
+fles.chrt <- grep('chirts', fles, value = T)
+fles.chrt

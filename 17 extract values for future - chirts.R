@@ -24,12 +24,12 @@ tidy.tble <- function(file){
   tble <- read.xlsx(file)
   tble <- as_tibble(tble)
   dtes <- openxlsx::convertToDate(tble$date)
-  tble <- mutate(tble, date = dtess)
+  tble <- mutate(tble, date = dtes)
   
   
   
 }
 
-
+#
 
  

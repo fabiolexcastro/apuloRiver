@@ -23,6 +23,6 @@ tbls.chrt <- mutate(tbls.chrt, year = str_sub(date, 1, 4))
 tbls.chrt <- tbls.chrt %>% group_by(Subbasin, variable, year) %>% dplyr::summarise(value = mean(value)) %>% ungroup()
 
 # GCMs baseline -----------------------------------------------------------
-fles.gcms.bsln <- grep('hist-gcms', fles.chrt, value = T)
-fles.gcms.bsln
+fles.gcms.bsln <- grep('hist-gcms', fles, value = T)
+tbls.gcms.bsln <- map(fles.gcms.bsln, read_csv)
 

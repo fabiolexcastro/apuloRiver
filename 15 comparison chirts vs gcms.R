@@ -16,3 +16,5 @@ fles <- as.character(fles)
 # CHIRTS 
 fles.chrt <- grep('chirts', fles, value = T)
 tbls.chrt <- map(fles.chrt, read_csv)
+tbls.chrt <- bind_rows(tbls.chrt)
+tbls.chrt <- dplyr::select(tbls.chrt, Subbasin, variable, date, value)

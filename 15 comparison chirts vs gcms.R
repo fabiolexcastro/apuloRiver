@@ -37,6 +37,7 @@ tbls.chrt <- dplyr::select(tbls.chrt, variable, station, year, value, model)
 # Join both tables into only one ------------------------------------------
 tbls.chrt <- mutate(tbls.chrt, year = as.numeric(year))
 tbls.bsln <- bind_rows(tbls.chrt, tbls.gcms.bsln)
+tbls.bsln <- filter(tbls.bsln, year %in% 1983:2014)
 
 tbls.bsln
 table(tbls.bsln$model)

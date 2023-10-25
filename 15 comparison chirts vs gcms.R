@@ -13,7 +13,6 @@ path <- './data/tbl/values_stts_tasm'
 fles <- dir_ls(path)
 fles <- as.character(fles)
 
-
 # CHIRTS ------------------------------------------------------------------
 fles.chrt <- grep('chirts', fles, value = T)
 tbls.chrt <- map(fles.chrt, read_csv)
@@ -47,7 +46,28 @@ range(tbls.bsln$year)
 
 write.csv(tbls.bsln, './enviar_fabio5.csv', row.names = FALSE)
 
+tbls.bsln <- read_csv('./enviar_fabio5.csv')
+
 # To make the graph  ------------------------------------------------------
+make.graph <- function(var, stt){
+  
+  var <- 'tmin'
+  stt <- '1'
+  
+  tbl <- tbls.bsln %>% filter(variable == var & station == stt)
+  
+  
+  ggplot(data = tbl, aes(x = year, y = value, col = model)) + 
+    geom_line(group = 1) +
+    facet_wrap(~model, ncol = 1, nrow = 6) + 
+    theme_minimal() + 
+    theme()
+  
+  
+  
+  
+}
+
 
 
 

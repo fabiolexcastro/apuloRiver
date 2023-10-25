@@ -40,6 +40,10 @@ write.csv(tmin.tble, 'data/tbl/values_stts_tasm/Tmin_stts_ftre.csv', row.names =
 
 tmax.tble <- map(fles.tmax.ftre, tidy.tble)
 tmax.tble <- bind_rows(tmax.tble)
+write.csv(tmax.tble, 'data/tbl/values_stts_tasm/Tmax_stts_ftre.csv', row.names = FALSE)
+
+
+
 
 
 

@@ -66,7 +66,7 @@ tidy.tble.hist <- function(file){
     colnames(tble)[1] <- 'variable'
   }
   
-  tble <- gather(tble, station, value, -date, -year, -day, -date, -variable)
+  tble <- gather(tble, station, value, -date, -year, -day, -variable)
   tble <- mutate(tble, month = month(date))
   smmr <- tble %>% group_by(variable, station, year, month) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
   smmr.year <- smmr %>% group_by(variable, station, year) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
@@ -79,4 +79,4 @@ tidy.tble.hist <- function(file){
 }
 
 tbls.hist <- map(.x = fles.hist, .f = tidy.tble.hist)
-
+tbls.hist <- bind_rows(tbl)

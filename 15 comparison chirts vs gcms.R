@@ -85,7 +85,7 @@ map(.x = 1:4, .f = function(i){
 
 # Tmax
 map(.x = 1:4, .f = function(i){
-  make.graph(var = 'tmax', stt = i)
+  make.graph(var = 'tasmax', stt = i)
 })
 
 

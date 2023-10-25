@@ -51,8 +51,8 @@ tbls.bsln <- read_csv('./enviar_fabio5.csv')
 # To make the graph  ------------------------------------------------------
 make.graph <- function(var, stt){
   
-  var <- 'tmin'
-  stt <- '1'
+  # var <- 'tmin'
+  # stt <- '1'
   
   tbl <- tbls.bsln %>% filter(variable == var & station == stt)
   tbl <- mutate(tbl, model = factor(model, levels = c('CHIRTS', 'ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')))
@@ -77,6 +77,18 @@ make.graph <- function(var, stt){
   
   
 }
+
+# Tmin 
+map(.x = 1:4, .f = function(i){
+  make.graph(var = 'tmin', stt = i)
+})
+
+# Tmax
+map(.x = 1:4, .f = function(i){
+  make.graph(var = 'tmax', stt = i)
+})
+
+
 
 
 

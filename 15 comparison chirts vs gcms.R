@@ -9,14 +9,11 @@ rm(list = ls())
 options(scipen = 999, warn = -1)
 
 # Load data ---------------------------------------------------------------
-path <- './data/tbl'
+path <- './data/tbl/values_stts_tasm'
 fles <- dir_ls(path)
 fles <- as.character(fles)
 
 # List temperature files Baseline 
-fles.bsln <- dir_ls('./data/tbl', regexp = '.csv$')
-tmin.bsln <- grep('Tmin', fles.bsln, value = T)
-tmax.bsln <- grep('Tmax', fles.bsln, value = T)
 
 
 

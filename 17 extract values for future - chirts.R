@@ -114,4 +114,4 @@ tbls.hist.tmax <- bind_rows(tbls.hist.tmax)
 write.csv(tbls.hist.tmax, './data/tbl/values_stts_tasm/Tmax_stts_hist-gcms.csv', row.names = FALSE)
 write.csv(tbls.hist.tmin, './data/tbl/values_stts_tasm/Tmin_stts_hist-gcms.csv', row.names = FALSE)
 
-'data/tbl/values_stts_tasm/Tmax_stts_ftre.csv'
+

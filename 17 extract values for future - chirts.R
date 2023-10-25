@@ -43,7 +43,9 @@ tmax.tble <- bind_rows(tmax.tble)
 write.csv(tmax.tble, 'data/tbl/values_stts_tasm/Tmax_stts_ftre.csv', row.names = FALSE)
 
 
-
+# History GCMs  -----------------------------------------------------------
+fles
+fles.hist <- grep('hist', fles, value = T)
 
 
 

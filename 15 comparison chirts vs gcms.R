@@ -45,6 +45,9 @@ table(tbls.bsln$model)
 range(tbls.chrt$year)
 range(tbls.bsln$year)
 
+write.csv(tbls.bsln, './enviar_fabio5.csv', row.names = FALSE)
+
+# To make the graph  ------------------------------------------------------
 
 
 

@@ -52,7 +52,7 @@ fles.hist <- grep(paste0(c('tmax', 'tmin'), collapse = '|'), fles.hist, value = 
 
 tidy.tble.hist <- function(file){
   
-  file <- fles.hist[1] # Correr y borrar
+  # file <- fles.hist[1] # Correr y borrar
   
   cat('To process: ', basename(file), '\n')
   tble <- read.xlsx(file)
@@ -64,8 +64,9 @@ tidy.tble.hist <- function(file){
   smmr <- tble %>% group_by(variable, station, year, month) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
   smmr.year <- smmr %>% group_by(variable, station, year) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
   mdel <- str_split(file, '_') %>% map(2) %>% unlist()
-  
-  
+  tble <- mutate(tble, model = mdel, .before = variable)
+  cat('Done!\n')
+  return(tble)
   
   
 }

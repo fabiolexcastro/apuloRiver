@@ -50,7 +50,6 @@ fles.hist <- grep(paste0(c('tmax', 'tmin'), collapse = '|'), fles.hist, value = 
 fles.hist.tmin <- grep('tmin', fles.hist, value = T)
 fles.hist.tmax <- grep('tmax', fles.hist, value = T)
 
-
 # Minimum temperature
 tidy.tble.hist.tmin <- function(file){
   
@@ -110,4 +109,9 @@ tidy.tble.hist.tmax <- function(file){
 tbls.hist.tmax <- map(.x = fles.hist.tmax, .f = tidy.tble.hist.tmax)
 tbls.hist.tmax <- bind_rows(tbls.hist.tmax)
 
+# To write the final tables -----------------------------------------------
 
+write.csv(tbls.hist.tmax, './data/tbl/values_stts_tasm/Tmax_stts_hist-gcms.csv', row.names = FALSE)
+write.csv(tbls.hist.tmin, './data/tbl/values_stts_tasm/Tmin_stts_hist-gcms.csv', row.names = FALSE)
+
+'data/tbl/values_stts_tasm/Tmax_stts_ftre.csv'

@@ -90,6 +90,20 @@ map(.x = 1:4, .f = function(i){
 
 
 
+# RMSE value --------------------------------------------------------------
+
+p_load(hydroGOF)
+mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
+
+calcRMSE <- function(bs){
+  
+  cat('To process: ', bs, '\n')
+  
+  tbl <- filter(tbls.bsln, station == bs)
+  cmb <- tibble(obsr = 'CHIRTS', model = mdls)
+  
+}
+
 
 
 

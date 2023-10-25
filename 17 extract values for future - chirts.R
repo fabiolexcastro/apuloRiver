@@ -107,4 +107,7 @@ tidy.tble.hist.tmax <- function(file){
   
 }
 
+tbls.hist.tmax <- map(.x = fles.hist.tmax, .f = tidy.tble.hist.tmax)
+tbls.hist.tmax <- bind_rows(tbls.hist.tmax)
+
 

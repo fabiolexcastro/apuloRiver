@@ -25,4 +25,4 @@ tbls.chrt <- tbls.chrt %>% group_by(Subbasin, variable, year) %>% dplyr::summari
 # GCMs baseline -----------------------------------------------------------
 fles.gcms.bsln <- grep('hist-gcms', fles, value = T)
 tbls.gcms.bsln <- map(fles.gcms.bsln, read_csv)
-
+tbls.gcms.bsln <- bind_rows(tbls.gcms.bsln)

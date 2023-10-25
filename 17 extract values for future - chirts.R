@@ -18,7 +18,7 @@ fles.tmax.ftre <- grep('tasmax', fles.tasm.ftre, value = T)
 # Function to use ---------------------------------------------------------
 tidy.tble <- function(file){
   
-  file <- fles.tmin.ftre[[1]] # Correr y borrar
+  # file <- fles.tmin.ftre[[1]] # Correr y borrar
   
   cat('To process: ', basename(file), '\n')
   tble <- read.xlsx(file)
@@ -29,9 +29,12 @@ tidy.tble <- function(file){
   tble <- mutate(tble, year = year(date), month = month(date))
   smmr <- tble %>% group_by(variable, model, station, year, month) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
   smmr.year <- smmr %>% group_by(variable, model, station, year) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
-  
+  return(smmr.year)
   
 }
+
+# To tidy the tables ------------------------------------------------------
+tmin.tble <- map(fles.tmin.ftre, tidy.tble)
 
 
 

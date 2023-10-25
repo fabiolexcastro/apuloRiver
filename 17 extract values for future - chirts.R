@@ -59,6 +59,12 @@ tidy.tble.hist <- function(file){
   tble <- as_tibble(tble)  
   dtes <- openxlsx::convertToDate(tble$date)
   tble <- mutate(tble, date = dtes)
+  nmes <- colnames(tble)
+  
+  if(any(nmes) == 'var'){
+    colnames(tble)[1] <- 'variable'
+  }
+  
   tble <- gather(tble, station, value, -date, -year, -day, -date, -variable)
   tble <- mutate(tble, month = month(date))
   smmr <- tble %>% group_by(variable, station, year, month) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()

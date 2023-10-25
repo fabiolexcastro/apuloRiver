@@ -29,3 +29,8 @@ tbls.gcms.bsln <- bind_rows(tbls.gcms.bsln)
 
 head(tbls.chrt)
 head(tbls.gcms.bsln)
+colnames(tbls.chrt)[1] <- 'station'
+tbls.chrt <- mutate(tbls.chrt, variable = ifelse(variable == 'Tmax', 'tmax', 'tmin'))
+tbls.chrt <- mutate(model = 'CHIRTS')
+
+

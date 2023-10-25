@@ -55,8 +55,11 @@ make.graph <- function(var, stt){
   stt <- '1'
   
   tbl <- tbls.bsln %>% filter(variable == var & station == stt)
+  tbl <- mutate(tbl, model = factor(model, levels = c('CHIRTS', 'ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')))
   
-  
+  chr <- tbl %>% filter(model == 'CHIRTS') %>% group_by(variable, station, year, model) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
+  tbl <- rbind(chr, tbl %>% filter(model != 'CHIRTS'))
+
   ggplot(data = tbl, aes(x = year, y = value, col = model)) + 
     geom_line(group = 1) +
     facet_wrap(~model, ncol = 1, nrow = 6) + 

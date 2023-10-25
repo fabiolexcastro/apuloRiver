@@ -15,4 +15,4 @@ fles <- as.character(fles)
 
 # CHIRTS 
 fles.chrt <- grep('chirts', fles, value = T)
-fles.chrt
+tbls.chrt <- map(fles.chrt, read_csv)

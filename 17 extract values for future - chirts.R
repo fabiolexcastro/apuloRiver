@@ -90,7 +90,12 @@ tbls.hist.tmin <- bind_rows(tbls.hist.tmin)
 tidy.tble.hist.tmax <- function(file){
   
   # file <- fles.hist[1] # Correr y borrar
- 
+  cat('To process: ', basename(file), '\n')
+  tble <- read.xlsx(file)
+  tble <- as_tibble(tble)  
+  dtes <- openxlsx::convertToDate(tble$date)
+  tble <- mutate(tble, date = dtes)
+  
   
 }
 

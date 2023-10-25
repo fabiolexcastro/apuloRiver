@@ -66,6 +66,9 @@ tidy.tble.hist <- function(file){
     colnames(tble)[1] <- 'variable'
   }
   
+  varb <- unique(tble$variable)
+  tble <- dplyr::select(tble, -variable)
+  
   tble <- gather(tble, station, value, -date, -year, -day, -variable)
   tble <- mutate(tble, month = month(date))
   smmr <- tble %>% group_by(variable, station, year, month) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()

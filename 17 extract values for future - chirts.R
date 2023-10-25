@@ -14,3 +14,22 @@ fles.tasm.ftre <- grep('tas', fles, value = T) %>% grep('ftre', ., value = T)
 
 fles.tmin.ftre <- grep('tasmin', fles.tasm.ftre, value = T)
 fles.tmax.ftre <- grep('tasmax', fles.tasm.ftre, value = T)
+
+# Function to use ---------------------------------------------------------
+tidy.tble <- function(file){
+  
+  file <- fles.tmin.ftre[[1]] # Correr y borrar
+  
+  cat('To process: ', basename(file), '\n')
+  tble <- read.xlsx(file)
+  tble <- as_tibble(tble)
+  head(tble)
+  
+  
+  
+  
+}
+
+
+
+ 

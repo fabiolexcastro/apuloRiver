@@ -34,3 +34,9 @@ tbls.chrt <- mutate(tbls.chrt, variable = ifelse(variable == 'Tmax', 'tmax', 'tm
 tbls.chrt <- mutate(tbls.chrt, model = 'CHIRTS')
 tbls.chrt <- dplyr::select(tbls.chrt, variable, station, year, value, model)
 
+# Join both tables into only one ------------------------------------------
+tbls.bsln <- bind_rows(tbls.chrt, tbls.gcms.bsln)
+tbls.bsln
+
+
+

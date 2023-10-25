@@ -55,7 +55,8 @@ tidy.tble.hist <- function(file){
   file <- fles.hist[1] # Correr y borrar
   
   cat('To process: ', basename(file), '\n')
-  
+  tble <- read.xlsx(file)
+  tble <- as_tibble(tble)  
   
 }
 

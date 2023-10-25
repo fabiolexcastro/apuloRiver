@@ -95,18 +95,42 @@ map(.x = 1:4, .f = function(i){
 p_load(hydroGOF)
 mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
 
-calcRMSE <- function(bs){
+calcRMSE <- function(bs, vr){
   
-  cat('To process: ', bs, '\n')
+  # bs <- 1
+  # vr <- 'tmin'
   
-  tbl <- filter(tbls.bsln, station == bs)
+  cat('To process: ', bs, vr, '\n')
+   
+  tbl <- filter(tbls.bsln, station == bs & variable == vr)
   cmb <- tibble(obsr = 'CHIRTS', model = mdls)
   
+  nsh <- map_dfr(.x = 1:nrow(cmb), .f = function(i){
+    
+    cm <- cmb[i,]
+    md <- cm$model
+    tb <- tbl %>% filter(model %in% c('CHIRTS', md))
+    ch <- tb %>% filter(model == 'CHIRTS') %>% group_by(variable, station, year, model) %>% summarise(value = mean(value)) %>% ungroup() 
+    tb <- rbind(ch, tb %>% filter(model != 'CHIRTS'))
+    tb <- tb %>% filter(year >= 1983)
+    tb <- tb %>% spread(model, value)
+    colnames(tb) <- c('variable', 'subbasin', 'year', 'obsr', 'mdel')
+    ns <- NSE(sim = pull(tb, mdel), obs = pull(tb, obsr), na.rm = T)
+    rm <- rmse(sim = pull(tb, mdel), obs = pull(tb, obsr), na.rm = T)
+    rs <- tibble(model = md, rmse = rm)
+    cat('Done!\n')
+    return(rs)
+    
+  }) %>% 
+    mutate(basin = bs, variable = vr)
+  return(nsh)
+    
 }
 
 
-
-
+# To apply the function 
+rslt.tmin <- map(1:4, calcRMSE, vr = 'tmin') %>% bind_rows()
+rslt.tmax <- map(1:4, calcRMSE, vr = 'tasmax') %>% bind_rows()
 
 
 

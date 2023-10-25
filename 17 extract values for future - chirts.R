@@ -48,4 +48,14 @@ fles
 fles.hist <- grep('hist', fles, value = T)
 fles.hist <- grep(paste0(c('tmax', 'tmin'), collapse = '|'), fles.hist, value = T)
 
- 
+# Tidy the table history 
+
+tidy.tble.hist <- function(file){
+  
+  file <- fles.hist[1] # Correr y borrar
+  
+  cat('To process: ', basename(file), '\n')
+  
+  
+}
+

@@ -47,10 +47,13 @@ write.csv(tmax.tble, 'data/tbl/values_stts_tasm/Tmax_stts_ftre.csv', row.names =
 fles
 fles.hist <- grep('hist', fles, value = T)
 fles.hist <- grep(paste0(c('tmax', 'tmin'), collapse = '|'), fles.hist, value = T)
+fles.hist.tmin <- grep('tmin', fles.hist, value = T)
+fles.hist.tmax <- grep('tmax', fles.hist, value = T)
+
 
 # Tidy the table history 
 
-tidy.tble.hist <- function(file){
+tidy.tble.hist.tmin <- function(file){
   
   # file <- fles.hist[1] # Correr y borrar
   
@@ -82,5 +85,5 @@ tidy.tble.hist <- function(file){
   
 }
 
-tbls.hist <- map(.x = fles.hist, .f = tidy.tble.hist)
-tbls.hist <- bind_rows(tbl)
+tbls.hist.tmin <- map(.x = fles.hist.tmin, .f = tidy.tble.hist.tmin)
+

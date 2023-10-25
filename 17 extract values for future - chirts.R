@@ -46,7 +46,6 @@ write.csv(tmax.tble, 'data/tbl/values_stts_tasm/Tmax_stts_ftre.csv', row.names =
 # History GCMs  -----------------------------------------------------------
 fles
 fles.hist <- grep('hist', fles, value = T)
-
-
+fles.hist <- grep(paste0(c('tmax', 'tmin'), collapse = '|'), fles.hist, value = T)
 
  

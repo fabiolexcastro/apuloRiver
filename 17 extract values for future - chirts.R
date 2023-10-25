@@ -51,8 +51,7 @@ fles.hist.tmin <- grep('tmin', fles.hist, value = T)
 fles.hist.tmax <- grep('tmax', fles.hist, value = T)
 
 
-# Tidy the table history 
-
+# Minimum temperature
 tidy.tble.hist.tmin <- function(file){
   
   # file <- fles.hist[1] # Correr y borrar
@@ -84,6 +83,15 @@ tidy.tble.hist.tmin <- function(file){
   
   
 }
-
 tbls.hist.tmin <- map(.x = fles.hist.tmin, .f = tidy.tble.hist.tmin)
+tbls.hist.tmin <- bind_rows(tbls.hist.tmin)
+
+# Maximum temperature
+tidy.tble.hist.tmax <- function(file){
+  
+  # file <- fles.hist[1] # Correr y borrar
+ 
+  
+}
+
 

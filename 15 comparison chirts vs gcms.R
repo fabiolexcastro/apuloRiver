@@ -32,5 +32,5 @@ head(tbls.gcms.bsln)
 colnames(tbls.chrt)[1] <- 'station'
 tbls.chrt <- mutate(tbls.chrt, variable = ifelse(variable == 'Tmax', 'tmax', 'tmin'))
 tbls.chrt <- mutate(tbls.chrt, model = 'CHIRTS')
-
+tbls.chrt <- dplyr::select(tbls.chrt, variable, station, year, value, model)
 

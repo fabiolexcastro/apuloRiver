@@ -23,8 +23,8 @@ tidy.tble <- function(file){
   cat('To process: ', basename(file), '\n')
   tble <- read.xlsx(file)
   tble <- as_tibble(tble)
-  head(tble)
-  
+  dtes <- openxlsx::convertToDate(tble$date)
+  tble <- mutate(tble, date = dtess)
   
   
   

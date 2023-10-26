@@ -91,15 +91,13 @@ map(.x = 1:4, .f = function(i){
 
 
 # RMSE value --------------------------------------------------------------
-
-library(hydroGOF)
 mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
 
 # To apply the function tmin
 calcRMSE <- function(bs, vr){
   
-  # bs <- 1
-  # vr <- 'tasmax'
+  bs <- 1
+  vr <- 'tmin'
   
   cat('To process: ', bs, vr, '\n')
   
@@ -116,8 +114,7 @@ calcRMSE <- function(bs, vr){
     tb <- tb %>% filter(year >= 1983)
     tb <- tb %>% spread(model, value)
     colnames(tb) <- c('variable', 'subbasin', 'year', 'obsr', 'mdel')
-    ns <- NSE(sim = pull(tb, mdel), obs = pull(tb, obsr), na.rm = T)
-    rm <- rmse(sim = pull(tb, mdel), obs = pull(tb, obsr), na.rm = T)
+    rm <- Metrics::rmse(predicted = pull(tb, mdel), actual = pull(tb, obsr))
     rs <- tibble(model = md, rmse = rm)
     cat('Done!\n')
     return(rs)

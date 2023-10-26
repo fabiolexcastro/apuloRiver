@@ -59,8 +59,9 @@ make.graph <- function(tble){
           legend.key.width = unit(3, 'line'), 
           strip.text = element_text(face = 'bold'))
   
-  ggsav
-  
+  ggsave(plot = glne_245, filename = '../png/tasm/tmin_ftre_ssp245.png', units = 'in', width = 12, height = 9, dpi = 300)
+  ggsave(plot = glne_245, filename = '../png/tasm/tmin_ftre_ssp585.png', units = 'in', width = 12, height = 9, dpi = 300)
+  cat('Done\n')
   
 }
 

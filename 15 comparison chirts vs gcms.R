@@ -128,6 +128,9 @@ rslt.tmin <- map(1:4, calcRMSE, vr = 'tmin') %>% bind_rows()
 
 # To apply the function tmax
 tmax <- read_csv('./data/tbl/values_stts_tasm/Tmax_stts_chirts.csv')
+tmax.smmr <- tmax %>% mutate(year = str_sub(date, 1, 4)) %>% group_by(Subbasin, variable, year) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
+
+
 head(tmax)
 
 

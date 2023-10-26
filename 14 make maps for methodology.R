@@ -250,7 +250,7 @@ plot(int)
 int.tbl <- terra::as.data.frame(int, xy = T) %>% as_tibble() %>% setNames(c('x', 'y', 'value'))
 head(int.tbl)
 
-gint <- autoplot(map.latlon) + 
+ginterpolate <- autoplot(map.latlon) + 
   geom_tile(data = int.tbl, aes(x = x, y = y, fill = value)) + 
   scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
@@ -276,4 +276,4 @@ gint <- autoplot(map.latlon) +
     label.position = "bottom"
   )) 
 
-ggsave(plot = gcnt, filename = './png/maps/temp_int-cnt_cundinamarca.jpg', units = 'in', width = 9, height = 7, dpi = 300)
+ggsave(plot = ginterpolate, filename = './png/maps/temp_int-cnt_cundinamarca_v2.jpg', units = 'in', width = 9, height = 7, dpi = 300)

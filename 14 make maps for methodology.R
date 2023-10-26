@@ -282,6 +282,8 @@ ggsave(plot = ginterpolate, filename = './png/maps/temp_int-cnt_cundinamarca_v2.
 # Downscaled figure -------------------------------------------------------
 rdwn.ftr.tbl.avg
 
+ext(bsin)
+
 bsin.bffr <- terra::buffer(bsin, width = 0.2)
 
 gdown <- autoplot(map.latlon) + 
@@ -289,7 +291,7 @@ gdown <- autoplot(map.latlon) +
   scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
   geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
-  coord_sf(xlim = ext(bsin)[1:2], ylim = ext(bsin)[3:4]) +
+  coord_sf(xlim = c(-74.9, -74.2), ylim = c(4.3, 5)) +
   labs(x = 'Lon', y = 'Lat', fill = 'Temperatura desescalada futura (°C)') +
   theme_minimal() +
   theme(legend.position = 'bottom', 

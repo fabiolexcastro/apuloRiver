@@ -16,7 +16,9 @@ fles <- grep('ftre', fles, value = T)
 
 # Tidy the table ----------------------------------------------------------
 tmin <- grep('Tmin', fles, value = T) %>% read_csv()
-head(tmin)
+tmax <- grep('Tmax', fles, value = T) %>% read_csv()
+
+
 
 
 

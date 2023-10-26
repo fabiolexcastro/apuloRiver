@@ -277,3 +277,9 @@ ginterpolate <- autoplot(map.latlon) +
   )) 
 
 ggsave(plot = ginterpolate, filename = './png/maps/temp_int-cnt_cundinamarca_v2.jpg', units = 'in', width = 9, height = 7, dpi = 300)
+
+
+# Downscaled figure -------------------------------------------------------
+
+dwn.ftr <- rraw.ftr + int
+plot(dwn.ftr)

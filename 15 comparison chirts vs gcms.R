@@ -151,12 +151,7 @@ calcRMSE <- function(bs, vr){
     tmx.mdl <<- tmax.mdel %>% filter(model == md)
     tmx.mdl
     
-    
-    tb <- tbl %>% filter(model %in% c('CHIRTS', md))
-    tb <- tb %>% filter(year >= 1983)
-    tb <- tb %>% spread(model, value)
-    colnames(tb) <- c('variable', 'subbasin', 'year', 'obsr', 'mdel')
-    rm <- Metrics::rmse(predicted = pull(tb, mdel), actual = pull(tb, obsr))
+    rm <- Metrics::rmse(predicted = pull(tmx.mdl, value), actual = pull(tmax.chrt, value))
     rs <- tibble(model = md, rmse = rm)
     cat('Done!\n')
     return(rs)

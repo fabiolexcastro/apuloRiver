@@ -164,6 +164,10 @@ calcRMSE <- function(bs, vr){
 rslt.tmax <- map(1:4, calcRMSE, vr = 'tasmax') %>% bind_rows()
 
 
+# To write the results ----------------------------------------------------
+
+write.csv(rslt.tmin, './data/tbl/values_stts_tasm/Tmax_bsln_rmse.csv', row.names = FALSE)
+write.csv(rslt.tmax, './data/tbl/values_stts_tasm/Tmax_bsln_rmse.csv', row.names = FALSE)
 
 
 

@@ -287,7 +287,7 @@ gdown <- autoplot(map.latlon) +
   scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
   geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
-  coord_sf(xlim = c(-74.88, -73.04), ylim = c(3.73, 5.83)) +
+  coord_sf(xlim = ext(bsin)[1:2], ylim = ext(bsin)[3:4]) +
   labs(x = 'Lon', y = 'Lat', fill = 'Temperatura desescalada futura (°C)') +
   theme_minimal() +
   theme(legend.position = 'bottom', 
@@ -307,3 +307,5 @@ gdown <- autoplot(map.latlon) +
     reverse = F,
     label.position = "bottom"
   )) 
+gdown, filename = './png/maps/temp_dwn-ftr_cundinamarca_v2.jpg', units = 'in', width = 9, height = 7, dpi = 300)
+

@@ -76,7 +76,7 @@ p_load(ggspatial, RColorBrewer)
 # SRTM --------------------------------------------------------------------
 srtm.tble <- srtm.tble %>% setNames(c('x', 'y', 'value'))
 
-gsrtm <- ggmap(ggbx, alpha = 0.5) + 
+gsrtm <- autoplot(map.latlon) + 
   geom_tile(data = srtm.tble, aes(x = x, y = y, fill = value)) + 
   scale_fill_gradientn(colors = terrain.colors(10)) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'red', inherit.aes = FALSE) + 
@@ -104,10 +104,10 @@ gsrtm <- ggmap(ggbx, alpha = 0.5) +
 
 gsrtm
 dir_create('./png/maps')
-ggsave(plot = gsrtm, filename = './png/maps/srtm_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
+ggsave(plot = gsrtm, filename = './png/maps/srtm_cundinamarca.jpg', units = 'in', width = 9, height = 7, dpi = 300)
   
 # Temperature raw baseline ------------------------------------------------
-graw.bsl <- ggmap(ggbx, alpha = 0.5) + 
+graw.bsl <- autoplot(map.latlon) + 
   geom_tile(data = rraw.bsl.tbl.avg, aes(x = x, y = y, fill = value)) + 
   scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'red', inherit.aes = FALSE) + 
@@ -134,7 +134,7 @@ graw.bsl <- ggmap(ggbx, alpha = 0.5) +
   )) 
 
 graw.bsl
-ggsave(plot = graw.bsl, filename = './png/maps/temp_raw-bsl_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
+ggsave(plot = graw.bsl, filename = './png/maps/temp_raw-bsl_cundinamarca.jpg', units = 'in', width = 9, height = 7, dpi = 300)
 
 # Temperature downscaling GWR baseline ------------------------------------
 
@@ -143,7 +143,7 @@ plot(rgwr.bsl)
 rgwr.bsl <- rgwr.bsl - 273.15
 rgwr.bsl.tbl.avg <- terra::as.data.frame(rgwr.bsl, xy = T) %>% as_tibble() %>% setNames(c('x', 'y', 'value'))
 
-ggwr.bsl <- ggmap(ggbx, alpha = 0.5) + 
+ggwr.bsl <- autoplot(map.latlon) + 
   geom_tile(data = rgwr.bsl.tbl.avg, aes(x = x, y = y, fill = value)) + 
   scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
@@ -169,14 +169,14 @@ ggwr.bsl <- ggmap(ggbx, alpha = 0.5) +
     label.position = "bottom"
   )) 
 
-ggsave(plot = ggwr.bsl, filename = './png/maps/temp_gwr-bsl_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
+ggsave(plot = ggwr.bsl, filename = './png/maps/temp_gwr-bsl_cundinamarca.jpg', units = 'in', width = 9, height = 7, dpi = 300)
 
 
 # To calculate the anomaly  -----------------------------------------------
 rraw.dfr <- mean(rraw.ftr[[1:31]]) - mean(rraw.bsl[[1:31]])
 rraw.dfr.tbl <- terra::as.data.frame(rraw.dfr, xy = T) %>% as_tibble() %>% setNames(c('x', 'y', 'value'))
 
-gdfr.bsl <- ggmap(ggbx, alpha = 0.5) + 
+gdfr.bsl <- autoplot(map.latlon) + 
   geom_tile(data = rraw.dfr.tbl, aes(x = x, y = y, fill = value)) + 
   scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
@@ -202,11 +202,11 @@ gdfr.bsl <- ggmap(ggbx, alpha = 0.5) +
     label.position = "bottom"
   )) 
 
-ggsave(plot = gdfr.bsl, filename = './png/maps/temp_dfr-ftr-bsl_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
+ggsave(plot = gdfr.bsl, filename = './png/maps/temp_dfr-ftr-bsl_cundinamarca.jpg', units = 'in', width = 9, height = 7, dpi = 300)
 
 # To get the centroids ----------------------------------------------------
 
-gcnt <- ggmap(ggbx, alpha = 0.5) + 
+gcnt <- autoplot(map.latlon) + 
   geom_point(data = rraw.dfr.tbl, aes(x = x, y = y), col = 'black') + 
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
   geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
@@ -231,7 +231,7 @@ gcnt <- ggmap(ggbx, alpha = 0.5) +
     label.position = "bottom"
   )) 
 
-ggsave(plot = gcnt, filename = './png/maps/temp_dfr-cnt_cundinamarca.png', units = 'in', width = 9, height = 7, dpi = 300)
+ggsave(plot = gcnt, filename = './png/maps/temp_dfr-cnt_cundinamarca.jpg', units = 'in', width = 9, height = 7, dpi = 300)
 
 
 

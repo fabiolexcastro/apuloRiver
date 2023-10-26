@@ -96,8 +96,8 @@ mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
 # To apply the function tmin
 calcRMSE <- function(bs, vr){
   
-  bs <- 1
-  vr <- 'tmin'
+  # bs <- 1
+  # vr <- 'tmin'
   
   cat('To process: ', bs, vr, '\n')
   
@@ -127,6 +127,10 @@ calcRMSE <- function(bs, vr){
 rslt.tmin <- map(1:4, calcRMSE, vr = 'tmin') %>% bind_rows()
 
 # To apply the function tmax
+tmax <- read_csv('./data/tbl/values_stts_tasm/Tmax_stts_chirts.csv')
+head(tmax)
+
+
 calcRMSE <- function(bs, vr){
   
   bs <- 1
@@ -134,7 +138,11 @@ calcRMSE <- function(bs, vr){
   
   cat('To process: ', bs, vr, '\n')
   
+  unique(tbls.bsln$model)
+  
   tbl <- filter(tbls.bsln, station == bs & variable == vr)
+  unique(tbl$model)
+  
   cmb <- tibble(obsr = 'CHIRTS', model = mdls)
   
   nsh <- map_dfr(.x = 1:nrow(cmb), .f = function(i){
@@ -145,8 +153,7 @@ calcRMSE <- function(bs, vr){
     tb <- tb %>% filter(year >= 1983)
     tb <- tb %>% spread(model, value)
     colnames(tb) <- c('variable', 'subbasin', 'year', 'obsr', 'mdel')
-    ns <- NSE(sim = pull(tb, mdel), obs = pull(tb, obsr), na.rm = T)
-    rm <- rmse(sim = pull(tb, mdel), obs = pull(tb, obsr), na.rm = T)
+    rm <- Metrics::rmse(predicted = pull(tb, mdel), actual = pull(tb, obsr))
     rs <- tibble(model = md, rmse = rm)
     cat('Done!\n')
     return(rs)

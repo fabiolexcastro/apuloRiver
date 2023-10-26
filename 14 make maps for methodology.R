@@ -250,4 +250,30 @@ plot(int)
 int.tbl <- terra::as.data.frame(int, xy = T) %>% as_tibble() %>% setNames(c('x', 'y', 'value'))
 head(int.tbl)
 
+gint <- autoplot(map.latlon) + 
+  geom_tile(data = int.tbl, aes(x = x, y = y, fill = value)) + 
+  scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
+  geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
+  geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
+  coord_sf(xlim = c(-74.88, -73.04), ylim = c(3.73, 5.83)) +
+  labs(x = 'Lon', y = 'Lat') +
+  theme_minimal() +
+  theme(legend.position = 'bottom', 
+        legend.key.width = unit(2.5, 'line'),
+        axis.text.y = element_text(angle = 90, hjust = 0.5),
+        axis.text.x = element_text(hjust = 0.5),
+        text = element_text(family = 'Gill Sans MT')) +
+  guides(fill = guide_legend( 
+    direction = 'horizontal',
+    keyheight = unit(1.15, units = "mm"),
+    keywidth = unit(15, units = "mm"),
+    title.position = 'top',
+    title.hjust = 0.5,
+    label.hjust = .5,
+    nrow = 1,
+    byrow = T,
+    reverse = F,
+    label.position = "bottom"
+  )) 
 
+ggsave(plot = gcnt, filename = './png/maps/temp_int-cnt_cundinamarca.jpg', units = 'in', width = 9, height = 7, dpi = 300)

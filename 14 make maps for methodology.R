@@ -33,6 +33,8 @@ LON1 = -74.9 ; LON2 = -73
 map <- openmap(c(LAT2,LON1), c(LAT1,LON2), zoom = NULL, type = c("osm", "stamen-toner", "stamen-terrain","stamen-watercolor", "esri","esri-topo", 'esri-physical', 'esri-shaded')[8], mergeTiles = TRUE)
 map.latlon <- openproj(map, projection = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
 
+autoplot(map.latlon)
+
 # Plotting ----------------------------------------------------------------
 plot(srtm[[1]])
 plot(rraw.bsl[[1]])
@@ -207,6 +209,8 @@ ggsave(plot = gdfr.bsl, filename = './png/maps/temp_dfr-ftr-bsl_cundinamarca.jpg
 # To get the centroids ----------------------------------------------------
 
 gcnt <- autoplot(map.latlon) + 
+  geom_tile(data = rraw.dfr.tbl, aes(x = x, y = y, fill = value)) + 
+  scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
   geom_point(data = rraw.dfr.tbl, aes(x = x, y = y), col = 'black') + 
   geom_sf(data = st_as_sf(bsin), fill = NA, col = 'grey90', inherit.aes = FALSE) + 
   geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +

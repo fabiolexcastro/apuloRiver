@@ -28,8 +28,8 @@ terra::writeRaster(x = mean(rraw.bsl[[1:31]]), filename = './rawbsl_tmpr.tif')
 
 # Basemap -----------------------------------------------------------------
 library(OpenStreetMap)
-LAT1 =  4.50 ; LAT2 = 4.85
-LON1 = -74.55 ; LON2 = -74.35
+LAT1 =  3.7 ; LAT2 = 5.9
+LON1 = -74.9 ; LON2 = -73
 map <- openmap(c(LAT2,LON1), c(LAT1,LON2), zoom = NULL, type = c("osm", "stamen-toner", "stamen-terrain","stamen-watercolor", "esri","esri-topo", 'esri-physical', 'esri-shaded')[8], mergeTiles = TRUE)
 map.latlon <- openproj(map, projection = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
 

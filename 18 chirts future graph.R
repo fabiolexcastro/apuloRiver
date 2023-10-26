@@ -12,3 +12,5 @@ options(scipen = 999, warn = -1)
 path <- './data/tbl/values_stts_tasm'
 fles <- dir_ls(path)
 fles <- as.character(fles)
+fles <- grep('ftre', fles, value = T)
+fles

@@ -129,9 +129,7 @@ rslt.tmin <- map(1:4, calcRMSE, vr = 'tmin') %>% bind_rows()
 # To apply the function tmax
 tmax <- read_csv('./data/tbl/values_stts_tasm/Tmax_stts_chirts.csv')
 tmax.smmr <- tmax %>% mutate(year = str_sub(date, 1, 4)) %>% group_by(Subbasin, variable, year) %>% dplyr::summarise(value = mean(value, na.rm = T)) %>% ungroup()
-
-
-head(tmax)
+tbls.bsln
 
 
 calcRMSE <- function(bs, vr){
@@ -141,11 +139,8 @@ calcRMSE <- function(bs, vr){
   
   cat('To process: ', bs, vr, '\n')
   
-  unique(tbls.bsln$model)
-  
-  tbl <- filter(tbls.bsln, station == bs & variable == vr)
-  unique(tbl$model)
-  
+  tmax.chrt <- tmax.smmr %>% filter(Subbasin == bs)
+  tmax.mdel <- tbls.bsln %>% filter(station == bs & variable == vrs)
   cmb <- tibble(obsr = 'CHIRTS', model = mdls)
   
   nsh <- map_dfr(.x = 1:nrow(cmb), .f = function(i){

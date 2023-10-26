@@ -237,6 +237,8 @@ gcnt <- autoplot(map.latlon) +
 
 ggsave(plot = gcnt, filename = './png/maps/temp_dfr-cnt_cundinamarca.jpg', units = 'in', width = 9, height = 7, dpi = 300)
 
+# To make the interpolation -----------------------------------------------
+library(fields)
 
 
 

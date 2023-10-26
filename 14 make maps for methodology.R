@@ -3,6 +3,8 @@
 require(pacman)
 pacman::p_load(terra, fs, sf, OpenStreetMap, tidyverse, gtools, stringr, glue, geodata)
 
+install.packages('rJava')
+
 g <- gc(reset = T)
 rm(list = ls())
 options(scipen = 999, warn = -1)

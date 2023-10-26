@@ -307,5 +307,6 @@ gdown <- autoplot(map.latlon) +
     reverse = F,
     label.position = "bottom"
   )) 
-gdown, filename = './png/maps/temp_dwn-ftr_cundinamarca_v2.jpg', units = 'in', width = 9, height = 7, dpi = 300)
+ggsave(gdown, filename = './png/maps/temp_dwn-ftr_cundinamarca_v2.jpg', units = 'in', width = 9, height = 7, dpi = 300)
+
 

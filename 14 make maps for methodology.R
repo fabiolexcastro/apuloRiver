@@ -33,9 +33,6 @@ LON1 = -74.55 ; LON2 = -74.35
 map <- openmap(c(LAT2,LON1), c(LAT1,LON2), zoom = NULL, type = c("osm", "stamen-toner", "stamen-terrain","stamen-watercolor", "esri","esri-topo", 'esri-physical', 'esri-shaded')[8], mergeTiles = TRUE)
 map.latlon <- openproj(map, projection = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
 
-
-
-
 # Plotting ----------------------------------------------------------------
 plot(srtm[[1]])
 plot(rraw.bsl[[1]])
@@ -74,15 +71,7 @@ rdwn.ftr.tbl.avg <- rdwn.ftr.tbl.avg %>% group_by(gid, x, y) %>% dplyr::summaris
 rdwn.ftr.tbl.avg
 
 # Now to make the maps ----------------------------------------------------
-p_load(ggmap, ggspatial, RColorBrewer)
-bbox <- as.numeric(c(-74.88, 3.73, -73.04, 5.83))
-ggbx <- get_stamenmap(bbox, maptype = 'terrain', zoom = 8)
-
-ggmap(ggbx, alpha = 0.5) + 
-  geom_sf(data = st_as_sf(bsin), fill = NA, col = 'red', inherit.aes = FALSE) + 
-  geom_sf(data = st_as_sf(cndn), fill = NA, col = 'grey30', inherit.aes = FALSE) +
-  coord_sf(xlim = c(-74.88, -73.04), ylim = c(3.73, 5.83)) +
-  theme()
+p_load(ggspatial, RColorBrewer)
 
 # SRTM --------------------------------------------------------------------
 srtm.tble <- srtm.tble %>% setNames(c('x', 'y', 'value'))

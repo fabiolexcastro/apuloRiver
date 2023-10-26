@@ -25,21 +25,40 @@ tmin <- read_csv('Tmin_stts_ftre.csv')
 make.graph <- function(tble){
   
   tble <- tmin
+  mdls <- unique(tble$model)
   
-  smmr <- tble %>% group_by(variable, model, station, year) %>% dplyr::summarise(value = mean(value)) %>% ungroup()
-  smmr %>% filter(model == 'ACCESS-CM2') %>% filter(station == 1) %>% View()
+  tble <- map_dfr(.x = 1:5, .f = function(i){
+    tbl <- tble %>% filter(model == mdls[i])
+    tbl <- map_dfr(.x = 1:4, .f = function(j){
+      tbl <- tbl %>% filter(station == j)
+      tbl <- mutate(tbl, ssp = c(rep('ssp245', 85), rep('ssp585', 85)))
+    })
+    return(tbl)
+  })
   
   # Start the analysis
-  glne <- ggplot(data = tble, aes(x = year, y = value, col = model)) + 
+  glne_245 <- ggplot(data = tble %>% filter(ssp == 'ssp245'), aes(x = year, y = value, col = model)) + 
     geom_line() + 
     facet_wrap(.~station) + 
+    ggtitle(label = 'SSP: 245') +
     theme_minimal() +
     labs(x = 'Año', y = 'Temperatura (°C)', col = '') +
     theme(legend.position = 'bottom', 
+          plot.title = element_text(face = 'bold', hjust = 0.5),
           legend.key.width = unit(3, 'line'), 
           strip.text = element_text(face = 'bold'))
   
-  glne
+  glne_585 <- ggplot(data = tble %>% filter(ssp == 'ssp585'), aes(x = year, y = value, col = model)) + 
+    geom_line() + 
+    facet_wrap(.~station) + 
+    ggtitle(label = 'SSP: 245') +
+    theme_minimal() +
+    labs(x = 'Año', y = 'Temperatura (°C)', col = '') +
+    theme(legend.position = 'bottom', 
+          plot.title = element_text(face = 'bold', hjust = 0.5),
+          legend.key.width = unit(3, 'line'), 
+          strip.text = element_text(face = 'bold'))
+  
   
   
   

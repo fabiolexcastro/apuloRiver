@@ -240,6 +240,9 @@ ggsave(plot = gcnt, filename = './png/maps/temp_dfr-cnt_cundinamarca.jpg', units
 # To make the interpolation -----------------------------------------------
 library(fields)
 
+tps <- fields::Tps(x = rraw.dfr.tbl[,c('x', 'y')], Y = rraw.dfr.tbl[,'value']) 
+ref <- rgwr.bsl[[1]] * 0 + 1
+plot(ref)
 
 
 

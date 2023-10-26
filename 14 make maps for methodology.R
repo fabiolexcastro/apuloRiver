@@ -247,6 +247,7 @@ int <- terra::interpolate(object = rast(ref), model = tps, fun = predict)
 int <- terra::crop(int, cndn) %>% terra::mask(., cndn)
 plot(int)
 
-
+int.tbl <- terra::as.data.frame(int, xy = T) %>% as_tibble() %>% setNames(c('x', 'y', 'value'))
+head(int.tbl)
 
 

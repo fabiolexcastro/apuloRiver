@@ -140,13 +140,18 @@ calcRMSE <- function(bs, vr){
   cat('To process: ', bs, vr, '\n')
   
   tmax.chrt <- tmax.smmr %>% filter(Subbasin == bs)
-  tmax.mdel <- tbls.bsln %>% filter(station == bs & variable == vrs)
+  tmax.mdel <- tbls.bsln %>% filter(station == bs & variable == vr)
   cmb <- tibble(obsr = 'CHIRTS', model = mdls)
   
   nsh <- map_dfr(.x = 1:nrow(cmb), .f = function(i){
     
     cm <- cmb[i,]
     md <- cm$model
+    
+    tmx.mdl <<- tmax.mdel %>% filter(model == md)
+    tmx.mdl
+    
+    
     tb <- tbl %>% filter(model %in% c('CHIRTS', md))
     tb <- tb %>% filter(year >= 1983)
     tb <- tb %>% spread(model, value)

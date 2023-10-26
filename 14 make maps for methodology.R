@@ -24,6 +24,16 @@ rdwn.ftr <- rast('./data/tif/nasa/cmip6/ssp245/ACCESS-CM2/tasmax/down/tasmax_201
 
 terra::writeRaster(x = mean(rraw.bsl[[1:31]]), filename = './rawbsl_tmpr.tif')
 
+# Basemap -----------------------------------------------------------------
+
+LAT1 =  4.50 ; LAT2 = 4.85
+LON1 = -74.55 ; LON2 = -74.35
+map <- openmap(c(LAT2,LON1), c(LAT1,LON2), zoom = NULL, type = c("osm", "stamen-toner", "stamen-terrain","stamen-watercolor", "esri","esri-topo", 'esri-physical', 'esri-shaded')[8], mergeTiles = TRUE)
+map.latlon <- openproj(map, projection = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+
+
+
+
 # Plotting ----------------------------------------------------------------
 plot(srtm[[1]])
 plot(rraw.bsl[[1]])

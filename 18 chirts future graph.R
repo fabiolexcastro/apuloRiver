@@ -51,7 +51,7 @@ make.graph <- function(tble){
   glne_585 <- ggplot(data = tble %>% filter(ssp == 'ssp585'), aes(x = year, y = value, col = model)) + 
     geom_line() + 
     facet_wrap(.~station) + 
-    ggtitle(label = 'SSP: 245') +
+    ggtitle(label = 'SSP: 585') +
     theme_minimal() +
     labs(x = 'Año', y = 'Temperatura (°C)', col = '') +
     theme(legend.position = 'bottom', 
@@ -59,7 +59,7 @@ make.graph <- function(tble){
           legend.key.width = unit(3, 'line'), 
           strip.text = element_text(face = 'bold'))
   
-  
+  ggsav
   
   
 }

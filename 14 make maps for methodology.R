@@ -1,7 +1,7 @@
 
 # Load libraries ----------------------------------------------------------
 require(pacman)
-pacman::p_load(terra, fs, sf, OpenStreetMap, tidyverse, rgeos, readxl, openxlsx, gtools, stringr, glue, geodata)
+pacman::p_load(terra, fs, sf, OpenStreetMap, tidyverse, gtools, stringr, glue, geodata)
 
 g <- gc(reset = T)
 rm(list = ls())

@@ -243,8 +243,8 @@ library(fields)
 tps <- fields::Tps(x = rraw.dfr.tbl[,c('x', 'y')], Y = rraw.dfr.tbl[,'value']) 
 ref <- rgwr.bsl[[1]] * 0 + 1
 plot(ref)
-
-
+int <- terra::interpolate(object = rast(ref), model = tps, fun = predict)
+plot(int)
 
 
 

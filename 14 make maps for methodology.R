@@ -244,6 +244,7 @@ tps <- fields::Tps(x = rraw.dfr.tbl[,c('x', 'y')], Y = rraw.dfr.tbl[,'value'])
 ref <- rgwr.bsl[[1]] * 0 + 1
 plot(ref)
 int <- terra::interpolate(object = rast(ref), model = tps, fun = predict)
+int <- terra::crop(int, cndn) %>% terra::mask(., cndn)
 plot(int)
 
 

@@ -2,7 +2,7 @@
 
 # Load libraries ----------------------------------------------------------
 library(pacman)
-pacman::p_load(elevatr, remotes, readxl, xlsx, openxlsx, chirps, spatialEco, terra, RSAGA, fs, sf, readxl, openxlsx, tidyverse, glue, gtools, RColorBrewer)
+pacman::p_load(elevatr, remotes, Metrics, readxl, xlsx, openxlsx, chirps, spatialEco, terra, RSAGA, fs, sf, readxl, openxlsx, tidyverse, glue, gtools, RColorBrewer)
 
 g <- gc(reset = TRUE)
 rm(list = ls())
@@ -94,7 +94,6 @@ map(.x = 1:4, .f = function(i){
 
 library(hydroGOF)
 mdls <- c('ACCESS-CM2', 'CanESM5', 'EC-Earth3', 'INM-CM4-8', 'MRI-ESM2-0')
-
 
 # To apply the function tmin
 calcRMSE <- function(bs, vr){

@@ -282,7 +282,7 @@ ggsave(plot = ginterpolate, filename = './png/maps/temp_int-cnt_cundinamarca_v2.
 # Downscaled figure -------------------------------------------------------
 rdwn.ftr.tbl.avg
 
-bsin.bffr <- terra::buffer(bsin, 0.2)
+bsin.bffr <- terra::buffer(bsin, width = 0.2)
 
 gdown <- autoplot(map.latlon) + 
   geom_tile(data = rdwn.ftr.tbl.avg, aes(x = x, y = y, fill = value)) + 
